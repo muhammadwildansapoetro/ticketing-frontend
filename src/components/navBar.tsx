@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { IoIosFootball } from "react-icons/io";
 
 const navigation = [
   { name: "Matches", href: "#" },
@@ -23,9 +24,10 @@ export default function NavBar() {
         <div className="flex lg:flex-1">
           <Link
             href="#"
-            className="-m-1.5 p-1.5 text-2xl font-bold tracking-wider text-white"
+            className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black text-white"
           >
             <span className="sr-only">Your Company</span>
+            <IoIosFootball />
             MatchTix
           </Link>
         </div>
@@ -70,7 +72,7 @@ export default function NavBar() {
           <div className="flex items-center justify-between">
             <Link
               href="#"
-              className="-m-1.5 p-1.5 text-2xl font-bold tracking-wider text-gray-900"
+              className="-m-1.5 p-1.5 text-2xl font-black text-gray-900"
             >
               <span className="sr-only">Your Company</span>
               MatchTix
