@@ -47,6 +47,7 @@ export default function NavBar() {
             }`}
           >
             <span className="sr-only">Your Company</span>
+            <IoIosFootball />
             MatchTix
             <TbSoccerField size={30} />
           </Link>
@@ -62,6 +63,7 @@ export default function NavBar() {
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="size-8" />
+
           </button>
         </div>
 
@@ -73,6 +75,7 @@ export default function NavBar() {
               className={`font-semibold ${
                 scrolled ? "text-white" : "text-accent"
               }`}
+
             >
               {item.name}
             </Link>
@@ -86,6 +89,7 @@ export default function NavBar() {
               scrolled ? "text-white" : "text-accent"
             }`}
           >
+
             Sign in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -102,6 +106,7 @@ export default function NavBar() {
             <Link
               href="#"
               className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black tracking-tight text-accent"
+
             >
               <span className="sr-only">Your Company</span>
               <IoIosFootball />
