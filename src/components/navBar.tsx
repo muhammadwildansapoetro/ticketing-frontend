@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { IoIosFootball } from "react-icons/io";
+import { TbSoccerField } from "react-icons/tb";
 
 const navigation = [
   { name: "Matches", href: "#" },
@@ -14,9 +15,26 @@ const navigation = [
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0); // Adjust threshold as needed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white">
+    <header
+      className={`fixed inset-x-0 top-0 z-10 transition duration-300 ${
+        scrolled ? "bg-accent" : "bg-transparent"
+      }`}
+    >
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-3 lg:px-8"
@@ -24,11 +42,13 @@ export default function NavBar() {
         <div className="flex lg:flex-1">
           <Link
             href="#"
-            className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl tracking-tight text-accent"
+            className={`-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black tracking-tight ${
+              scrolled ? "text-white" : "text-accent"
+            }`}
           >
             <span className="sr-only">Your Company</span>
-            <IoIosFootball />
             MatchTix
+            <TbSoccerField size={30} />
           </Link>
         </div>
 
@@ -36,10 +56,12 @@ export default function NavBar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 ${
+              scrolled ? "text-white" : "text-gray-700"
+            }`}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-8 text-accent" />
+            <Bars3Icon aria-hidden="true" className="size-8" />
           </button>
         </div>
 
@@ -48,7 +70,9 @@ export default function NavBar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-lg font-semibold tracking-wide text-accent"
+              className={`font-semibold ${
+                scrolled ? "text-white" : "text-accent"
+              }`}
             >
               {item.name}
             </Link>
@@ -56,7 +80,12 @@ export default function NavBar() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-lg font-semibold text-accent">
+          <a
+            href="#"
+            className={`font-semibold ${
+              scrolled ? "text-white" : "text-accent"
+            }`}
+          >
             Sign in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -72,7 +101,7 @@ export default function NavBar() {
           <div className="flex items-center justify-between">
             <Link
               href="#"
-              className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black text-accent"
+              className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black tracking-tight text-accent"
             >
               <span className="sr-only">Your Company</span>
               <IoIosFootball />
