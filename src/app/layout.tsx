@@ -3,17 +3,12 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/footer";
 import NavBar from "@/components/navBar";
-import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
   weight: "500",
   subsets: ["latin"],
 });
 
-const roboto = Roboto({
-  weight: "500",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title:
