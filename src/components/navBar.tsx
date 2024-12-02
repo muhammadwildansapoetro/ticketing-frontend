@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+
 import { TbSoccerField } from "react-icons/tb";
 
 const navigation = [
@@ -61,6 +62,7 @@ export default function NavBar() {
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="size-10" />
+
           </button>
         </div>
 
@@ -72,6 +74,7 @@ export default function NavBar() {
               className={`font-semibold hover:underline hover:underline-offset-8 ${
                 scrolled ? "text-white" : "text-accent"
               }`}
+
             >
               {item.name}
             </Link>
@@ -85,6 +88,7 @@ export default function NavBar() {
               scrolled ? "bg-white text-accent" : "text-white"
             }`}
           >
+
             Sign in <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
@@ -102,6 +106,7 @@ export default function NavBar() {
             <Link
               href="#"
               className="-m-1.5 flex items-center gap-1 p-1.5 text-2xl font-black tracking-tight text-accent"
+
             >
               <span className="sr-only">Your Company</span>
               MatchTix
