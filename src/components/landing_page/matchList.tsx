@@ -147,16 +147,14 @@ export default function MatchList() {
               />
               <div className="mt-2 flex justify-between">
                 <div>
-                  <h3 className="overflow-hidden text-gray-700 lg:text-lg">
+                  <h3 className="overflow-hidden text-lg text-gray-700">
                     <Link href={match.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {match.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500 lg:text-base">
-                    {match.venue}
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-gray-900 lg:text-base">
+                  <p className="mt-1 text-gray-500">{match.venue}</p>
+                  <p className="mt-1 font-medium text-gray-900">
                     {match.price}
                   </p>
                 </div>
