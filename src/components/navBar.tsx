@@ -8,6 +8,7 @@ import Link from "next/link";
 import { TbSoccerField } from "react-icons/tb";
 
 const navigation = [
+  { name: "Dashboard", href: "#" },
   { name: "Matches", href: "#" },
   { name: "My Match", href: "#" },
   { name: "My Ticket", href: "#" },

@@ -10,6 +10,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
   title:
     "MatchTix App: Connecting Matches and Fans - Hub for Creating and Attending Events",
