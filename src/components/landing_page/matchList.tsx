@@ -131,7 +131,7 @@ export default function MatchList() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-5 py-20 sm:px-7 lg:max-w-full lg:px-10">
-        <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-accent lg:text-3xl">
+        <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-gray-900 lg:text-3xl">
           Upcoming Matches
         </h2>
 

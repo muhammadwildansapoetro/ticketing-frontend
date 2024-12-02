@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="#" className="flex items-center gap-1">
-              <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+              <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
                 MatchTix
               </span>
               <TbSoccerField size={30} className="text-white" />
@@ -25,7 +25,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
                 Resources
               </h2>
 
@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
                 Follow us
               </h2>
 
@@ -77,7 +77,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
                 Legal
               </h2>
 
