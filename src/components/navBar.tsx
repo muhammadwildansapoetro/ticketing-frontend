@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { IoIosFootball } from "react-icons/io";
+
 import { TbSoccerField } from "react-icons/tb";
 
 const navigation = [
@@ -37,7 +37,7 @@ export default function NavBar() {
     >
       <nav
         aria-label="Global"
-        className="flex items-center justify-between p-3 lg:px-8"
+        className="flex items-center justify-between px-5 py-2 lg:px-10"
       >
         <div className="flex lg:flex-1">
           <Link
@@ -47,7 +47,6 @@ export default function NavBar() {
             }`}
           >
             <span className="sr-only">Your Company</span>
-            <IoIosFootball />
             MatchTix
             <TbSoccerField size={30} />
           </Link>
@@ -58,11 +57,11 @@ export default function NavBar() {
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 ${
-              scrolled ? "text-white" : "text-gray-700"
+              scrolled ? "text-white" : "text-accent"
             }`}
           >
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-8" />
+            <Bars3Icon aria-hidden="true" className="size-10" />
 
           </button>
         </div>
@@ -72,7 +71,7 @@ export default function NavBar() {
             <Link
               key={item.name}
               href={item.href}
-              className={`font-semibold ${
+              className={`font-semibold hover:underline hover:underline-offset-8 ${
                 scrolled ? "text-white" : "text-accent"
               }`}
 
@@ -82,16 +81,16 @@ export default function NavBar() {
           ))}
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
+        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
+          <Link
             href="#"
-            className={`font-semibold ${
-              scrolled ? "text-white" : "text-accent"
+            className={`rounded-full bg-accent px-3 py-0.5 text-lg hover:brightness-90 ${
+              scrolled ? "bg-white text-accent" : "text-white"
             }`}
           >
 
             Sign in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
 
@@ -100,8 +99,9 @@ export default function NavBar() {
         onClose={setMobileMenuOpen}
         className="lg:hidden"
       >
-        <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-3 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        {/* <div className="fixed inset-0 z-50" /> */}
+
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-5 py-2 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link
               href="#"
@@ -109,8 +109,8 @@ export default function NavBar() {
 
             >
               <span className="sr-only">Your Company</span>
-              <IoIosFootball />
               MatchTix
+              <TbSoccerField size={30} />
             </Link>
 
             <button
@@ -119,35 +119,35 @@ export default function NavBar() {
               className="-m-2.5 rounded-md p-2.5 text-accent"
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-8" />
+              <XMarkIcon aria-hidden="true" className="size-10" />
             </button>
           </div>
 
           <div className="mt-5 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6 divide-y divide-accent">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-accent hover:bg-gray-100"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-accent hover:bg-gray-100 hover:underline hover:underline-offset-8"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
 
               <div className="py-6">
                 <Link
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-accent hover:bg-gray-100"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-accent hover:bg-gray-100 hover:underline hover:underline-offset-8"
                 >
                   Register
                 </Link>
 
                 <Link
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-accent hover:bg-gray-100"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-accent hover:bg-gray-100 hover:underline hover:underline-offset-8"
                 >
                   Sign in
                 </Link>
