@@ -148,7 +148,6 @@ export default function MatchList() {
               <div className="mt-2 flex justify-between">
                 <div>
                   <h3 className="overflow-hidden text-lg text-gray-700">
-
                     <Link href={match.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {match.name}
