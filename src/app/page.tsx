@@ -1,5 +1,5 @@
-import Hero from "@/components/landing_page/hero";
-import MatchList from "@/components/landing_page/matchList";
+import Hero from "@/components/hero";
+import MatchList from "@/components/matchList";
 
 export default function Home() {
   return (
