@@ -20,7 +20,7 @@ export default function Logo() {
   return (
     <div className="flex lg:flex-1">
       <Link
-        href="#"
+        href="/"
         className={`flex items-center gap-1 p-1.5 text-2xl font-black ${scrolled ? "text-white" : "text-accent"} lg:text-3xl`}
       >
         <TbSoccerField className="size-8 lg:size-10" />

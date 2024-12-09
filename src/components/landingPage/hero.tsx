@@ -27,7 +27,7 @@ export default function Hero() {
                 Attend Match
               </Link>
               <Link
-                href="#"
+                href="/create-match"
                 className="w-full rounded-md border border-accent bg-white px-4 py-3 text-base font-semibold text-gray-900 hover:bg-accent hover:text-white sm:w-auto"
               >
                 Create Match <span aria-hidden="true">→</span>

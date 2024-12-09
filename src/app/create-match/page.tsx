@@ -1,7 +1,7 @@
-export default function MatchesPage() {
+export default function CreateMatch() {
   return (
     <div className="flex h-screen items-center justify-center">
-      <div>Matches Page</div>
+      <div>Create Match Page</div>
     </div>
   );
 }

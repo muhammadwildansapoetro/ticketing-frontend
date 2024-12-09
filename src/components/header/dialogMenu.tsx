@@ -1,9 +1,8 @@
 import Link from "next/link";
 
 const navigation = [
-  { name: "Explore Matches", href: "#" },
-  { name: "Match Organizers", href: "#" },
-  { name: "Create Match", href: "#" },
+  { name: "Explore Matches", href: "/match" },
+  { name: "Create Match", href: "/create-match" },
 ];
 
 export default function DialogMenu() {
