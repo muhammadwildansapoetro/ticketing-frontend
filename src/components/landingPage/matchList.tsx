@@ -130,7 +130,7 @@ const matches = [
 export default function MatchList() {
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-5 py-20 sm:px-7 lg:max-w-full lg:px-10">
+      <div className="mx-auto max-w-2xl border-t-2 px-5 pt-10 sm:px-7 lg:max-w-full lg:px-10">
         <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-gray-900 lg:text-3xl">
           Upcoming Matches
         </h2>
@@ -147,16 +147,18 @@ export default function MatchList() {
               />
               <div className="mt-2 flex justify-between">
                 <div>
-                  <h3 className="overflow-hidden text-lg text-gray-700">
+                  <h3 className="overflow-hidden text-gray-700 lg:text-lg">
                     <Link href={match.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {match.name}
                     </Link>
                   </h3>
                   <p className="mt-1 text-gray-500">{match.venue}</p>
-                  <p className="mt-1 font-medium text-gray-900">
+                  <p className="mb-1 mt-1 font-medium text-gray-900">
                     {match.price}
                   </p>
+                  <hr />
+                  <p>Organizer</p>
                 </div>
               </div>
             </div>
