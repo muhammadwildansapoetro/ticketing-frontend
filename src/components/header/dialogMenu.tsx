@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Profile from "./profile";
 
 const navigation = [
   { name: "Explore Matches", href: "/match" },
@@ -14,7 +15,7 @@ export default function DialogMenu() {
             <Link
               key={item.name}
               href={item.href}
-              className="block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-accent/10"
+              className="block rounded-lg px-3 py-2 text-base/7 font-medium tracking-wide text-gray-900 hover:bg-accent/10"
             >
               {item.name}
             </Link>
@@ -24,10 +25,11 @@ export default function DialogMenu() {
         <div className="py-6">
           <Link
             href="#"
-            className="block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-accent/30"
+            className="block rounded-lg px-3 py-2.5 text-base/7 font-medium tracking-wide text-gray-900 hover:bg-accent/30"
           >
             Sign in
           </Link>
+          
         </div>
       </div>
     </div>
