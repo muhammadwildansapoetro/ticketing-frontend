@@ -75,10 +75,17 @@ export default function NavBar() {
           ))}
         </div>
 
-        <div className="hidden md:flex md:flex-1 md:items-center md:justify-end">
+        {/* Register and Sign in */}
+        <div className="hidden gap-2 md:flex md:flex-1 md:items-center md:justify-end">
           <Link
             href="#"
-            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "bg-white text-gray-700 hover:bg-white/90" : "bg-accent text-white hover:bg-accent/90"}`}
+            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "border border-white text-white hover:bg-white hover:text-gray-700" : "border border-accent hover:bg-accent hover:text-white"}`}
+          >
+            Register
+          </Link>
+          <Link
+            href="#"
+            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "bg-white text-gray-700 hover:bg-white/90" : "border border-accent bg-accent text-white hover:bg-accent/90"}`}
           >
             Sign in <span aria-hidden="true">&rarr;</span>
           </Link>

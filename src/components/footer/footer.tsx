@@ -7,7 +7,14 @@ import {
   FaTwitter,
   FaDiscord,
   FaFacebookSquare,
+  FaInstagram,
+  FaInstagramSquare,
+  FaTiktok,
+  FaYoutube,
+  FaFacebook,
+  FaFacebookF,
 } from "react-icons/fa";
+import { FaSquareYoutube, FaX, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -30,6 +37,15 @@ export default function Footer() {
               </h2>
 
               <ul className="font-medium text-white">
+                <li className="mb-4">
+                  <Link
+                    href="#"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    About Us
+                  </Link>
+                </li>
+
                 <li className="mb-4">
                   <Link
                     href="#"
@@ -67,13 +83,23 @@ export default function Footer() {
                   </Link>
                 </li>
 
-                <li>
+                <li className="mb-4">
                   <Link
                     href="https://tailwindcss.com/"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Tailwind CSS
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="https://www.vidio.com/categories/liga-1"
+                    target="_blank"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    Vidio.com
                   </Link>
                 </li>
               </ul>
@@ -91,6 +117,15 @@ export default function Footer() {
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Privacy Policy
+                  </Link>
+                </li>
+
+                <li className="mb-4">
+                  <Link
+                    href="#"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    Support Policy
                   </Link>
                 </li>
 
@@ -120,40 +155,40 @@ export default function Footer() {
 
           <div className="mt-4 flex sm:mt-0 sm:justify-center">
             <Link href="#" className="text-white opacity-70 hover:opacity-100">
-              <FaFacebookSquare />
-              <span className="sr-only">Facebook page</span>
+              <FaFacebook size={20} />
+              <span className="sr-only">Facebook</span>
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaDiscord />
-              <span className="sr-only">Discord community</span>
+              <FaXTwitter size={20} />
+              <span className="sr-only">Twitter</span>
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaTwitter />
-              <span className="sr-only">Twitter page</span>
+              <FaInstagram size={20} />
+              <span className="sr-only">Instagram</span>
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaGithub />
-              <span className="sr-only">GitHub account</span>
+              <FaYoutube size={20} />
+              <span className="sr-only">Youtube</span>
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaDribbble />
-              <span className="sr-only">Dribbble account</span>
+              <FaTiktok size={20} />
+              <span className="sr-only">Tiktok</span>
             </Link>
           </div>
         </div>

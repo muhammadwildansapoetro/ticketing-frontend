@@ -4,18 +4,21 @@ import { TbSoccerField } from "react-icons/tb";
 
 export default function Hero() {
   return (
-    <div className="md:h-screen">
+    <div className="flex h-screen flex-col justify-between">
       <div className="mt-14">
         <Image
-          src={"/football-stadium.jpg"}
-          alt="stadium seat image"
+          src={
+            "https://images.unsplash.com/photo-1544366981-43d8d59eeba9?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+          alt="people watching football"
           width={1000}
           height={1000}
-          className="h-32 w-full object-cover md:h-64"
+          quality={100}
+          className="h-44 w-full object-cover md:h-64"
         />
       </div>
 
-      <div className="relative z-10 mx-4 flex items-center justify-center py-10 md:mx-8">
+      <div className="relative mx-4 flex items-center justify-center">
         <div className="container mx-auto">
           <div className="text-center">
             {/* Heading */}
@@ -57,11 +60,13 @@ export default function Hero() {
 
       <div>
         <Image
-          src={"/people-watching-football.jpg"}
-          alt="stadium seat image"
+          src={
+            "https://images.unsplash.com/photo-1544367946-af49aa3a7b86?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+          alt="people watching football"
           width={1000}
           height={1000}
-          className="hidden h-44 w-full object-cover md:block lg:h-72"
+          className="h-44 w-full object-cover md:h-64"
         />
       </div>
     </div>
