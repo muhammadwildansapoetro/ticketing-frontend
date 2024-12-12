@@ -85,7 +85,7 @@ export default function NavBar() {
           </Link>
           <Link
             href="#"
-            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "bg-white text-gray-700 hover:bg-white/90" : "border border-accent bg-accent text-white hover:bg-accent/90"}`}
+            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "border border-white bg-white text-gray-700 hover:bg-white/90" : "border border-accent bg-accent text-white hover:bg-accent/90"}`}
           >
             Sign in <span aria-hidden="true">&rarr;</span>
           </Link>
