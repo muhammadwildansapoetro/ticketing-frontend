@@ -4,6 +4,7 @@ import Profile from "./profile";
 const navigation = [
   { name: "Explore Matches", href: "/match" },
   { name: "Create Match", href: "/create-match" },
+
 ];
 
 export default function DialogMenu() {
@@ -16,6 +17,7 @@ export default function DialogMenu() {
               key={item.name}
               href={item.href}
               className="block rounded-lg px-3 py-2 text-base/7 font-medium tracking-wide text-gray-900 hover:bg-accent/10"
+
             >
               {item.name}
             </Link>
@@ -30,6 +32,7 @@ export default function DialogMenu() {
             Sign in
           </Link>
           
+
         </div>
       </div>
     </div>

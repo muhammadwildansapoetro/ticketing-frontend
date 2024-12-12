@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import Link from "next/link";
 import { TbSoccerField } from "react-icons/tb";
 
@@ -50,6 +51,7 @@ export default function Hero() {
               <Link
                 href="/create-match"
                 className="w-full rounded-md border border-accent bg-white px-4 py-3 text-base font-medium text-gray-900 transition-all duration-300 ease-in-out hover:bg-accent hover:text-white sm:w-auto"
+
               >
                 Create Match <span aria-hidden="true">→</span>
               </Link>
@@ -69,6 +71,7 @@ export default function Hero() {
           className="h-44 w-full object-cover md:h-64"
         />
       </div>
+
     </div>
   );
 }

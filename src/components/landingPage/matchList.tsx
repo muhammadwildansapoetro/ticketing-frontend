@@ -11,6 +11,7 @@ const matches = [
     imageAlt: "PSIS Semarang vs Semen Padang",
     price: "Rp 70.000",
     venue: "Madya Stadium, Magelang",
+
     category: "Paid ",
   },
   {
@@ -22,6 +23,7 @@ const matches = [
     imageAlt: "Persija vs Persik Kediri",
     price: "Rp 100.000",
     venue: "Pakansari Stadium, Bogor",
+
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const matches = [
     imageAlt: "PS. Barito Putra vs Persita",
     price: "IDR 70.000",
     venue: "Sultan Agung Stadium, Bantul",
+
   },
   {
     id: 4,
@@ -122,6 +125,7 @@ const matches = [
     imageAlt: "Persib vs Borneo FC Samarinda",
     price: "Rp 150.000",
     venue: "Gelora Bandung Lautan Api Stadium, Bandung",
+
   },
 ];
 
@@ -129,6 +133,7 @@ export default function MatchList() {
   return (
     <div className="bg-accent/10">
       <div className="mx-auto max-w-2xl px-5 pb-20 pt-10 sm:px-7 lg:max-w-full lg:px-10">
+
         <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-gray-900 lg:text-3xl">
           Upcoming Matches
         </h2>
@@ -139,6 +144,7 @@ export default function MatchList() {
               key={match.id}
               className="group relative rounded-xl bg-white shadow-lg"
             >
+
               <Image
                 src={match.imageSrc}
                 alt={match.imageAlt}
@@ -149,6 +155,7 @@ export default function MatchList() {
               <div className="m-2 flex justify-between">
                 <div>
                   <h3 className="overflow-hidden font-medium text-gray-900 lg:text-lg">
+
                     <Link href={match.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {match.name}
@@ -159,6 +166,7 @@ export default function MatchList() {
                     {match.price}
                   </p>
                   <p className="text-gray-700">Organizer_Name</p>
+
                 </div>
               </div>
             </div>
