@@ -3,7 +3,9 @@ import Image from "next/image";
 
 export default function Profile() {
   return (
-    <Menu as="div" className="relative py-1">
+    // hidden if not signed in, block if signed in
+    <Menu as="div" className="relative ml-3 hidden py-1 md:block">
+
       <div>
         <MenuButton className="relative flex rounded-full bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent">
           <span className="absolute -inset-1.5" />
@@ -36,6 +38,25 @@ export default function Profile() {
             href="#"
             className="block px-4 py-2 text-base text-gray-700 data-[focus]:bg-accent/10 data-[focus]:outline-none"
           >
+            My Ticket
+          </a>
+        </MenuItem>
+
+        <MenuItem>
+          <a
+            href="#"
+            className="block px-4 py-2 text-base text-gray-700 data-[focus]:bg-accent/10 data-[focus]:outline-none"
+          >
+            My Order
+          </a>
+        </MenuItem>
+
+        <MenuItem>
+          <a
+            href="#"
+            className="block px-4 py-2 text-base text-gray-700 data-[focus]:bg-accent/10 data-[focus]:outline-none"
+          >
+
             Dashboard
           </a>
         </MenuItem>

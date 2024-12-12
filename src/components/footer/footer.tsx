@@ -7,11 +7,19 @@ import {
   FaTwitter,
   FaDiscord,
   FaFacebookSquare,
+  FaInstagram,
+  FaInstagramSquare,
+  FaTiktok,
+  FaYoutube,
+  FaFacebook,
+  FaFacebookF,
 } from "react-icons/fa";
+import { FaSquareYoutube, FaX, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="mt-40 bg-accent">
+    <footer className="bg-accent py-10">
+
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -26,25 +34,38 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">
-                Resources
+                Menu
+
               </h2>
 
               <ul className="font-medium text-white">
                 <li className="mb-4">
                   <Link
-                    href="https://flowbite.com/"
+                    href="#"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Flowbite
+                    About Us
+                  </Link>
+                </li>
+
+                <li className="mb-4">
+                  <Link
+                    href="#"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    Explore Matches
+
                   </Link>
                 </li>
 
                 <li>
                   <Link
-                    href="https://tailwindcss.com/"
+                    href="#"
+                    target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Tailwind CSS
+                    Create a match
+
                   </Link>
                 </li>
               </ul>
@@ -52,25 +73,40 @@ export default function Footer() {
 
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">
-                Follow us
+                Resources
+
               </h2>
 
               <ul className="font-medium text-white">
                 <li className="mb-4">
                   <Link
-                    href="#"
+                    href="https://flowbite.com/"
+                    target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Github
+                    Flowbite
+                  </Link>
+                </li>
+
+                <li className="mb-4">
+                  <Link
+                    href="https://tailwindcss.com/"
+                    target="_blank"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    Tailwind CSS
+
                   </Link>
                 </li>
 
                 <li>
                   <Link
-                    href="#"
+                    href="https://www.vidio.com/categories/liga-1"
+                    target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Discord
+                    Vidio.com
+
                   </Link>
                 </li>
               </ul>
@@ -90,6 +126,16 @@ export default function Footer() {
                     Privacy Policy
                   </Link>
                 </li>
+
+                <li className="mb-4">
+                  <Link
+                    href="#"
+                    className="opacity-70 hover:underline hover:opacity-100"
+                  >
+                    Support Policy
+                  </Link>
+                </li>
+
 
                 <li>
                   <Link
@@ -117,40 +163,45 @@ export default function Footer() {
 
           <div className="mt-4 flex sm:mt-0 sm:justify-center">
             <Link href="#" className="text-white opacity-70 hover:opacity-100">
-              <FaFacebookSquare />
-              <span className="sr-only">Facebook page</span>
+              <FaFacebook size={20} />
+              <span className="sr-only">Facebook</span>
+
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaDiscord />
-              <span className="sr-only">Discord community</span>
+              <FaXTwitter size={20} />
+              <span className="sr-only">Twitter</span>
+
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaTwitter />
-              <span className="sr-only">Twitter page</span>
+              <FaInstagram size={20} />
+              <span className="sr-only">Instagram</span>
+
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaGithub />
-              <span className="sr-only">GitHub account</span>
+              <FaYoutube size={20} />
+              <span className="sr-only">Youtube</span>
+
             </Link>
 
             <Link
               href="#"
               className="ms-5 text-white opacity-70 hover:opacity-100"
             >
-              <FaDribbble />
-              <span className="sr-only">Dribbble account</span>
+              <FaTiktok size={20} />
+              <span className="sr-only">Tiktok</span>
+
             </Link>
           </div>
         </div>
