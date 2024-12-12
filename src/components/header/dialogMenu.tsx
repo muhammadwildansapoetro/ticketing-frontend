@@ -29,7 +29,6 @@ export default function DialogMenu() {
           >
             Sign in
           </Link>
-          
         </div>
       </div>
     </div>
