@@ -11,7 +11,6 @@ import DialogMenu from "./dialogMenu";
 const navigation = [
   { name: "Explore Matches", href: "match" },
   { name: "Create Match", href: "create-match" },
-
 ];
 
 export default function NavBar() {
@@ -48,14 +47,12 @@ export default function NavBar() {
           </Link>
         </div>
 
-
         {/* Menu Icon */}
         <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-1 text-gray-700"
-
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon
@@ -67,13 +64,11 @@ export default function NavBar() {
 
         {/* Navigation Menu */}
         <div className="hidden lg:flex lg:gap-x-5">
-
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={`rounded-lg text-base font-medium tracking-wide transition-all duration-300 ease-in-out ${scrolled ? "text-white hover:underline hover:underline-offset-8" : "text-gray-900 hover:underline hover:underline-offset-8"}`}
-
             >
               {item.name}
             </Link>
@@ -90,12 +85,11 @@ export default function NavBar() {
           </Link>
           <Link
             href="#"
-            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "bg-white text-gray-700 hover:bg-white/90" : "border border-accent bg-accent text-white hover:bg-accent/90"}`}
+            className={`rounded-lg px-4 py-2.5 text-base font-semibold transition-all duration-300 ease-in-out ${scrolled ? "border border-white bg-white text-gray-700 hover:bg-white/90" : "border border-accent bg-accent text-white hover:bg-accent/90"}`}
           >
             Sign in <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
-
 
         <Profile />
       </nav>
@@ -117,7 +111,6 @@ export default function NavBar() {
               MatchTix
             </Link>
 
-
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -126,7 +119,6 @@ export default function NavBar() {
               <span className="sr-only">Close menu</span>
               <XMarkIcon aria-hidden="true" className="size-9" />
             </button>
-
           </div>
 
           <DialogMenu />

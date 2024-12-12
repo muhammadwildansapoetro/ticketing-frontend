@@ -19,7 +19,6 @@ import { FaSquareYoutube, FaX, FaXTwitter } from "react-icons/fa6";
 export default function Footer() {
   return (
     <footer className="bg-accent py-10">
-
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -35,7 +34,6 @@ export default function Footer() {
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">
                 Menu
-
               </h2>
 
               <ul className="font-medium text-white">
@@ -54,7 +52,6 @@ export default function Footer() {
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Explore Matches
-
                   </Link>
                 </li>
 
@@ -65,7 +62,6 @@ export default function Footer() {
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Create a match
-
                   </Link>
                 </li>
               </ul>
@@ -74,7 +70,6 @@ export default function Footer() {
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">
                 Resources
-
               </h2>
 
               <ul className="font-medium text-white">
@@ -95,7 +90,6 @@ export default function Footer() {
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Tailwind CSS
-
                   </Link>
                 </li>
 
@@ -106,7 +100,6 @@ export default function Footer() {
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Vidio.com
-
                   </Link>
                 </li>
               </ul>
@@ -136,7 +129,6 @@ export default function Footer() {
                   </Link>
                 </li>
 
-
                 <li>
                   <Link
                     href="#"
@@ -165,7 +157,6 @@ export default function Footer() {
             <Link href="#" className="text-white opacity-70 hover:opacity-100">
               <FaFacebook size={20} />
               <span className="sr-only">Facebook</span>
-
             </Link>
 
             <Link
@@ -174,7 +165,6 @@ export default function Footer() {
             >
               <FaXTwitter size={20} />
               <span className="sr-only">Twitter</span>
-
             </Link>
 
             <Link
@@ -183,7 +173,6 @@ export default function Footer() {
             >
               <FaInstagram size={20} />
               <span className="sr-only">Instagram</span>
-
             </Link>
 
             <Link
@@ -192,7 +181,6 @@ export default function Footer() {
             >
               <FaYoutube size={20} />
               <span className="sr-only">Youtube</span>
-
             </Link>
 
             <Link
@@ -201,7 +189,6 @@ export default function Footer() {
             >
               <FaTiktok size={20} />
               <span className="sr-only">Tiktok</span>
-
             </Link>
           </div>
         </div>
