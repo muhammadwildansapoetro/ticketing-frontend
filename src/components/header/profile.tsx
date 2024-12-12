@@ -6,15 +6,15 @@ export default function Profile() {
     // hidden if not signed in, block if signed in
     <Menu as="div" className="relative ml-3 hidden py-1 md:block">
       <div>
-        <MenuButton className="relative flex rounded-full bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent">
+        <MenuButton className="relative flex rounded-full text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-accent">
           <span className="absolute -inset-1.5" />
           <span className="sr-only">Open user menu</span>
           <Image
             alt="Photo profile"
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            src="https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png"
             width={500}
             height={500}
-            className="size-8 rounded-full lg:size-10"
+            className="size-8 rounded-full lg:size-11"
           />
         </MenuButton>
       </div>
