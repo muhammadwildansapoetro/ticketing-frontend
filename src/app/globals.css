@@ -14,16 +14,23 @@
     --foreground: #ededed;
   }
 }
+*/
 
 body {
-  color: var(--foreground);
+  /* color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; */
+  background: rgba(0, 113, 45, 0.05);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .menu-mobile {
+    @apply hover:text-accent hover:underline hover:underline-offset-2;
   }
-} 
-*/
+  .custom-outline-white {
+    @apply focus:outline-none focus:-outline-offset-4 focus:outline-white;
+  }
+  .custom-outline-accent {
+    @apply focus:outline-none focus:-outline-offset-4 focus:outline-accent/50;
+  }
+}

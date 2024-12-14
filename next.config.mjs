@@ -9,7 +9,7 @@ const nextConfig = {
         hostname: "images.unsplash.com",
       },
       {
-        hostname: "icons.veryicon.com",
+        hostname: "res.cloudinary.com",
       },
     ],
   },

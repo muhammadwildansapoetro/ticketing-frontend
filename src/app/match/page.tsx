@@ -1,7 +1,11 @@
+import MatchList from "@/components/matchPage/matchList";
+import MobileMatchFilter from "@/components/matchPage/mobileMatchFilter";
+
 export default function MatchesPage() {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div>Explore Matches Page</div>
+    <div>
+      <MobileMatchFilter />
+      <MatchList />
     </div>
   );
 }
