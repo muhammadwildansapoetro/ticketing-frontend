@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 
-export default function UseClose(isOpen: boolean, toggleMenu: () => void) {
-  const closeMenu = (event: MouseEvent) => {
+export default function UseClose(isOpen: boolean, handleClose: () => void) {
+  const clickClose = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
 
     if (isOpen && target.tagName === "A") {
-      toggleMenu();
+      handleClose();
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", closeMenu);
+    document.addEventListener("click", clickClose);
     return () => {
-      document.removeEventListener("click", closeMenu);
+      document.removeEventListener("click", clickClose);
     };
   }, [isOpen]);
 }

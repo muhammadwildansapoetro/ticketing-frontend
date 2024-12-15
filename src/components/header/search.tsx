@@ -9,18 +9,18 @@ export default function () {
   return (
     <div className="flex items-center">
       <button type="button" onClick={handleOpen}>
-        <BiSearch className="size-7 text-white" />
+        <BiSearch className="size-8 text-white" />
       </button>
 
       <div className={`${isOpen ? "absolute inset-0" : "hidden"} `}>
-        <div className="flex h-14 w-full items-center justify-between bg-accent px-5 py-1">
+        <div className="flex h-14 w-full items-center justify-between bg-accent px-5">
           <input
             type="text"
             placeholder="Search match here"
             className="custom-outline-accent w-full rounded-md py-1 pl-3"
           />
           <button type="button" onClick={handleOpen}>
-            <XMarkIcon className="size-8 items-center text-white" />
+            <XMarkIcon className="size-10 items-center text-white" />
           </button>
         </div>
       </div>

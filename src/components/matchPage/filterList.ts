@@ -1,4 +1,4 @@
-export const category = [
+export const category: string[] = [
   "All category",
   "Training",
   "Friendly match",
@@ -6,12 +6,19 @@ export const category = [
   "Championship match",
 ];
 
-export const location = [
-  "All category",
-  "Jakarta",
+export const location: string[] = [
+  "All location",
   "Bandung",
+  "Bogor",
+  "Bali",
+  "Magelang",
   "Semarang",
   "Surakarta",
   "Surabaya",
-  "Bali",
+  "Ternate",
 ];
+
+export type Filters = {
+  category: string;
+  location: string;
+};
