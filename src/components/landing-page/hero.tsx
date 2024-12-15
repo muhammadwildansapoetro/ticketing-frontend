@@ -22,8 +22,7 @@ export default function Hero() {
             <p className="mt-2 text-base font-normal tracking-wide text-gray-500 sm:text-base md:mx-56 md:text-xl">
               MatchTix is the all-in-one solution for football ticketing.
               Designed for fans and organizers, it makes creating matches and
-              securing seats effortless. Experience football with easy,
-              convenient ticketing.
+              securing seats effortless.
             </p>
           </div>
         </div>

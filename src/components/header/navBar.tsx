@@ -29,13 +29,13 @@ export default function NavBar() {
 
         <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
           <Link
-            href={"/"}
+            href={"/create-event"}
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
           >
             Create Match
           </Link>
           <Link
-            href={"/match"}
+            href={"/event"}
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
           >
             Explore Matches

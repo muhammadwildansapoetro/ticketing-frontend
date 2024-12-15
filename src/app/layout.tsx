@@ -4,8 +4,7 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/navBar";
-import MenuMobile from "@/components/header/mobileMenu";
-import NavBarMobile from "@/components/header/mobileNavBar";
+import NavBarMobile from "@/components/footer/mobileNavBar";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],

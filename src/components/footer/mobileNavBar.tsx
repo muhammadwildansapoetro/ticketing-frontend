@@ -9,15 +9,15 @@ export default function MobileNavBar() {
       <div className="flex items-baseline justify-center gap-x-20 px-10">
         <Link
           href={"/"}
-          className="flex flex-col items-center justify-center hover:text-accent"
+          className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <HiHome size={20} />
           <p>Home</p>
         </Link>
 
         <Link
-          href={"/match/create"}
-          className="flex flex-col items-center justify-center hover:text-accent"
+          href={"/create-event"}
+          className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <IoFootball size={20} />
           <p>Create Event</p>
@@ -25,15 +25,15 @@ export default function MobileNavBar() {
 
         {/* <Link
           href={"/"}
-          className="flex flex-col items-center hover:text-accent"
+          className="flex flex-col items-center hover:text-accent focus:text-accent"
         >
           <HiTicket size={20} />
           <p>My Ticket</p>
         </Link> */}
 
         <Link
-          href={"/match"}
-          className="flex flex-col items-center justify-center hover:text-accent"
+          href={"/event"}
+          className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <MdExplore size={20} />
           <p>Explore</p>

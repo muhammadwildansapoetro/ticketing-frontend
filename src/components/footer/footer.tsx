@@ -43,7 +43,7 @@ export default function Footer() {
 
                 <li>
                   <Link
-                    href="#"
+                    href="/create-event"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >

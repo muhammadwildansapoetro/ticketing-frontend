@@ -1,4 +1,4 @@
-export const matches = [
+export const events = [
   {
     id: 1,
     name: "PSIS Semarang vs Semen Padang",

@@ -18,7 +18,7 @@ export const location: string[] = [
   "Ternate",
 ];
 
-export type Filters = {
+export type EventFilters = {
   category: string;
   location: string;
 };

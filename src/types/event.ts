@@ -6,4 +6,5 @@ export interface IEventInput {
   venue: string;
   date: string;
   time: string;
+  image: File | string;
 }

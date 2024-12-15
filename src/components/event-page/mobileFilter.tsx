@@ -2,7 +2,7 @@
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoReload } from "react-icons/io5";
-import { Filters } from "./filterList";
+import { EventFilters } from "./filterList";
 
 export default function MobileFilter({
   filters,
@@ -12,8 +12,8 @@ export default function MobileFilter({
   categories,
   locations,
 }: {
-  filters: Filters;
-  onFilterChange: (field: keyof Filters, value: string) => void;
+  filters: EventFilters;
+  onFilterChange: (field: keyof EventFilters, value: string) => void;
   onReload: () => void;
   onClose: () => void;
   categories: string[];

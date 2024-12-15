@@ -1,7 +1,7 @@
 "use client";
 
 import { IoReload } from "react-icons/io5";
-import { Filters } from "./filterList";
+import { EventFilters } from "./filterList";
 
 export default function DesktopFilterBar({
   filters,
@@ -10,8 +10,8 @@ export default function DesktopFilterBar({
   categories,
   locations,
 }: {
-  filters: Filters;
-  onFilterChange: (field: keyof Filters, value: string) => void;
+  filters: EventFilters;
+  onFilterChange: (field: keyof EventFilters, value: string) => void;
   onReload: () => void;
   categories: string[];
   locations: string[];
