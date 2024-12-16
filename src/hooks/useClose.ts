@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 
-export default function UseClose(isOpen: boolean, handleClose: () => void) {
+export default function UseClose(
+  isOpen: boolean,
+  handleClose: () => void,
+  condition = (target: HTMLElement) => target.tagName === "A",
+) {
   const clickClose = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-
-    if (isOpen && target.tagName === "A") {
+    if (isOpen && condition(target)) {
       handleClose();
     }
   };
@@ -14,5 +17,5 @@ export default function UseClose(isOpen: boolean, handleClose: () => void) {
     return () => {
       document.removeEventListener("click", clickClose);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClose, condition]);
 }

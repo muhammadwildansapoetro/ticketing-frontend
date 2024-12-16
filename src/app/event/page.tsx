@@ -1,10 +1,11 @@
 "use client";
 
-import { EventFilters } from "@/components/event-page/filterList";
 import MatchList from "@/components/event-page/eventList";
 import { useState } from "react";
 import FilterMenu from "@/components/event-page/filterMenu";
 import Pagination from "@/components/event-page/pagination";
+import { EventFilters } from "@/types/event";
+import EventList from "@/components/event-page/eventList";
 
 export default function MatchesPage() {
   const [activeFilters, setActiveFilters] = useState<EventFilters>({
@@ -20,7 +21,7 @@ export default function MatchesPage() {
     <div className="flex flex-col lg:flex-row">
       <FilterMenu onFilter={handleFilterChange} />
       <div className="lg:flex lg:flex-col">
-        <MatchList activeFilters={activeFilters} />
+        <EventList activeFilters={activeFilters} />
         <div className="mr-10 lg:flex lg:justify-end">
           <Pagination />
         </div>

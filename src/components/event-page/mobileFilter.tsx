@@ -1,8 +1,8 @@
 "use client";
 
+import { EventFilters } from "@/types/event";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoReload } from "react-icons/io5";
-import { EventFilters } from "./filterList";
 
 export default function MobileFilter({
   filters,

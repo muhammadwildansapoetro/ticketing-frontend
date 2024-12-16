@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
@@ -11,7 +10,7 @@ interface FieldThumbnailProps {
   className?: string;
 }
 
-export const ImageField: React.FC<FieldThumbnailProps> = ({
+export const ImageForm: React.FC<FieldThumbnailProps> = ({
   name,
   formik,
   className = "",

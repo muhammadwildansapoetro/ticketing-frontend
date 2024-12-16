@@ -1,14 +1,14 @@
-import UseOpen from "@/hooks/useOpen";
+import UseOpen from "@/hooks/useToggleState";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 
 export default function () {
-  const { isOpen, handleOpen } = UseOpen();
+  const { isOpen, handleToggle } = UseOpen();
 
   return (
     <div className="flex items-center">
-      <button type="button" onClick={handleOpen}>
+      <button type="button" onClick={handleToggle}>
         <BiSearch className="size-8 text-white" />
       </button>
 
@@ -19,7 +19,7 @@ export default function () {
             placeholder="Search match here"
             className="custom-outline-accent w-full rounded-md py-1 pl-3"
           />
-          <button type="button" onClick={handleOpen}>
+          <button type="button" onClick={handleToggle}>
             <XMarkIcon className="size-10 items-center text-white" />
           </button>
         </div>

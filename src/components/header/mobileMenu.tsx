@@ -1,17 +1,17 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import UseOpen from "@/hooks/useOpen";
+import UseOpen from "@/hooks/useToggleState";
 import UseClose from "@/hooks/useClose";
 import MenuBeforeSignIn from "./menuBeforeSignIn";
 import MenuAfterSignIn from "./menuAfterSignIn";
 
 export default function MobileMenu() {
-  const { isOpen, isHidden, handleOpen } = UseOpen();
-  UseClose(isOpen, handleOpen);
+  const { isOpen, isHidden, handleToggle } = UseOpen();
+  UseClose(isOpen, handleToggle);
 
   return (
     <div>
       <div className="flex">
-        <button type="button" onClick={handleOpen} className="text-white">
+        <button type="button" onClick={handleToggle} className="text-white">
           {isOpen ? (
             <XMarkIcon aria-hidden="true" className="size-10" />
           ) : (

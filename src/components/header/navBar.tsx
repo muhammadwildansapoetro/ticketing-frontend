@@ -1,14 +1,10 @@
 "use client";
 
-import { TbSoccerField } from "react-icons/tb";
 import Link from "next/link";
 import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
-import Image from "next/image";
-import Avatar from "./signInOrProfile";
-import ProfileOrSignIn from "./signInOrProfile";
 import SignInOrProfile from "./signInOrProfile";
 
 export default function NavBar() {

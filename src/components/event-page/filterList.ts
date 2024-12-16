@@ -17,8 +17,3 @@ export const location: string[] = [
   "Surabaya",
   "Ternate",
 ];
-
-export type EventFilters = {
-  category: string;
-  location: string;
-};

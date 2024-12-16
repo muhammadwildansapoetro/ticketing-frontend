@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { events } from "./events";
-import { EventFilters } from "./filterList";
+import { EventFilters } from "@/types/event";
 
 export default function EventList({
   activeFilters,

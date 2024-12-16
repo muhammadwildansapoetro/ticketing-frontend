@@ -1,15 +1,17 @@
-const base_url = process.env.NEXT_PUBLIC_BASE_URL_BE;
-
-export const getEvents = async () => {
-  const res = await fetch(`${base_url}/events`, {
+export const getEvents = async (filters: {
+  category: string;
+  location: string;
+}) => {
+  const query = new URLSearchParams(filters).toString();
+  const res = await fetch("http://localhost:8000/api/events?${query}", {
     next: { tags: ["events"] },
   });
   const data = await res.json();
   return data.events;
 };
 
-export const getEventDetail = async (uuid: string) => {
-  const res = await fetch(`${base_url}/events/${uuid}`, {
+export const getEventDetail = async (id: string) => {
+  const res = await fetch(`http://localhost:8000/api/events/events/${id}`, {
     next: { revalidate: 60 },
   });
   const data = await res.json();

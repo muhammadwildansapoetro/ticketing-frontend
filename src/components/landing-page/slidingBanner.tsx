@@ -40,8 +40,8 @@ export default function SlidingBanner() {
   }, [currentIndex]);
 
   return (
-    <div className="my-10">
-      <h1 className="mb-1 text-center text-2xl font-bold lg:text-3xl">
+    <div className="my-5">
+      <h1 className="mb-1 text-center text-xl font-bold lg:text-2xl">
         Upcoming Match
       </h1>
       <div className="relative mx-auto w-full max-w-md items-center overflow-hidden rounded-xl lg:h-96 lg:max-w-2xl">

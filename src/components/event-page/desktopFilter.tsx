@@ -1,7 +1,7 @@
 "use client";
 
+import { EventFilters } from "@/types/event";
 import { IoReload } from "react-icons/io5";
-import { EventFilters } from "./filterList";
 
 export default function DesktopFilterBar({
   filters,
