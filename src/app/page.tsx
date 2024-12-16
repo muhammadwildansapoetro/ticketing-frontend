@@ -1,11 +1,11 @@
-import Hero from "@/components/landingPage/hero";
-import MatchList from "@/components/landingPage/matchList";
+import Hero from "@/components/landing-page/hero";
+import SlidingBanner from "@/components/landing-page/slidingBanner";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <Hero />
-      <MatchList />
+      <SlidingBanner />
     </div>
   );
 }
