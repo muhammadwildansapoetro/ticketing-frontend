@@ -10,7 +10,7 @@ export default function MenuAfterSignIn() {
             src={
               "https://res.cloudinary.com/doiygpguv/image/upload/v1734129888/customer-default-avatar_kas8rt.png"
             }
-            alt="avatar"
+            alt="customer avatar"
             width={50}
             height={50}
             className="size-20 rounded-full border border-black"
@@ -19,7 +19,7 @@ export default function MenuAfterSignIn() {
             src={
               "https://res.cloudinary.com/doiygpguv/image/upload/v1734129888/organizer-default-avatar_bm5kg0.png"
             }
-            alt="avatar"
+            alt="organizer avatar"
             width={50}
             height={50}
             className="size-20 rounded-full border border-black"
@@ -37,6 +37,12 @@ export default function MenuAfterSignIn() {
         </Link>
         <Link href={"/"} className="hover:text-accent">
           My Match
+        </Link>
+        <Link href={"/"} className="hover:text-accent">
+          Profile
+        </Link>
+        <Link href={"/"} className="hover:text-accent">
+          My Ticket
         </Link>
         <Link href={"/"} className="hover:text-accent">
           Setting

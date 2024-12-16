@@ -6,6 +6,10 @@ import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
+import Image from "next/image";
+import Avatar from "./signInOrProfile";
+import ProfileOrSignIn from "./signInOrProfile";
+import SignInOrProfile from "./signInOrProfile";
 
 export default function NavBar() {
   return (
@@ -40,19 +44,7 @@ export default function NavBar() {
           >
             Explore Matches
           </Link>
-
-          <Link
-            href="/"
-            className="rounded-lg border border-white px-4 py-2.5 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-accent"
-          >
-            Register
-          </Link>
-          <Link
-            href="#"
-            className="rounded-lg border border-white bg-white px-4 py-2.5 text-base font-semibold text-accent transition-all duration-300 ease-in-out hover:bg-white/90 focus:outline-none focus:-outline-offset-4 focus:outline-accent/50"
-          >
-            Sign in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          <SignInOrProfile />
         </div>
 
         <div className="flex gap-2 lg:hidden">
