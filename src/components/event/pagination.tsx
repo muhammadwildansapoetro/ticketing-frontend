@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 export default function Pagination() {
   return (
-    <div className="mb-5 flex items-center justify-center gap-3">
+    <div className="flex h-screen items-center justify-center gap-3">
       <button className="hover:text-accent">Previous</button>
       <button className="border border-black px-2 hover:bg-accent hover:text-white focus:bg-accent focus:text-white">
         1

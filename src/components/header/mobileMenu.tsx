@@ -3,9 +3,10 @@ import UseOpen from "@/hooks/useToggleState";
 import UseClose from "@/hooks/useClose";
 import MenuBeforeSignIn from "./menuBeforeSignIn";
 import MenuAfterSignIn from "./menuAfterSignIn";
+import useToggleState from "@/hooks/useToggleState";
 
 export default function MobileMenu() {
-  const { isOpen, isHidden, handleToggle } = UseOpen();
+  const { isOpen, isHidden, handleToggle } = useToggleState();
   UseClose(isOpen, handleToggle);
 
   return (
@@ -22,7 +23,7 @@ export default function MobileMenu() {
 
       <div
         className={`${isOpen ? "translate-x-0" : "translate-x-full"} ${
-          isHidden ? "" : "hidden"
+          isHidden ? "hidden" : ""
         } absolute right-0 z-10 mt-2 h-screen w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
       >
         <MenuBeforeSignIn />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { TbSoccerField } from "react-icons/tb";
-import SocialMedia from "./socialMedia";
+import SocialMedia from "../footer/socialMedia";
 
 export default function Footer() {
   return (

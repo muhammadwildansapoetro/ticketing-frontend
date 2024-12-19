@@ -15,7 +15,7 @@ export default function EventForm() {
           <Field
             name="title"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
           />
           <ErrorMessage
             name="title"
@@ -34,13 +34,13 @@ export default function EventForm() {
           <Field
             name="category"
             as="select"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 outline-none focus:border-accent focus:ring-accent"
           >
             <option value="">Choose category</option>
             <option value="Training">Training</option>
-            <option value="Friendly Match">Friendly Match</option>
-            <option value="League Match">League Match</option>
-            <option value="Championship Match">Championship Match</option>
+            <option value="Friendly">Friendly Match</option>
+            <option value="League">League Match</option>
+            <option value="Championship">Championship Match</option>
           </Field>
           <ErrorMessage
             name="category"
@@ -61,24 +61,47 @@ export default function EventForm() {
           <Field
             name="date"
             type="date"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
           />
           <ErrorMessage name="date" component="span" className="text-red-500" />
         </div>
 
         <div className="flex w-full flex-col items-start justify-center lg:w-1/2">
           <label
-            htmlFor="time"
+            htmlFor="startTime"
             className="mb-2 block font-medium text-gray-900 lg:text-lg"
           >
-            Time
+            Start Time
           </label>
           <Field
-            name="time"
+            name="startTime"
             type="time"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
           />
-          <ErrorMessage name="time" component="span" className="text-red-500" />
+          <ErrorMessage
+            name="startTime"
+            component="span"
+            className="text-red-500"
+          />
+        </div>
+
+        <div className="flex w-full flex-col items-start justify-center lg:w-1/2">
+          <label
+            htmlFor="endTime"
+            className="mb-2 block font-medium text-gray-900 lg:text-lg"
+          >
+            End Time
+          </label>
+          <Field
+            name="endTime"
+            type="time"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
+          />
+          <ErrorMessage
+            name="endTime"
+            component="span"
+            className="text-red-500"
+          />
         </div>
       </div>
 
@@ -93,7 +116,7 @@ export default function EventForm() {
           <Field
             name="location"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
           />
           <ErrorMessage
             name="location"
@@ -112,7 +135,7 @@ export default function EventForm() {
           <Field
             name="venue"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
           />
           <ErrorMessage
             name="venue"

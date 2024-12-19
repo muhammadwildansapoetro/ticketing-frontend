@@ -34,3 +34,23 @@ body {
     @apply focus:outline-none focus:-outline-offset-4 focus:outline-accent/50;
   }
 }
+
+.description ol {
+  @apply list-inside list-decimal;
+}
+
+.description ul {
+  @apply list-inside list-disc;
+}
+
+.description li {
+  @apply my-1;
+}
+
+.description h1 {
+  @apply mb-2 text-2xl;
+}
+
+.description p {
+  @apply mb-2;
+}

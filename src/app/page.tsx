@@ -1,13 +1,15 @@
-import Hero from "@/components/landing-page/hero";
-import JoinInvitation from "@/components/landing-page/joinInvitation";
-import SlidingBanner from "@/components/landing-page/slidingBanner";
+import MobileNavBar from "@/components/footer/mobileNavBar";
+import Hero from "@/components/landing/hero";
+import JoinInvitation from "@/components/landing/joinInvitation";
+import SlidingBanner from "@/components/landing/slidingBanner";
 
 export default async function Home() {
   return (
-    <div>
+    <div className="my-auto flex h-screen flex-col">
       <Hero />
-      <SlidingBanner />
       <JoinInvitation />
+      <SlidingBanner />
+      <MobileNavBar />
     </div>
   );
 }

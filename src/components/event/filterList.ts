@@ -1,4 +1,4 @@
-export const category: string[] = [
+export const categories: string[] = [
   "All category",
   "Training",
   "Friendly match",
@@ -6,7 +6,7 @@ export const category: string[] = [
   "Championship match",
 ];
 
-export const location: string[] = [
+export const locations: string[] = [
   "All location",
   "Bandung",
   "Bogor",

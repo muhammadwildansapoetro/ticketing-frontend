@@ -6,6 +6,7 @@ import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
 import SignInOrProfile from "./signInOrProfile";
+import MobileMenu from "./mobileMenu";
 
 export default function NavBar() {
   return (
@@ -45,7 +46,7 @@ export default function NavBar() {
 
         <div className="flex gap-2 lg:hidden">
           <Search />
-          <MenuMobile />
+          <MobileMenu />
         </div>
       </nav>
     </header>

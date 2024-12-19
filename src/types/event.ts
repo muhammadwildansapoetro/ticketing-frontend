@@ -1,8 +1,5 @@
-export interface IOrganizer {
-  name: string;
-  email: string;
-  avatar: string;
-}
+import { IOrganizer } from "./organizer";
+import { ITicket } from "./ticket";
 
 export interface IEvent {
   id: string;
@@ -12,9 +9,11 @@ export interface IEvent {
   location: string;
   venue: string;
   date: string;
-  time: string;
-  image: File | string;
+  startTime: string;
+  endTime: string;
+  image: string;
   organizer: IOrganizer;
+  ticket: ITicket[];
 }
 
 export interface IEventInput {
@@ -24,16 +23,7 @@ export interface IEventInput {
   location: string;
   venue: string;
   date: string;
-  time: string;
+  startTime: string;
+  endTime: string;
   image: File | string;
 }
-
-export interface FilterMenuProps {
-  filters: EventFilters;
-  onFilterChange: (field: keyof EventFilters, value: string) => void;
-}
-
-export type EventFilters = {
-  category: string;
-  location: string;
-};

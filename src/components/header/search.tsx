@@ -1,10 +1,11 @@
+import useToggleState from "@/hooks/useToggleState";
 import UseOpen from "@/hooks/useToggleState";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 
 export default function () {
-  const { isOpen, handleToggle } = UseOpen();
+  const { isOpen, handleToggle } = useToggleState();
 
   return (
     <div className="flex items-center">

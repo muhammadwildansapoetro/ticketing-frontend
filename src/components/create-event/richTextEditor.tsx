@@ -11,7 +11,7 @@ const modules = {
   toolbar: [
     [{ header: "1" }, { header: "2" }, { font: [] }],
     [{ size: [] }],
-    ["bold", "italic", "underline"],
+    ["bold", "italic", "underline", "strike", "blockquote"],
     [
       { list: "ordered" },
       { list: "bullet" },
@@ -28,6 +28,8 @@ const formats = [
   "bold",
   "italic",
   "underline",
+  "strike",
+  "blockquote",
   "list",
   "bullet",
   "indent",
@@ -42,7 +44,7 @@ const RichTextEditor: React.FC<FieldRichTextProps> = ({ setFieldValue }) => {
 
   const handleChange = (e: string) => {
     setValue(e);
-    setFieldValue("content", e);
+    setFieldValue("description", e);
   };
 
   useEffect(() => {

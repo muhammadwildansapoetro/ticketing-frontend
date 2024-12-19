@@ -41,7 +41,7 @@ export const ImageForm: React.FC<FieldThumbnailProps> = ({
       {!previewUrl ? (
         <div
           onClick={() => imgRef.current?.click()}
-          className="flex h-48 w-full cursor-pointer flex-col items-center justify-center rounded-md border border-dashed border-gray-500 text-center lg:h-96"
+          className="flex h-48 w-full cursor-pointer flex-col items-center justify-center rounded-md border border-dashed border-gray-500 text-center lg:h-fit lg:p-10"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black text-5xl">
             +

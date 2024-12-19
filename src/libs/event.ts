@@ -1,19 +1,23 @@
-export const getEvents = async (filters: {
-  category: string;
-  location: string;
-}) => {
-  const query = new URLSearchParams(filters).toString();
-  const res = await fetch("http://localhost:8000/api/events?${query}", {
-    next: { tags: ["events"] },
-  });
-  const data = await res.json();
-  return data.events;
+import axios from "@/helpers/axios";
+
+export const getEvents = async () => {
+  try {
+    const { data } = await axios.get("/events");
+    console.log("get events:", data);
+
+    return data;
+  } catch (error) {
+    console.log("Error get events", error);
+  }
 };
 
-export const getEventDetail = async (id: string) => {
-  const res = await fetch(`http://localhost:8000/api/events/events/${id}`, {
-    next: { revalidate: 60 },
-  });
-  const data = await res.json();
-  return data.event;
+export const getEventDetail = async (eventId: string) => {
+  try {
+    const { data } = await axios.get(`/events/${eventId}`);
+    console.log("axios get event detail", data);
+
+    return data;
+  } catch (error) {
+    console.log("Error get event detail", error);
+  }
 };
