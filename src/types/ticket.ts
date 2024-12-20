@@ -1,6 +1,6 @@
 export interface ITicket {
   category: string;
-  price: number;
-  quantity: number;
+  price: string;
+  quantity: string;
   description: string;
 }

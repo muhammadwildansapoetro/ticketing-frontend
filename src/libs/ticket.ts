@@ -6,6 +6,6 @@ export const getTickets = async (eventId: string) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    console.log("Error get tickets", error);
   }
 };

@@ -48,15 +48,15 @@ export default function SlidingBanner() {
   }, [currentIndex, images]);
 
   return (
-    <div className="container mx-auto mt-10">
-      <div className="relative mx-auto aspect-video max-w-3xl items-center overflow-hidden rounded-xl border border-red-500">
+    <div className="container mx-auto">
+      <div className="relative mx-auto aspect-video items-center overflow-hidden rounded-xl">
         {images.length > 0 ? (
           <div
-            className="flex border border-blue-500 transition-transform duration-700 ease-in-out"
+            className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((image, index) => (
-              <div key={index} className="h-[276px] w-[1244px]">
+              <div key={index} className="h-full w-full">
                 <Image
                   src={image.src}
                   alt={image.src}
@@ -69,7 +69,7 @@ export default function SlidingBanner() {
             ))}
           </div>
         ) : (
-          <div className="flex items-center justify-center">
+          <div className="flex h-full items-center justify-center">
             <div className="animate-bounce">
               <div className="flex items-center justify-center gap-2 text-2xl font-bold text-accent">
                 <TbSoccerField className="h-8 w-8" />

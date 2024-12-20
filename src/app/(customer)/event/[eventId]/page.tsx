@@ -4,64 +4,83 @@ import TimeFormatter from "@/helpers/timeFormatter";
 import { getEventDetail } from "@/libs/event";
 import { IEvent } from "@/types/event";
 import Image from "next/image";
-import Link from "next/link";
+import { FaCalendarAlt } from "react-icons/fa";
+import { IoTime } from "react-icons/io5";
+import { FaLocationDot } from "react-icons/fa6";
+import OrderCard from "@/components/event/event-detail/orderCard";
+import { ITicket } from "@/types/ticket";
+import { getTickets } from "@/libs/ticket";
+import { env } from "process";
 
-export default async function EventDetail({
+export default async function EventDetailPage({
   params,
 }: {
   params: { eventId: string };
 }) {
-  const data: { event: IEvent } = await getEventDetail(params.eventId);
+  const eventData: { event: IEvent } = await getEventDetail(params.eventId);
+  const ticketData: { tickets: ITicket[] } = await getTickets(params.eventId);
 
   return (
-    <div className="my-10 flex flex-col">
-      <div className="flex flex-col items-start justify-start gap-5 lg:mx-60 lg:flex-row">
-        <div className="flex items-center justify-center overflow-hidden lg:basis-2/3 lg:rounded-xl">
+    <div className="flex flex-col lg:mx-20 lg:my-10 xl:mx-56">
+      <div className="flex flex-col items-center justify-center gap-5 lg:flex-row lg:items-start lg:justify-start">
+        <div className="w-full lg:basis-2/3 lg:px-0">
           <Image
-            src={`${data.event.image}`}
-            alt={data.event.title}
+            src={`${eventData.event.image}`}
+            alt={eventData.event.title}
             width={1000}
             height={1000}
-            className="w-full object-center"
+            className="w-full object-center lg:rounded-xl lg:shadow-xl"
           />
         </div>
 
-        <div className="m-5 rounded-xl lg:m-0 lg:basis-1/3 lg:shadow-xl">
-          <div className="flex flex-col gap-y-2 rounded-xl border-gray-200 lg:border lg:p-5">
-            <h1 className="text-2xl font-bold">{data.event.title}</h1>
-            <p>{data.event.category} Match</p>
-            <p>
-              <DateFormatter date={data.event.date} />
-            </p>
-            <p>
-              <TimeFormatter date={data.event.startTime} /> -{" "}
-              <TimeFormatter date={data.event.endTime} />
-            </p>
-            <p>{data.event.venue}</p>
-            <p>{data.event.location}</p>
-            <div className="mt-5 flex items-center justify-start gap-2">
+        <div className="w-full px-5 lg:basis-1/3 lg:px-0">
+          <div className="flex flex-col gap-y-2 lg:rounded-xl lg:border lg:border-gray-200 lg:p-5 lg:shadow-xl">
+            <p className="text-accent">{eventData.event.category} Match</p>
+            <h1 className="text-2xl font-bold">{eventData.event.title}</h1>
+            <div className="flex items-center gap-2">
+              <FaCalendarAlt className="text-accent" />
+              <p>{DateFormatter(eventData.event.date)}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <IoTime className="text-accent" />
+              <p>
+                {TimeFormatter(eventData.event.startTime)} -{" "}
+                {TimeFormatter(eventData.event.endTime)}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaLocationDot className="text-accent" />
+              <p>
+                {eventData.event.venue}, {eventData.event.location}{" "}
+              </p>
+            </div>
+
+            <div className="mt-5 flex items-center justify-start gap-2 border-t-2 border-gray-300 pt-5">
               <Image
-                src={`${data.event.organizer.avatar}`}
-                alt={`${data.event.organizer.name}`}
+                src={`${eventData.event.organizer.avatar}`}
+                alt={`${eventData.event.organizer.name}`}
                 width={25}
                 height={25}
                 className="h-12 w-12 rounded-full border border-gray-500 object-cover"
               />
-              <p>Hosted by {data.event.organizer.name}</p>
+              <div>
+                <p>Hosted by</p>
+                <p className="text-lg font-bold">
+                  {eventData.event.organizer.name}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:mx-60 lg:flex-row">
-        <Tabs event={data.event} />
-        <div className="flex basis-1/3 rounded-lg border border-gray-200 p-5 lg:shadow-xl">
-          <Link
-            href={`/order`}
-            className="w-full rounded-lg bg-accent p-2 text-center tracking-widest text-white hover:bg-accent/90"
-          >
-            Buy ticket
-          </Link>
+      <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:flex-row">
+        <div className="lg:basis-2/3">
+          <Tabs event={eventData.event} ticket={ticketData.tickets} />
+        </div>
+
+        <div className="fixed bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:static lg:flex lg:basis-1/3 lg:items-center lg:justify-center lg:shadow-xl">
+          <OrderCard />
         </div>
       </div>
     </div>

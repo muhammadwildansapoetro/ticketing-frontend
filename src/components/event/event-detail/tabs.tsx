@@ -1,50 +1,52 @@
 "use client";
 
 import { IEvent } from "@/types/event";
+import { ITicket } from "@/types/ticket";
 import { useState } from "react";
+import TicketCardOrder from "./ticketCardOrder";
 
-export default function Tabs({ event }: { event: IEvent }) {
+interface IProps {
+  event: IEvent;
+  ticket: ITicket[];
+}
+
+export default function Tabs({ event, ticket }: IProps) {
   const [activeTab, setActiveTab] = useState<"description" | "ticket">(
     "description",
   );
 
   return (
-    <div>
-      <div className="gap flex-5 mb-5 border-b">
+    <div className="rounded-lg border border-gray-200 p-5 lg:mx-0 lg:shadow-lg">
+      <div className="mb-5 flex justify-between gap-5 border-b-2">
         <button
           onClick={() => setActiveTab("description")}
-          className={`pb-2 ${activeTab === "description" ? "border-b-2 border-accent font-bold" : "text-gray-500"}`}
+          className={`w-1/2 pb-2 tracking-wider ${activeTab === "description" ? "border-b-4 border-accent font-bold" : "text-gray-500"}`}
         >
           Description
         </button>
         <button
           onClick={() => setActiveTab("ticket")}
-          className={`pb-2 ${activeTab === "description" ? "border-b-2 border-accent font-bold" : "text-gray-500"}`}
+          className={`w-1/2 pb-2 tracking-wider ${activeTab === "ticket" ? "border-b-4 border-accent font-bold" : "text-gray-500"}`}
         >
           Ticket
         </button>
+      </div>
 
-        <div>
-          {activeTab === "description" && (
-            <div
-              className="description basis-2/3"
-              dangerouslySetInnerHTML={{ __html: event.description }}
-            />
-          )}
+      <div>
+        {activeTab === "description" && (
+          <div
+            className="description"
+            dangerouslySetInnerHTML={{ __html: event.description }}
+          />
+        )}
 
-          {activeTab === "ticket" && (
-            <div>
-              {event.Ticket.map((ticket, id) => (
-                <div key={id}>
-                  <div>{ticket.category}</div>
-                  <div>{ticket.price}</div>
-                  <div>{ticket.quantity}</div>
-                  <div>{ticket.description}</div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        {activeTab === "ticket" && (
+          <div className="flex w-full flex-col gap-5">
+            {ticket.map((ticket, index) => (
+              <TicketCardOrder ticket={ticket} key={index} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

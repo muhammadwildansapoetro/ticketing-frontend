@@ -17,7 +17,7 @@ export default function NavBar() {
           <div className="hidden items-center lg:flex">
             <input
               placeholder="Search match here"
-              className="h-10 w-96 rounded-bl-md rounded-tl-md bg-accent pl-3 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50"
+              className="h-10 w-52 rounded-bl-md rounded-tl-md bg-accent pl-3 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50 xl:w-96"
             />
             <button
               aria-label="search button"

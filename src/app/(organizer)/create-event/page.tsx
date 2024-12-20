@@ -52,7 +52,7 @@ const initialValues: IEventInput = {
   description: "",
 };
 
-export default function CreateMatch() {
+export default function CreateMatchPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const onCreate = async (event: IEventInput) => {
@@ -66,7 +66,7 @@ export default function CreateMatch() {
         }
       }
       const { data } = await axios.post("/events", formData);
-      router.push(`/create-event/${data.eventId}`);
+      router.push(`/create-event/ticket/${data.eventId}`);
       toast.success(data.message);
     } catch (err) {
       console.error(err);
@@ -76,7 +76,7 @@ export default function CreateMatch() {
   };
 
   return (
-    <div className="mx-auto flex max-w-5xl items-center justify-center rounded-lg border border-accent/50 p-5 shadow-xl lg:my-5">
+    <div className="flex items-center justify-center rounded-lg border border-accent/10 p-5 shadow-xl lg:mx-40 lg:my-5">
       <Formik
         initialValues={initialValues}
         validationSchema={eventSchema}
@@ -91,7 +91,7 @@ export default function CreateMatch() {
           return (
             <Form className="flex w-full flex-col gap-3">
               <div>
-                <h1 className="mb-2 text-2xl font-bold lg:text-4xl">
+                <h1 className="mb-2 text-2xl font-bold lg:text-3xl">
                   Create Match Form
                 </h1>
 

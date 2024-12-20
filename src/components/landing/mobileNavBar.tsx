@@ -5,7 +5,7 @@ import { IoFootball } from "react-icons/io5";
 
 export default function MobileNavBar() {
   return (
-    <div className="fixed bottom-0 z-10 mx-auto border border-t-accent bg-white py-1 lg:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-10 mx-auto border border-t-accent bg-white py-1 lg:hidden">
       <div className="flex items-baseline justify-center gap-x-20 px-10">
         <Link
           href={"/"}
