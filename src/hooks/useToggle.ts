@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function useToggleState() {
+export default function useToggle() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleToggle = () => {

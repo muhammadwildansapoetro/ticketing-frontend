@@ -1,5 +1,5 @@
 import UseClose from "@/hooks/useClose";
-import UseOpen from "@/hooks/useToggleState";
+import UseOpen from "@/hooks/useToggle";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

@@ -1,5 +1,5 @@
-import useToggleState from "@/hooks/useToggleState";
-import UseOpen from "@/hooks/useToggleState";
+import useToggleState from "@/hooks/useToggle";
+import UseOpen from "@/hooks/useToggle";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";

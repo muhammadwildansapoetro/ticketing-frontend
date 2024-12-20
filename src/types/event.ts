@@ -13,7 +13,7 @@ export interface IEvent {
   endTime: string;
   image: string;
   organizer: IOrganizer;
-  ticket: ITicket[];
+  Ticket: ITicket[];
 }
 
 export interface IEventInput {

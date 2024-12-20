@@ -1,6 +1,6 @@
 export interface ITicket {
   category: string;
   price: number;
-  availableSeat: number;
+  quantity: number;
   description: string;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import UseClose from "@/hooks/useClose";
-import useToggleState from "@/hooks/useToggleState";
+import useToggleState from "@/hooks/useToggle";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoReload } from "react-icons/io5";
 

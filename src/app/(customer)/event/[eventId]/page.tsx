@@ -1,3 +1,4 @@
+import Tabs from "@/components/event/event-detail/tabs";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { getEventDetail } from "@/libs/event";
@@ -11,7 +12,6 @@ export default async function EventDetail({
   params: { eventId: string };
 }) {
   const data: { event: IEvent } = await getEventDetail(params.eventId);
-  console.log("get event detail", data);
 
   return (
     <div className="my-10 flex flex-col">
@@ -54,22 +54,7 @@ export default async function EventDetail({
       </div>
 
       <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:mx-60 lg:flex-row">
-        <div
-          className="description basis-2/3"
-          dangerouslySetInnerHTML={{ __html: data.event.description }}
-        />
-
-        <div>
-          {data.event.ticket.map((ticket, id) => (
-            <div key={id}>
-              <div>{ticket.category}</div>
-              <div>{ticket.price}</div>
-              <div>{ticket.availableSeat}</div>
-              <div>{ticket.description}</div>
-            </div>
-          ))}
-        </div>
-
+        <Tabs event={data.event} />
         <div className="flex basis-1/3 rounded-lg border border-gray-200 p-5 lg:shadow-xl">
           <Link
             href={`/order`}

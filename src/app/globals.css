@@ -50,7 +50,3 @@ body {
 .description h1 {
   @apply mb-2 text-2xl;
 }
-
-.description p {
-  @apply mb-2;
-}

@@ -5,12 +5,10 @@ import { IEventInput } from "@/types/event";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { revalidate } from "@/libs/action";
 import { useRouter } from "next/navigation";
 import { ImageForm } from "@/components/create-event/imageForm";
 import RichTextEditor from "@/components/create-event/richTextEditor";
 import EventForm from "@/components/create-event/eventForm";
-import Link from "next/link";
 import axios from "@/helpers/axios";
 
 export const eventSchema = Yup.object({

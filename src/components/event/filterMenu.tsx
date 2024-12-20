@@ -2,7 +2,7 @@
 
 import DesktopFilterBar from "./desktopFilter";
 import MobileFilterMenu from "./mobileFilter";
-import useToggleState from "@/hooks/useToggleState";
+import useToggleState from "@/hooks/useToggle";
 
 export default function FilterMenu() {
   const { isOpen, handleToggle } = useToggleState();
