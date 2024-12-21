@@ -1,4 +1,4 @@
-import MobileNavBar from "@/components/landing/mobileNavBar";
+import MobileNavBar from "@/components/footer/mobileNavBar";
 import Hero from "@/components/landing/hero";
 import SlidingBanner from "@/components/landing/slidingBanner";
 

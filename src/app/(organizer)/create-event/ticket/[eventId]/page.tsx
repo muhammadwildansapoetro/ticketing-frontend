@@ -38,7 +38,7 @@ export default async function CreateTicketPage({
             ))}
           </>
         ) : (
-          <p>
+          <p className="text-center">
             This match does not have tickets yet, click the
             <span className="font-bold"> Add ticket </span> button to create
             tickets

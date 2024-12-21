@@ -34,7 +34,7 @@ export default function Footer() {
 
                 <li className="mb-4">
                   <Link
-                    href="#"
+                    href="/event"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Explore Matches

@@ -11,7 +11,7 @@ export default function MenuBeforeSignIn() {
             href={"/"}
             className="rounded-lg border border-accent px-16 py-2 font-medium text-accent hover:bg-gray-100"
           >
-            Sign up
+            Register
           </Link>
           <Link
             href={"/"}

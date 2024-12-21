@@ -1,4 +1,4 @@
-import Tabs from "@/components/event/event-detail/tabs";
+import Tabs from "@/components/event-detail/tabsAndOrder";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { getEventDetail } from "@/libs/event";
@@ -7,10 +7,11 @@ import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import OrderCard from "@/components/event/event-detail/orderCard";
+import OrderCard from "@/components/event-detail/addOrder";
 import { ITicket } from "@/types/ticket";
 import { getTickets } from "@/libs/ticket";
 import { env } from "process";
+import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 
 export default async function EventDetailPage({
   params,
@@ -75,13 +76,7 @@ export default async function EventDetailPage({
       </div>
 
       <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:flex-row">
-        <div className="lg:basis-2/3">
-          <Tabs event={eventData.event} ticket={ticketData.tickets} />
-        </div>
-
-        <div className="fixed bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:static lg:flex lg:basis-1/3 lg:items-center lg:justify-center lg:shadow-xl">
-          <OrderCard />
-        </div>
+        <TabsAndOrder event={eventData.event} ticket={ticketData.tickets} />
       </div>
     </div>
   );

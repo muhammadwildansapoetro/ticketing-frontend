@@ -2,7 +2,7 @@
 
 import axios from "@/helpers/axios";
 import useToggle from "@/hooks/useToggle";
-import { ITicket } from "@/types/ticket";
+import { ITicketInput } from "@/types/ticket";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -17,10 +17,10 @@ export const ticketSchema = Yup.object({
   description: Yup.string().required("Description is required"),
 });
 
-const initialValues: ITicket = {
+const initialValues: ITicketInput = {
   category: "",
-  price: "0",
-  quantity: "0",
+  price: "",
+  quantity: "",
   description: "",
 };
 
@@ -28,11 +28,11 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
   const { isOpen, handleToggle } = useToggle();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const onCreate = async (ticket: ITicket) => {
+  const onCreate = async (ticket: ITicketInput) => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(`/tickets/${eventId}`, ticket);
-      router.push(`/create-event/${eventId}`);
+      router.push(`/create-event/ticket/${eventId}`);
       toast.success(data.message);
     } catch (err) {
       console.error(err);
@@ -64,6 +64,8 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
               onSubmit={(values, actions) => {
                 onCreate(values);
                 actions.resetForm();
+                handleToggle();
+                router.refresh();
               }}
             >
               {(props) => {
@@ -88,9 +90,10 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 outline-none focus:border-accent focus:ring-accent"
                       >
                         <option value="">Choose category</option>
-                        <option value="VIP">VIP</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Free">Free</option>
+                        <option value="North">North Stand</option>
+                        <option value="East">East Stand</option>
+                        <option value="South">South Stand</option>
+                        <option value="West">West Stand</option>
                       </Field>
                       <ErrorMessage
                         name="category"
@@ -131,7 +134,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
                       />
                       <ErrorMessage
-                        name="availableSeat"
+                        name="quantity"
                         component="span"
                         className="text-red-500"
                       />
@@ -154,7 +157,6 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
 
                     <div className="mt-2 flex lg:justify-end">
                       <button
-                        onClick={handleToggle}
                         type="submit"
                         disabled={isLoading}
                         className="w-full rounded-lg bg-accent px-4 py-3 text-[#f5f5f7] hover:bg-accent/90 disabled:cursor-not-allowed lg:w-fit"

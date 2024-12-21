@@ -5,8 +5,9 @@ import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
-import SignInOrProfile from "./signInOrProfile";
+import SignInOrProfile from "./avatar";
 import MobileMenu from "./mobileMenu";
+import Profile from "./avatar";
 
 export default function NavBar() {
   return (
@@ -14,6 +15,7 @@ export default function NavBar() {
       <nav className="flex items-center justify-between px-3 py-1 lg:px-8">
         <div className="flex items-center gap-10">
           <Logo />
+
           <div className="hidden items-center lg:flex">
             <input
               placeholder="Search match here"
@@ -41,7 +43,8 @@ export default function NavBar() {
           >
             Explore Matches
           </Link>
-          <SignInOrProfile />
+
+          <Profile />
         </div>
 
         <div className="flex gap-2 lg:hidden">

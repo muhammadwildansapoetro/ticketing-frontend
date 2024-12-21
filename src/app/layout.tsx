@@ -4,7 +4,6 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/navBar";
-import NavBarMobile from "@/components/landing/mobileNavBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

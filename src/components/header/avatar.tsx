@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import ProfileMenu from "./profileMenu";
 
-export default function SignInOrProfile() {
+export default function Profile() {
   return (
     <div className="flex items-center justify-center gap-5">
       <Link
         href="/"
         className="rounded-lg border border-white px-3 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-accent"
       >
-        Sign up
+        Register
       </Link>
       <Link
         href="#"
@@ -17,6 +17,7 @@ export default function SignInOrProfile() {
       >
         Sign in <span aria-hidden="true">&rarr;</span>
       </Link>
+
       {/* <ProfileMenu /> */}
     </div>
   );

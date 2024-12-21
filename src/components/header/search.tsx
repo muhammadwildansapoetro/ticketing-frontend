@@ -10,7 +10,7 @@ export default function () {
   return (
     <div className="flex items-center">
       <button type="button" onClick={handleToggle}>
-        <BiSearch className="size-8 text-white" />
+        <BiSearch className="size-6 text-white" />
       </button>
 
       <div className={`${isOpen ? "absolute inset-0" : "hidden"} `}>
@@ -21,7 +21,7 @@ export default function () {
             className="custom-outline-accent w-full rounded-md py-1 pl-3"
           />
           <button type="button" onClick={handleToggle}>
-            <XMarkIcon className="size-10 items-center text-white" />
+            <XMarkIcon className="size-8 items-center text-white" />
           </button>
         </div>
       </div>

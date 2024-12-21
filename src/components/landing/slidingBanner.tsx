@@ -48,22 +48,23 @@ export default function SlidingBanner() {
   }, [currentIndex, images]);
 
   return (
-    <div className="container mx-auto">
-      <div className="relative mx-auto aspect-video items-center overflow-hidden rounded-xl">
+    <div>
+      <div className="relative mx-auto items-center overflow-hidden rounded-xl">
         {images.length > 0 ? (
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((image, index) => (
-              <div key={index} className="h-full w-full">
+              <div key={index} className="flex-shrink-0">
                 <Image
                   src={image.src}
                   alt={image.src}
-                  width={1000}
-                  height={1000}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
                   priority={index === 0}
-                  className="object-cover"
+                  className="h-auto w-auto object-contain"
                 />
               </div>
             ))}

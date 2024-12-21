@@ -14,9 +14,9 @@ export default function MobileMenu() {
       <div className="flex">
         <button type="button" onClick={handleToggle} className="text-white">
           {isOpen ? (
-            <XMarkIcon aria-hidden="true" className="size-10" />
+            <XMarkIcon aria-hidden="true" className="size-8" />
           ) : (
-            <Bars3Icon aria-hidden="true" className="size-10" />
+            <Bars3Icon aria-hidden="true" className="size-8" />
           )}
         </button>
       </div>
