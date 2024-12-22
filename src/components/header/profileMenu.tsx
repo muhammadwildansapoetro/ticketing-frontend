@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 export default function ProfileMenu() {
   const { isOpen, handleToggle } = UseOpen();
   UseClose(isOpen, handleToggle);
-  const router = useRouter();
 
   return (
     <div className="flex items-center justify-center">

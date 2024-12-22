@@ -62,7 +62,7 @@ export default function AddOrder({
         orderCart.reduce((a, b) => a + b.ticket.price * b.quantity, 0),
       );
     }
-  }, [orderCart]);
+  }, [orderCart, setTotalPrice]);
 
   return (
     <>

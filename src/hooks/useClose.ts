@@ -14,5 +14,5 @@ export default function UseClose(isOpen: boolean, handleClose: () => void) {
     return () => {
       document.removeEventListener("click", clickClose);
     };
-  }, [isOpen]);
+  }, [isOpen, clickClose]);
 }

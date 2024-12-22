@@ -3,9 +3,7 @@
 import { IEvent } from "@/types/event";
 import { ITicket } from "@/types/ticket";
 import { createContext, useState } from "react";
-import TicketCardOrder from "./addTicket";
 import AddTicket from "./addTicket";
-import TicketCard from "../create-ticket/ticketCard";
 import AddOrder from "./addOrder";
 
 interface IProps {

@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
-import SignInOrProfile from "./avatar";
 import MobileMenu from "./mobileMenu";
 import Profile from "./avatar";
 

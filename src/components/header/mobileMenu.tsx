@@ -1,5 +1,4 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import UseOpen from "@/hooks/useToggle";
 import UseClose from "@/hooks/useClose";
 import MenuBeforeSignIn from "./menuBeforeSignIn";
 import MenuAfterSignIn from "./menuAfterSignIn";
