@@ -1,5 +1,3 @@
-"use client";
-
 import { TbSoccerField } from "react-icons/tb";
 
 export default function Loading() {
