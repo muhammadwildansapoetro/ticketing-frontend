@@ -66,7 +66,7 @@ export default function AddOrder({
 
   return (
     <>
-      <div className="fixed inset-x-0 bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:static lg:z-0 lg:flex lg:basis-1/3 lg:items-center lg:shadow-xl">
+      <div className="fixed inset-x-0 bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:sticky lg:top-0 lg:z-0 lg:flex lg:basis-1/3 lg:items-center lg:shadow-xl">
         <div className="flex items-center justify-center gap-5 lg:w-full lg:flex-col">
           <div className="w-1/2 lg:w-full">
             <div className="mb-2 hidden gap-5 lg:flex lg:w-full lg:flex-col lg:pb-3">
