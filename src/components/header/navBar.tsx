@@ -1,5 +1,6 @@
 "use client";
 
+
 import Link from "next/link";
 import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
@@ -8,6 +9,7 @@ import { BiSearch } from "react-icons/bi";
 import SignInOrProfile from "./avatar";
 import MobileMenu from "./mobileMenu";
 import Profile from "./avatar";
+
 
 export default function NavBar() {
   return (
@@ -20,6 +22,7 @@ export default function NavBar() {
             <input
               placeholder="Search match here"
               className="h-10 w-52 rounded-bl-md rounded-tl-md bg-accent pl-3 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50 xl:w-96"
+
             />
             <button
               aria-label="search button"
@@ -45,11 +48,13 @@ export default function NavBar() {
           </Link>
 
           <Profile />
+
         </div>
 
         <div className="flex gap-2 lg:hidden">
           <Search />
           <MobileMenu />
+
         </div>
       </nav>
     </header>

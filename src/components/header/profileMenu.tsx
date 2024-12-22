@@ -1,16 +1,19 @@
 import UseClose from "@/hooks/useClose";
 import UseOpen from "@/hooks/useToggle";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function ProfileMenu() {
   const { isOpen, handleToggle } = UseOpen();
   UseClose(isOpen, handleToggle);
+
   const router = useRouter();
 
   return (
     <div className="flex items-center justify-center">
       <button onClick={handleToggle}>
+
         {/* <Image
           src={
             "https://res.cloudinary.com/doiygpguv/image/upload/v1734129888/organizer-default-avatar_bm5kg0.png"

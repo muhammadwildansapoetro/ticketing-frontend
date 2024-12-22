@@ -8,6 +8,7 @@ export default async function Home() {
         <Hero />
       </div>
       <MobileNavBar />
+
     </div>
   );
 }

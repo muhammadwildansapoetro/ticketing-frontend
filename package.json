@@ -21,6 +21,7 @@
     "react-quill": "^2.0.0",
     "react-toastify": "^10.0.6",
     "toastify": "^2.0.1"
+
   },
   "devDependencies": {
     "@types/node": "^20",

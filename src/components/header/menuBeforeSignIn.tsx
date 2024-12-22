@@ -16,6 +16,7 @@ export default function MenuBeforeSignIn() {
           <Link
             href={"/"}
             className="text rounded-lg border border-accent bg-accent px-16 py-2 font-medium text-white hover:bg-accent/90"
+
           >
             Sign in
           </Link>

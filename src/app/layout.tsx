@@ -7,6 +7,7 @@ import NavBar from "@/components/header/navBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         />
         {children}
         <Footer />
+        <NavBarMobile />
       </body>
     </html>
   );
