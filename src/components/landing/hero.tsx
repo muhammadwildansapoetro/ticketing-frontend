@@ -7,8 +7,8 @@ export default function Hero() {
         <h1 className="2xl:5xl text-3xl font-bold tracking-tight text-gray-900 xl:text-4xl">
           The Home of Football Ticketing
         </h1>
-        <p className="mt-2 text-lg text-gray-700">
-          Experience the passion, create the moments.
+        <p className="mt-2 text-xl text-gray-700">
+          Experience the passion, create the moments
         </p>
         <p className="mt-2 text-base font-normal tracking-wide text-gray-500">
           MatchTix is the all-in-one solution for football ticketing. Designed
