@@ -1,8 +1,9 @@
 import { MdExplore } from "react-icons/md";
-import { HiTicket, HiHome } from "react-icons/hi2";
-import { TbSoccerField } from "react-icons/tb";
+import { HiHome, HiTicket } from "react-icons/hi2";
+
 import Link from "next/link";
 import { IoFootball } from "react-icons/io5";
+import { TbSoccerField } from "react-icons/tb";
 
 export default function MobileNavBar() {
   return (
@@ -32,21 +33,21 @@ export default function MobileNavBar() {
           <p className="text-black">Explore</p>
         </Link>
 
-        {/* <Link
+        <Link
           href={"/"}
           className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <HiTicket size={20} />
           <p>My Ticket</p>
-        </Link> */}
+        </Link>
 
-        {/* <Link
+        <Link
           href={"/"}
           className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <TbSoccerField size={20} />
           <p>My Match</p>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );

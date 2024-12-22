@@ -1,18 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
-export default function UseClose(isOpen: boolean, handleClose: () => void) {
-  const clickClose = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
+export default function useClose(isOpen: boolean, handleClose: () => void) {
+  const clickClose = useCallback(
+    (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
 
-    if (isOpen && target.tagName === "A") {
-      handleClose();
-    }
-  };
+      if (isOpen && target.tagName === "A") {
+        handleClose();
+      }
+    },
+    [isOpen, handleClose], // Dependencies of clickClose
+  );
 
   useEffect(() => {
     document.addEventListener("click", clickClose);
     return () => {
       document.removeEventListener("click", clickClose);
     };
-  }, [isOpen, clickClose]);
+  }, [clickClose]); // Dependency for useEffect
 }
