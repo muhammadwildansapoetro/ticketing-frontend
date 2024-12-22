@@ -2,7 +2,7 @@ import OrderDetail from "@/components/order-detail/orderDetail";
 import PaymentDetail from "@/components/order-detail/paymentDetail";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
-import { getOrderDetail, getOrderToken } from "@/libs/order";
+import { getOrderDetail } from "@/libs/order";
 import { IOrder } from "@/types/order";
 
 export default async function OrderDetailPage({
@@ -11,10 +11,6 @@ export default async function OrderDetailPage({
   params: { orderId: number };
 }) {
   const orderData: { order: IOrder } = await getOrderDetail(params.orderId);
-  // const orderToken: string = await getOrderToken(
-  //   params.orderId,
-  //   orderData.order.finalPrice,
-  // );
 
   return (
     <div>

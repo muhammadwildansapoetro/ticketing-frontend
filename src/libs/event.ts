@@ -19,4 +19,3 @@ export async function getEventDetail(eventId: string) {
     console.log("Error get event detail", error);
   }
 }
-

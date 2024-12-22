@@ -1,4 +1,3 @@
-import Tabs from "@/components/event-detail/tabsAndOrder";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { getEventDetail } from "@/libs/event";

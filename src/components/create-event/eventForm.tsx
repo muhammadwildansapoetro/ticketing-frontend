@@ -1,5 +1,4 @@
 import { ErrorMessage, Field } from "formik";
-import RichTextEditor from "./richTextEditor";
 
 export default function EventForm() {
   return (

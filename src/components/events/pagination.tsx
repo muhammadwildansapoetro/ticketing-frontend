@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 export default function Pagination() {
   return (
     <div className="flex h-screen items-center justify-center gap-3">

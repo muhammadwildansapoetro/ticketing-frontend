@@ -1,44 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IEventInput } from "@/types/event";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import * as Yup from "yup";
+import { Formik, ErrorMessage, Form } from "formik";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { ImageForm } from "@/components/create-event/imageForm";
 import RichTextEditor from "@/components/create-event/richTextEditor";
 import EventForm from "@/components/create-event/eventForm";
 import axios from "@/helpers/axios";
-
-export const eventSchema = Yup.object({
-  title: Yup.string().required("Title is required"),
-  category: Yup.string().required("Category is required"),
-  description: Yup.string().required("Description is required"),
-  location: Yup.string().required("Location is required"),
-  venue: Yup.string().required("Venue is required"),
-  date: Yup.string().required("Date is required"),
-  startTime: Yup.string().required("Start time is required"),
-  endTime: Yup.string().required("End time is required"),
-  image: Yup.mixed<File>()
-    .required("Image is required")
-    .test(
-      "fileSize",
-      "Maximum file size is 2 mb",
-      (value) =>
-        !value || (value instanceof File && value.size <= 2 * 1024 * 1024),
-    )
-    .test(
-      "fileType",
-      "Unsupported file formats (only accept .jpeg, .png, .jpg, .webp)",
-      (value) =>
-        !value ||
-        (value instanceof File &&
-          ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(
-            value.type,
-          )),
-    ),
-});
+import { eventSchema } from "@/schemas/eventSchema";
 
 const initialValues: IEventInput = {
   image: "",
@@ -60,7 +31,7 @@ export default function CreateMatchPage() {
       setIsLoading(true);
       const formData = new FormData();
       for (const key in event) {
-        let value = event[key as keyof IEventInput];
+        const value = event[key as keyof IEventInput];
         if (value) {
           formData.append(key, value);
         }
@@ -77,7 +48,7 @@ export default function CreateMatchPage() {
 
   return (
     <div className="flex items-center justify-center rounded-lg border border-accent/10 p-5 shadow-xl lg:mx-40 lg:my-5">
-      <Formik
+      <Formik<IEventInput>
         initialValues={initialValues}
         validationSchema={eventSchema}
         onSubmit={(values, actions) => {

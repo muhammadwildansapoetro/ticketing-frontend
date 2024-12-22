@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import ProfileMenu from "./profileMenu";
 
@@ -17,7 +16,7 @@ export default function SignInOrProfile() {
       >
         Sign in <span aria-hidden="true">&rarr;</span>
       </Link>
-      {/* <ProfileMenu /> */}
+      <ProfileMenu />
     </div>
   );
 }

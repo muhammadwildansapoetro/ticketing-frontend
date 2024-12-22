@@ -1,8 +1,5 @@
 import useToggle from "@/hooks/useToggle";
-import UseOpen from "@/hooks/useToggle";
-
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 
 export default function Search() {
@@ -12,7 +9,6 @@ export default function Search() {
     <div className="flex items-center">
       <button type="button" onClick={handleToggle}>
         <BiSearch className="size-6 text-white" />
-
       </button>
 
       <div className={`${isOpen ? "absolute inset-0" : "hidden"} `}>
@@ -24,7 +20,6 @@ export default function Search() {
           />
           <button type="button" onClick={handleToggle}>
             <XMarkIcon className="size-8 items-center text-white" />
-
           </button>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function AddOrder({
         orderCart.reduce((a, b) => a + b.ticket.price * b.quantity, 0),
       );
     }
-  }, [orderCart]);
+  }, [orderCart, setTotalPrice]);
 
   return (
     <>
@@ -96,8 +96,8 @@ export default function AddOrder({
                 })
               ) : (
                 <p>
-                  You haven't selected a ticket yet. Please select it first in
-                  the
+                  You haven&apos;t selected a ticket yet. Please select it first
+                  in the
                   <span className="font-bold"> Ticket </span> menu tab.
                 </p>
               )}

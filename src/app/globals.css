@@ -21,7 +21,6 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif; */
   /* background: rgba(0, 113, 45, 0.05); */
-
 }
 
 @layer utilities {
@@ -51,4 +50,3 @@ body {
 .description h1 {
   @apply mb-2 text-2xl;
 }
-

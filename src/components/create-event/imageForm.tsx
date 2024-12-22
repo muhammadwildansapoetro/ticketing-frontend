@@ -4,17 +4,17 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { FormikProps } from "formik";
 
-interface FieldThumbnailProps {
+interface ImageFieldProps<T> {
   name: string;
-  formik: FormikProps<any>;
+  formik: FormikProps<T>;
   className?: string;
 }
 
-export const ImageForm: React.FC<FieldThumbnailProps> = ({
+export const ImageForm = <T extends object>({
   name,
   formik,
   className = "",
-}) => {
+}: ImageFieldProps<T>) => {
   const imgRef = useRef<HTMLInputElement | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
