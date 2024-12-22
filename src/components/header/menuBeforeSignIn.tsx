@@ -9,13 +9,14 @@ export default function MenuBeforeSignIn() {
         <div className="mt-3 flex justify-between gap-5">
           <Link
             href={"/"}
-            className="rounded-lg border border-accent px-20 py-2 font-medium text-accent hover:bg-gray-100"
+            className="rounded-lg border border-accent px-16 py-2 font-medium text-accent hover:bg-gray-100"
           >
-            Sign up
+            Register
           </Link>
           <Link
             href={"/"}
-            className="text rounded-lg border border-accent bg-accent px-20 py-2 font-medium text-white hover:bg-accent/90"
+            className="text rounded-lg border border-accent bg-accent px-16 py-2 font-medium text-white hover:bg-accent/90"
+
           >
             Sign in
           </Link>

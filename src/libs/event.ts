@@ -1,17 +1,22 @@
-const base_url = process.env.NEXT_PUBLIC_BASE_URL_BE;
+import axios from "@/helpers/axios";
 
-export const getEvents = async () => {
-  const res = await fetch(`${base_url}/events`, {
-    next: { tags: ["events"] },
-  });
-  const data = await res.json();
-  return data.events;
-};
+export async function getEvents() {
+  try {
+    const { data } = await axios.get("/events");
 
-export const getEventDetail = async (uuid: string) => {
-  const res = await fetch(`${base_url}/events/${uuid}`, {
-    next: { revalidate: 60 },
-  });
-  const data = await res.json();
-  return data.event;
-};
+    return data;
+  } catch (error) {
+    console.log("Error get events", error);
+  }
+}
+
+export async function getEventDetail(eventId: string) {
+  try {
+    const { data } = await axios.get(`/events/${eventId}`);
+
+    return data;
+  } catch (error) {
+    console.log("Error get event detail", error);
+  }
+}
+

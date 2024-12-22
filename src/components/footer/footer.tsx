@@ -4,8 +4,8 @@ import SocialMedia from "./socialMedia";
 
 export default function Footer() {
   return (
-    <footer className="bg-accent py-10">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <footer className="bg-accent p-5 py-10">
+      <div className="mx-auto w-full max-w-screen-xl">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="#" className="flex items-center gap-1">
@@ -34,7 +34,7 @@ export default function Footer() {
 
                 <li className="mb-4">
                   <Link
-                    href="#"
+                    href="/event"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Explore Matches
