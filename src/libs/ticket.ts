@@ -1,6 +1,6 @@
 import axios from "@/helpers/axios";
 
-export const getTickets = async (eventId: string) => {
+export async function getTickets(eventId: string) {
   try {
     const { data } = await axios.get(`/tickets/${eventId}`);
 
@@ -8,4 +8,4 @@ export const getTickets = async (eventId: string) => {
   } catch (error) {
     console.log("Error get tickets", error);
   }
-};
+}

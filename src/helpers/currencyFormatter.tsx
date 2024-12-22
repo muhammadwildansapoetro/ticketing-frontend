@@ -1,5 +1,5 @@
 export function CurrencyFormatter(amount: number) {
-  return new Intl.NumberFormat("id-ID", {
+  return new Intl.NumberFormat("en-EN", {
     style: "currency",
     currency: "IDR",
     minimumFractionDigits: 0,

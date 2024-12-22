@@ -7,10 +7,8 @@ import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import OrderCard from "@/components/event-detail/addOrder";
 import { ITicket } from "@/types/ticket";
 import { getTickets } from "@/libs/ticket";
-import { env } from "process";
 import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 
 export default async function EventDetailPage({

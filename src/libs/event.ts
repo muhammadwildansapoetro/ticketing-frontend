@@ -1,6 +1,6 @@
 import axios from "@/helpers/axios";
 
-export const getEvents = async () => {
+export async function getEvents() {
   try {
     const { data } = await axios.get("/events");
 
@@ -8,9 +8,9 @@ export const getEvents = async () => {
   } catch (error) {
     console.log("Error get events", error);
   }
-};
+}
 
-export const getEventDetail = async (eventId: string) => {
+export async function getEventDetail(eventId: string) {
   try {
     const { data } = await axios.get(`/events/${eventId}`);
 
@@ -18,4 +18,4 @@ export const getEventDetail = async (eventId: string) => {
   } catch (error) {
     console.log("Error get event detail", error);
   }
-};
+}
