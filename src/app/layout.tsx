@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     " MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
   icons: {
-    icon: "/football-field-icon.png",
+    icon: "https://res.cloudinary.com/doiygpguv/image/upload/v1734945038/match-tix/d8nbbqgnrblflcn6ky4w.png",
   },
 };
 
