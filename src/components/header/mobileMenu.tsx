@@ -23,7 +23,7 @@ export default function MobileMenu() {
       <div
         className={`${isOpen ? "translate-x-0" : "translate-x-full"} ${
           isHidden ? "hidden" : ""
-        } absolute right-0 z-40 mt-2 h-screen w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
+        } absolute right-0 z-40 mt-2 w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
       >
         <MenuBeforeSignIn />
         <MenuAfterSignIn />

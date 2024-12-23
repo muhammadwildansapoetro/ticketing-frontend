@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="container mx-auto flex flex-col items-center justify-center">
+    <div className="container mx-auto flex flex-col items-center justify-center py-64 lg:py-80">
       <div className="">
         <h1 className="2xl:5xl text-3xl font-bold tracking-tight text-gray-900 xl:text-4xl">
           The Home of Football Ticketing
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="mt-5 flex w-full flex-col gap-5 lg:flex-row">
         <Link
           href={"/create-event"}
-          className="rounded-lg border border-accent px-10 py-3 text-center tracking-wide hover:bg-accent/5"
+          className="rounded-lg border border-accent px-10 py-3 text-center tracking-wide text-accent hover:bg-accent hover:text-white"
         >
           Create match
         </Link>

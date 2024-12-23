@@ -14,7 +14,7 @@ export default function MobileNavBar() {
           className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <HiHome size={20} />
-          <p className="text-black">Home</p>
+          <p>Home</p>
         </Link>
 
         <Link
@@ -22,7 +22,7 @@ export default function MobileNavBar() {
           className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <IoFootball size={20} />
-          <p className="text-black">Create Event</p>
+          <p>Create Event</p>
         </Link>
 
         <Link
@@ -30,23 +30,7 @@ export default function MobileNavBar() {
           className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
         >
           <MdExplore size={20} />
-          <p className="text-black">Explore</p>
-        </Link>
-
-        <Link
-          href={"/"}
-          className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
-        >
-          <HiTicket size={20} />
-          <p>My Ticket</p>
-        </Link>
-
-        <Link
-          href={"/"}
-          className="flex flex-col items-center justify-center hover:text-accent focus:text-accent"
-        >
-          <TbSoccerField size={20} />
-          <p>My Match</p>
+          <p>Explore</p>
         </Link>
       </div>
     </div>
