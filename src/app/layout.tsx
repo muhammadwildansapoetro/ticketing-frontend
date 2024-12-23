@@ -13,7 +13,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "MatchTix: Football Ticketing",
+  title: { template: "MatchTix | %s", default: "MatchTix: Football Ticketing" },
   description:
     " MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
   icons: {

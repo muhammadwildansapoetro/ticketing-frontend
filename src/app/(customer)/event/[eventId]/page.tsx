@@ -1,6 +1,6 @@
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
-import { getEventDetail } from "@/libs/event";
+import { getEventDetail, getEvents } from "@/libs/event";
 import { IEvent } from "@/types/event";
 import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -9,6 +9,29 @@ import { FaLocationDot } from "react-icons/fa6";
 import { ITicket } from "@/types/ticket";
 import { getTickets } from "@/libs/ticket";
 import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
+
+export const generatedStaticParams = async () => {
+  const events: IEvent[] = await getEvents();
+
+  return events.map((event) => ({
+    eventId: event.id,
+  }));
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { eventId: string };
+}) {
+  const event: IEvent = await getEventDetail(params.eventId);
+
+  return {
+    title: event.title,
+    description: event.description,
+    organizer: event.organizer,
+    openGraph: { images: [`${event.image}`] },
+  };
+}
 
 export default async function EventDetailPage({
   params,

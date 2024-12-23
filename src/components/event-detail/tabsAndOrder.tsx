@@ -5,6 +5,7 @@ import { ITicket } from "@/types/ticket";
 import { createContext, useState } from "react";
 import AddTicket from "./addTicket";
 import AddOrder from "./addOrder";
+import ShareButton from "./shareButton";
 
 interface IProps {
   event: IEvent;
@@ -69,11 +70,18 @@ export default function TabsAndOrder({ event, ticket }: IProps) {
         </div>
       </div>
 
-      <AddOrder
-        totalPrice={totalPrice}
-        setTotalPrice={setTotalPrice}
-        orderCart={orderCart}
-      />
+      <div className="lg:sticky lg:top-0 lg:basis-1/3">
+        <div className="fixed inset-x-0 bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:sticky lg:top-0 lg:z-0 lg:flex lg:items-center lg:shadow-xl">
+          <AddOrder
+            totalPrice={totalPrice}
+            setTotalPrice={setTotalPrice}
+            orderCart={orderCart}
+          />
+        </div>
+        <div className="m-5">
+          <ShareButton eventId={event.id} />
+        </div>
+      </div>
     </OrderContext.Provider>
   );
 }

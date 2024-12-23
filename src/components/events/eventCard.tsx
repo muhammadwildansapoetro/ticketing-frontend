@@ -17,13 +17,19 @@ export default async function EventCard({ events }: { events: IEvent[] }) {
                 key={index}
                 className="group relative rounded-xl bg-white shadow-lg"
               >
-                <Image
-                  src={`${event.image}`}
-                  alt={event.title}
-                  width={1000}
-                  height={1000}
-                  className="aspect-video w-full rounded-tl-xl rounded-tr-xl bg-gray-200 object-cover group-hover:opacity-75"
-                />
+                <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-gray-200 group-hover:opacity-75">
+                  <div className="absolute left-0 m-3 rounded-xl bg-white px-2 text-sm text-accent lg:text-xs">
+                    {event.category} Match
+                  </div>
+                  <Image
+                    src={`${event.image}`}
+                    alt={event.title}
+                    width={1000}
+                    height={1000}
+                    className="object-cover"
+                  />
+                </div>
+
                 <div className="m-3">
                   <div>
                     <h3 className="overflow-hidden text-lg font-medium text-gray-900">
