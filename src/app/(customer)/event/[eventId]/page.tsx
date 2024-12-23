@@ -23,13 +23,13 @@ export async function generateMetadata({
 }: {
   params: { eventId: string };
 }) {
-  const event: IEvent = await getEventDetail(params.eventId);
+  const data: { event: IEvent } = await getEventDetail(params.eventId);
 
   return {
-    title: event.title,
-    description: event.description,
-    organizer: event.organizer,
-    openGraph: { images: [`${event.image}`] },
+    title: data.event.title,
+    description: data.event.description,
+    organizer: data.event.organizer,
+    openGraph: { images: [`${data.event.image}`] },
   };
 }
 
