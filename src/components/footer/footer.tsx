@@ -61,11 +61,11 @@ export default function Footer() {
               <ul className="font-medium text-white">
                 <li className="mb-4">
                   <Link
-                    href="https://flowbite.com/"
+                    href="https://nextjs.org/"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Flowbite
+                    Next.js
                   </Link>
                 </li>
 
