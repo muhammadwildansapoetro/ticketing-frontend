@@ -11,7 +11,7 @@ export default async function UpcomingMatch() {
       <div className="text-xl font-bold">Upcoming Match</div>
       <div className="flex gap-5">
         {data.events.map((event, index) => (
-          <div key={index} className="mt-5">
+          <div key={index} className="mt-5 overflow-hidden">
             <Link href={`/event/${event.id}`}>
               <Image
                 src={`${event.image}`}

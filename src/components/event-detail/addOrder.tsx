@@ -12,12 +12,14 @@ interface IProps {
   totalPrice: number;
   setTotalPrice: (parameter: number) => void;
   orderCart: IOrderDetail[] | null;
+  params: string;
 }
 
 export default function AddOrder({
   totalPrice,
   setTotalPrice,
   orderCart,
+  params,
 }: IProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,7 +49,7 @@ export default function AddOrder({
         finalPrice: totalPrice,
         orderCart,
       });
-      router.push(`/order/${data.orderId}`);
+      router.push(`/event/${params}/order/${data.orderId}`);
       toast.success(data.message);
     } catch (error) {
       console.log(error);

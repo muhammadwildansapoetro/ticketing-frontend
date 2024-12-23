@@ -96,7 +96,11 @@ export default async function EventDetailPage({
       </div>
 
       <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:flex-row">
-        <TabsAndOrder event={eventData.event} ticket={ticketData.tickets} />
+        <TabsAndOrder
+          event={eventData.event}
+          ticket={ticketData.tickets}
+          params={params.eventId}
+        />
       </div>
     </div>
   );

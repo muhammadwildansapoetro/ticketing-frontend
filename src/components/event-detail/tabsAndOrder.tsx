@@ -10,6 +10,7 @@ import ShareButton from "./shareButton";
 interface IProps {
   event: IEvent;
   ticket: ITicket[];
+  params: string;
 }
 
 export interface IOrderDetail {
@@ -24,7 +25,7 @@ export interface IOrderCart {
 
 export const OrderContext = createContext<IOrderCart | null>(null);
 
-export default function TabsAndOrder({ event, ticket }: IProps) {
+export default function TabsAndOrder({ event, ticket, params }: IProps) {
   const [activeTab, setActiveTab] = useState<"description" | "ticket">(
     "description",
   );
@@ -76,6 +77,7 @@ export default function TabsAndOrder({ event, ticket }: IProps) {
             totalPrice={totalPrice}
             setTotalPrice={setTotalPrice}
             orderCart={orderCart}
+            params={params}
           />
         </div>
         <div className="m-5">

@@ -33,15 +33,16 @@ export default function CreateMatchPage() {
       const formData = new FormData();
       for (const key in event) {
         const value = event[key as keyof IEventInput];
-        if (value) {
-          formData.append(key, value);
+        if (value !== undefined && value !== null) {
+          formData.append(key, String(value));
         }
       }
       const { data } = await axios.post("/events", formData);
       router.push(`/create-event/ticket/${data.eventId}`);
       toast.success(data.message);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while creating the event.");
     } finally {
       setIsLoading(false);
     }
