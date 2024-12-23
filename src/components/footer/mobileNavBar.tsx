@@ -1,9 +1,8 @@
 import { MdExplore } from "react-icons/md";
-import { HiHome, HiTicket } from "react-icons/hi2";
+import { HiHome } from "react-icons/hi2";
 
 import Link from "next/link";
 import { IoFootball } from "react-icons/io5";
-import { TbSoccerField } from "react-icons/tb";
 
 export default function MobileNavBar() {
   return (
