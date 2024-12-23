@@ -8,6 +8,7 @@ interface IShareButton {
   Icon: IconType;
   link: string;
   style: string;
+  size: string;
 }
 
 const shareButtons: IShareButton[] = [
@@ -15,16 +16,19 @@ const shareButtons: IShareButton[] = [
     Icon: IoLogoFacebook,
     link: "https://www.facebook.com/sharer/sharer.php?u=",
     style: "text-blue-500",
+    size: "size-7",
   },
   {
     Icon: BsTwitterX,
     link: "https://www.twitter.com/intent/tweet?url=",
-    style: "text-blue-400",
+    style: "text-black",
+    size: "size-5",
   },
   {
     Icon: IoLogoWhatsapp,
     link: "https://wa.me/?text=",
     style: "text-green-500",
+    size: "size-7",
   },
 ];
 
@@ -36,8 +40,12 @@ export default function ShareButton({ eventId }: { eventId: string }) {
       <div className="mt-2 flex items-center gap-3">
         {shareButtons.map((item, index) => {
           return (
-            <Link key={index} href={`${item.link}${domain}${eventId}`}>
-              <item.Icon className={`${item.style} size-7`} />
+            <Link
+              key={index}
+              href={`${item.link}${domain}${eventId}`}
+              target="_blank"
+            >
+              <item.Icon className={`${item.style} ${item.size}`} />
             </Link>
           );
         })}

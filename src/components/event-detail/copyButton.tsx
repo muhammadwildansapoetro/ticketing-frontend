@@ -19,7 +19,7 @@ export default function CopyButton({ link }: { link: string }) {
       {copied ? (
         <FaCheckCircle data-cy="check-icon" className="size-6" />
       ) : (
-        <FaLink data-cy="link-icon" className="size-6" />
+        <FaLink data-cy="link-icon" className="size-5" />
       )}
     </div>
   );
