@@ -7,7 +7,7 @@ export default async function UpcomingMatch() {
   const data: { events: IEvent[] } = await getEvents();
 
   return (
-    <div className="mt-10 hidden w-full flex-col overflow-hidden lg:flex">
+    <div className="mt-10 hidden w-full flex-col overflow-hidden border lg:flex">
       <div className="text-xl font-bold">Upcoming Match</div>
       <div className="flex gap-5">
         {data.events.map((event, index) => (
@@ -16,8 +16,8 @@ export default async function UpcomingMatch() {
               <Image
                 src={`${event.image}`}
                 alt={`${event.title}`}
-                width={300}
-                height={300}
+                width={200}
+                height={200}
                 className="rounded-lg"
               />
             </Link>

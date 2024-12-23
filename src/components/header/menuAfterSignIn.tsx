@@ -33,19 +33,16 @@ export default function MenuAfterSignIn() {
 
       <div className="flex flex-col gap-5">
         <Link href={"/"} className="hover:text-accent">
+          Profile
+        </Link>
+        <Link href={"/"} className="hover:text-accent">
           Dashboard
         </Link>
         <Link href={"/"} className="hover:text-accent">
           My Match
         </Link>
         <Link href={"/"} className="hover:text-accent">
-          Profile
-        </Link>
-        <Link href={"/"} className="hover:text-accent">
           My Ticket
-        </Link>
-        <Link href={"/"} className="hover:text-accent">
-          Setting
         </Link>
         <div className="my-2 border-t border-accent/30" />
         <div>

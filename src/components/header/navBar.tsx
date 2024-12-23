@@ -5,7 +5,7 @@ import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
 import MobileMenu from "./mobileMenu";
-import Profile from "./avatar";
+import Profile from "./profile";
 
 export default function NavBar() {
   return (
