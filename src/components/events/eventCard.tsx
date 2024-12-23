@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IEvent } from "@/types/event";
-import { getEvents } from "@/libs/event";
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 
 export default async function EventCard({ events }: { events: IEvent[] }) {
