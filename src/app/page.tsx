@@ -17,8 +17,8 @@ export default async function Home() {
               "https://res.cloudinary.com/doiygpguv/image/upload/v1734916346/football-stadium-1_dlavjo.png"
             }
             alt="Football stadium icon"
-            width={700}
-            height={700}
+            width={750}
+            height={750}
             className="object-cover"
           />
         </div>
