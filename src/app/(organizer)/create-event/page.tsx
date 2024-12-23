@@ -10,6 +10,7 @@ import RichTextEditor from "@/components/create-event/richTextEditor";
 import EventForm from "@/components/create-event/eventForm";
 import axios from "@/helpers/axios";
 import { eventSchema } from "@/schemas/eventSchema";
+import Image from "next/image";
 
 const initialValues: IEventInput = {
   image: "",
@@ -47,69 +48,83 @@ export default function CreateMatchPage() {
   };
 
   return (
-    <div className="flex items-center justify-center rounded-lg border border-accent/10 p-5 shadow-xl lg:mx-40 lg:my-5">
-      <Formik<IEventInput>
-        initialValues={initialValues}
-        validationSchema={eventSchema}
-        onSubmit={(values, actions) => {
-          onCreate(values);
-          actions.resetForm();
-        }}
-      >
-        {(props) => {
-          console.log(props.values);
+    <div className="container mx-auto flex items-center justify-center lg:my-10 lg:px-20 xl:px-40">
+      <div className="hidden lg:block lg:basis-1/2">
+        <Image
+          src={
+            "https://res.cloudinary.com/doiygpguv/image/upload/v1734916284/football-training-facility_qe5lll.png"
+          }
+          alt="Football training facility"
+          width={1000}
+          height={1000}
+          className="object-cover"
+        />
+      </div>
 
-          return (
-            <Form className="flex w-full flex-col gap-3">
-              <div>
-                <h1 className="mb-2 text-2xl font-bold lg:text-3xl">
-                  Create Match Form
-                </h1>
+      <div className="flex items-center justify-center rounded-lg border border-accent/30 p-5 pb-20 shadow-xl lg:basis-1/2 lg:pb-5">
+        <Formik<IEventInput>
+          initialValues={initialValues}
+          validationSchema={eventSchema}
+          onSubmit={(values, actions) => {
+            onCreate(values);
+            actions.resetForm();
+          }}
+        >
+          {(props) => {
+            console.log(props.values);
 
-                <label
-                  htmlFor="image"
-                  className="mb-2 block font-medium text-gray-900 lg:text-lg"
-                >
-                  Match Image
-                </label>
-                <ImageForm name="image" formik={props} />
-                <ErrorMessage
-                  name="image"
-                  component="span"
-                  className="text-sm text-red-500"
-                />
-              </div>
+            return (
+              <Form className="flex w-full flex-col gap-3">
+                <div>
+                  <h1 className="mb-2 text-2xl font-bold lg:text-3xl">
+                    Create Match Form
+                  </h1>
 
-              <EventForm />
+                  <label
+                    htmlFor="image"
+                    className="mb-2 block font-medium text-gray-900 lg:text-lg"
+                  >
+                    Match Image
+                  </label>
+                  <ImageForm name="image" formik={props} />
+                  <ErrorMessage
+                    name="image"
+                    component="span"
+                    className="text-sm text-red-500"
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="description"
-                  className="mb-2 block font-medium text-gray-700 lg:text-lg"
-                >
-                  Description
-                </label>
-                <RichTextEditor setFieldValue={props.setFieldValue} />
-                <ErrorMessage
-                  name="description"
-                  component="span"
-                  className="text-sm text-red-500"
-                />
-              </div>
+                <EventForm />
 
-              <div className="mt-2 flex lg:justify-end">
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full rounded-lg bg-accent px-4 py-3 text-[#f5f5f7] hover:bg-accent/90 disabled:cursor-not-allowed lg:w-fit"
-                >
-                  {`${isLoading ? "Creating match..." : "Create match"}`}
-                </button>
-              </div>
-            </Form>
-          );
-        }}
-      </Formik>
+                <div>
+                  <label
+                    htmlFor="description"
+                    className="mb-2 block font-medium text-gray-700 lg:text-lg"
+                  >
+                    Description
+                  </label>
+                  <RichTextEditor setFieldValue={props.setFieldValue} />
+                  <ErrorMessage
+                    name="description"
+                    component="span"
+                    className="text-sm text-red-500"
+                  />
+                </div>
+
+                <div className="mt-2 flex lg:justify-end">
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full rounded-lg bg-accent px-4 py-3 text-[#f5f5f7] hover:bg-accent/90 disabled:cursor-not-allowed lg:w-fit"
+                  >
+                    {`${isLoading ? "Creating match..." : "Create match"}`}
+                  </button>
+                </div>
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
     </div>
   );
 }

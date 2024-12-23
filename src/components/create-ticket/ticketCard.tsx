@@ -10,7 +10,7 @@ export default function TicketCard({ ticket }: { ticket: ITicket }) {
         <span className="absolute right-[131px] h-full border-l-2 border-dotted border-accent"></span>
 
         <div className="mr-36 flex flex-col items-start justify-center">
-          <h1 className="text-xl font-bold">Ticket type: {ticket.category}</h1>
+          <h1 className="text-xl font-bold">{ticket.category} Stand</h1>
           <p className="mt-2">Available seat: {ticket.quantity}</p>
           <div
             dangerouslySetInnerHTML={{ __html: ticket.description }}

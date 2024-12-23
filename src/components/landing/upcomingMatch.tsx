@@ -9,7 +9,7 @@ export default async function UpcomingMatch() {
   return (
     <div className="mt-10 hidden w-full flex-col overflow-hidden lg:flex">
       <div className="text-xl font-bold">Upcoming Match</div>
-      <div>
+      <div className="flex gap-5">
         {data.events.map((event, index) => (
           <div key={index} className="mt-5">
             <Link href={`/event/${event.id}`}>

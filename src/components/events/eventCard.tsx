@@ -4,14 +4,12 @@ import { IEvent } from "@/types/event";
 import { getEvents } from "@/libs/event";
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 
-export default async function EventCard() {
-  const data: { events: IEvent[] } = await getEvents();
-
+export default async function EventCard({ events }: { events: IEvent[] }) {
   return (
     <div className="">
       <div className="mx-auto px-5 py-10">
         <div className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
-          {data.events.map((event, index) => {
+          {events.map((event, index) => {
             const lowestPrice = Math.min(
               ...event.Ticket.map((ticket) => Number(ticket.price)),
             );

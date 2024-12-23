@@ -17,12 +17,12 @@ export default async function CreateTicketPage({
 
   return (
     <div className="">
-      <div className="mx-5 mt-10 flex flex-col items-center justify-center rounded-xl border border-accent bg-accent/10 p-5 lg:mx-40 xl:mx-96">
+      <div className="mx-5 mt-10 flex flex-col items-center justify-center rounded-xl border border-accent/30 bg-accent/10 p-5 lg:mx-40 xl:mx-96">
         <h1 className="text-xl font-bold">{eventData.event.title}</h1>
         <p>
-          {DateFormatter(eventData.event.date)},{" "}
+          {DateFormatter(eventData.event.date)} -{" "}
           {TimeFormatter(eventData.event.startTime)} -{" "}
-          {TimeFormatter(eventData.event.endTime)}
+          {TimeFormatter(eventData.event.endTime)} WIB
         </p>
         <p>
           {eventData.event.venue}, {eventData.event.location}
