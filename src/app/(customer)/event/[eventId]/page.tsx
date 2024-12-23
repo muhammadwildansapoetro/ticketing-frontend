@@ -10,7 +10,7 @@ import { ITicket } from "@/types/ticket";
 import { getTickets } from "@/libs/ticket";
 import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 
-export const generatedStaticParams = async () => {
+export const generateStaticParams = async () => {
   const events: IEvent[] = await getEvents();
 
   return events.map((event) => ({
