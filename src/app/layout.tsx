@@ -15,7 +15,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "MatchTix: Football Ticketing",
   description:
-    "MatchTix is your ultimate solution for football event ticketing. Discover, book, and manage tickets for your favorite matches with ease. Designed for fans and organizers, MatchTix simplifies the process of creating events, promoting games, and securing seats at the stadium. With user-friendly features, secure transactions, and real-time updates, MatchTix ensures you never miss a moment of the action. Experience the passion of football with seamless ticketing at your fingertips. Join MatchTix today and take your game day to the next level!",
+    " MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
   icons: {
     icon: "/football-field-icon.png",
   },
