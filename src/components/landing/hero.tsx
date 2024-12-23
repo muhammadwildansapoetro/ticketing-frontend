@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="container mx-auto flex flex-col items-center justify-center py-64 lg:py-80">
-      <div className="">
-        <h1 className="2xl:5xl text-3xl font-bold tracking-tight text-gray-900 xl:text-4xl">
+    <div>
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 xl:text-[40px] 2xl:text-5xl">
           The Home of Football Ticketing
         </h1>
         <p className="mt-2 text-xl text-gray-700">

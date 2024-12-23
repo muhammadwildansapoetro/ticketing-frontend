@@ -6,7 +6,6 @@ import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 
 export default async function EventCard() {
   const data: { events: IEvent[] } = await getEvents();
-  console.log("get events", data.events);
 
   return (
     <div className="">
