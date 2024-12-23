@@ -11,9 +11,9 @@ import { getTickets } from "@/libs/ticket";
 import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 
 export const generateStaticParams = async () => {
-  const events: IEvent[] = await getEvents();
+  const data: { events: IEvent[] } = await getEvents();
 
-  return events.map((event) => ({
+  return data.events.map((event) => ({
     eventId: event.id,
   }));
 };
