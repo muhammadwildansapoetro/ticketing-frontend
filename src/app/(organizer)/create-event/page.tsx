@@ -37,11 +37,13 @@ export default function CreateMatchPage() {
           formData.append(key, String(value));
         }
       }
-      const { data } = await axios.post("/events", formData);
+      const { data } = await axios.post("/events", formData, {
+        headers: { "Content-Type": "form-data" },
+      });
       router.push(`/create-event/ticket/${data.eventId}`);
       toast.success(data.message);
     } catch (error) {
-      console.error(error);
+      console.error("Error details:", error);
       toast.error("An error occurred while creating the event.");
     } finally {
       setIsLoading(false);
