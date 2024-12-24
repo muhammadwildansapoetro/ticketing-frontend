@@ -25,5 +25,5 @@ export interface IEventInput {
   date: string;
   startTime: string;
   endTime: string;
-  image: File | string;
+  image: File | null;
 }

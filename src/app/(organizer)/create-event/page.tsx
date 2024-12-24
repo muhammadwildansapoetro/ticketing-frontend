@@ -13,7 +13,7 @@ import Image from "next/image";
 import { revalidate } from "@/libs/action";
 
 const initialValues: IEventInput = {
-  image: "",
+  image: null,
   title: "",
   category: "",
   date: "",
@@ -35,6 +35,9 @@ export default function CreateMatchPage() {
       const formData = new FormData();
       for (const key in event) {
         const value = event[key as keyof IEventInput];
+        if (key === "image" && typeof value === "string") {
+          console.error("Image must be a file, not a string!");
+        }
         if (value !== undefined && value !== null) {
           formData.append(key, value);
         }
@@ -49,9 +52,13 @@ export default function CreateMatchPage() {
       });
 
       const result = await res.json();
+
       if (!res.ok) {
-        throw new Error(result.message || "Failed to create event");
+        const errorResponse = await res.json();
+        console.error("Server error:", errorResponse);
+        throw new Error(errorResponse.message || "Failed to create event");
       }
+
       await revalidate("events");
       toast.success(result.message);
       router.push(`/create-event/ticket/${result.eventId}`);
