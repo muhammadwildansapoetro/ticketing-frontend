@@ -54,9 +54,8 @@ export default function CreateMatchPage() {
       const result = await res.json();
 
       if (!res.ok) {
-        const errorResponse = await res.json();
-        console.error("Server error:", errorResponse);
-        throw new Error(errorResponse.message || "Failed to create event");
+        console.error("Server error:", result);
+        throw new Error(result.message || "Failed to create event");
       }
 
       await revalidate("events");

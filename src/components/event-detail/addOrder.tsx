@@ -60,14 +60,14 @@ export default function AddOrder({
         }),
       });
 
-      const data = await res.json();
+      const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || "Failed to add order");
+        throw new Error(result.message || "Failed to add order");
       }
 
-      router.push(`/event/${params}/order/${data.orderId}`);
-      toast.success(data.message);
+      toast.success(result.message);
+      router.push(`/event/${params}/order/${result.orderId}`);
     } catch (error) {
       console.error("Error adding order:", error);
     } finally {

@@ -37,7 +37,6 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
       const res = await fetch(`${base_url_be}/tickets/${eventId}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify(ticket),
@@ -49,8 +48,8 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
         throw new Error(data.message || "Failed to create ticket");
       }
 
-      await revalidate("tickets");
       toast.success(data.message);
+      await revalidate("tickets");
       router.push(`/create-event/ticket/${eventId}`);
     } catch (error) {
       console.error("Error creating ticket:", error);
