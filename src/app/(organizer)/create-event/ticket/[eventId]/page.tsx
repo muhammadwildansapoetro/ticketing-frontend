@@ -12,28 +12,27 @@ export default async function CreateTicketPage({
 }: {
   params: { eventId: string };
 }) {
-  const ticketData: { tickets: ITicket[] } = await getTickets(params.eventId);
-  const eventData: { event: IEvent } = await getEventDetail(params.eventId);
+  const tickets: ITicket[] = await getTickets(params.eventId);
+  const event: IEvent = await getEventDetail(params.eventId);
 
   return (
     <div className="">
       <div className="mx-5 mt-10 flex flex-col items-center justify-center rounded-xl border border-accent/30 bg-accent/10 p-5 lg:mx-40 xl:mx-96">
-        <h1 className="text-xl font-bold">{eventData.event.title}</h1>
+        <h1 className="text-xl font-bold">{event.title}</h1>
         <p>
-          {DateFormatter(eventData.event.date)} -{" "}
-          {TimeFormatter(eventData.event.startTime)} -{" "}
-          {TimeFormatter(eventData.event.endTime)} WIB
+          {DateFormatter(event.date)} - {TimeFormatter(event.startTime)} -{" "}
+          {TimeFormatter(event.endTime)} WIB
         </p>
         <p>
-          {eventData.event.venue}, {eventData.event.location}
+          {event.venue}, {event.location}
         </p>
         <CreateTicketForm eventId={params.eventId} />
       </div>
 
       <div className="mx-5 my-10 flex flex-col gap-5 lg:mx-40 xl:mx-96">
-        {ticketData.tickets.length != 0 ? (
+        {tickets.length != 0 ? (
           <>
-            {ticketData.tickets.map((ticket, index) => (
+            {tickets.map((ticket, index) => (
               <TicketCard ticket={ticket} key={index} />
             ))}
           </>

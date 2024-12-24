@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "@/helpers/axios";
 import useToggle from "@/hooks/useToggle";
 import { ITicketInput } from "@/types/ticket";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -9,6 +8,8 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import RichTextEditor from "../create-event/richTextEditor";
 import { useRouter } from "next/navigation";
+import { revalidate } from "@/libs/action";
+import Link from "next/link";
 
 export const ticketSchema = Yup.object({
   category: Yup.string().required("Category is required"),
@@ -24,6 +25,8 @@ const initialValues: ITicketInput = {
   description: "",
 };
 
+const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
+
 export default function CreateTicketForm({ eventId }: { eventId: string }) {
   const { isOpen, handleToggle } = useToggle();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -31,20 +34,37 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
   const onCreate = async (ticket: ITicketInput) => {
     try {
       setIsLoading(true);
-      const { data } = await axios.post(`/tickets/${eventId}`, ticket);
-      router.push(`/create-event/ticket/${eventId}`);
+
+      const res = await fetch(`${base_url_be}/tickets/${eventId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(ticket),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to create ticket");
+      }
+
+      await revalidate("tickets");
       toast.success(data.message);
-    } catch (err) {
-      console.error(err);
+      router.push(`/create-event/ticket/${eventId}`);
+    } catch (error) {
+      console.error("Error creating ticket:", error);
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="flex flex-col items-center justify-start">
       <button
         onClick={handleToggle}
-        className="mt-5 rounded-lg bg-accent px-3 py-2 text-white hover:bg-accent/90"
+        className="mt-5 rounded-lg border border-accent bg-accent px-3 py-2 text-white hover:bg-accent/90"
       >
         Add ticket
       </button>

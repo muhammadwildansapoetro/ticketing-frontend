@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function UpcomingMatch() {
-  const data: { events: IEvent[] } = await getEvents();
+  const events: IEvent[] = await getEvents();
 
   return (
     <div className="mt-10 hidden w-full flex-col overflow-hidden border lg:flex">
       <div className="text-xl font-bold">Upcoming Match</div>
       <div className="flex gap-5">
-        {data.events.map((event, index) => (
+        {events.map((event, index) => (
           <div key={index} className="mt-5 overflow-hidden">
             <Link href={`/event/${event.id}`}>
               <Image

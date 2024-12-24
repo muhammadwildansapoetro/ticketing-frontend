@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "@/helpers/axios";
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -37,22 +36,40 @@ export default function AddOrder({
     }
   }, [totalTickets]);
 
+  const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
+
   const handleAddOrder = async () => {
     try {
       setIsLoading(true);
+
       if (totalTickets > 5) {
-        toast.warn("Maximum 5 tickets per customers");
+        toast.warn("Maximum 5 tickets per customer");
         return;
       }
-      const { data } = await axios.post("/orders", {
-        totalPrice: totalPrice,
-        finalPrice: totalPrice,
-        orderCart,
+
+      const res = await fetch(`${base_url_be}/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          totalPrice: totalPrice,
+          finalPrice: totalPrice,
+          orderCart,
+        }),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to add order");
+      }
+
       router.push(`/event/${params}/order/${data.orderId}`);
       toast.success(data.message);
     } catch (error) {
-      console.log(error);
+      console.error("Error adding order:", error);
     } finally {
       setIsLoading(false);
     }

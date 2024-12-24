@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { IEventInput } from "@/types/event";
 import { Formik, ErrorMessage, Form } from "formik";
 import { toast } from "react-toastify";
@@ -8,9 +8,9 @@ import { useRouter } from "next/navigation";
 import { ImageForm } from "@/components/create-event/imageForm";
 import RichTextEditor from "@/components/create-event/richTextEditor";
 import EventForm from "@/components/create-event/eventForm";
-import axios from "@/helpers/axios";
 import { eventSchema } from "@/schemas/eventSchema";
 import Image from "next/image";
+import { revalidate } from "@/libs/action";
 
 const initialValues: IEventInput = {
   image: "",
@@ -24,6 +24,8 @@ const initialValues: IEventInput = {
   description: "",
 };
 
+const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
+
 export default function CreateMatchPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -34,17 +36,27 @@ export default function CreateMatchPage() {
       for (const key in event) {
         const value = event[key as keyof IEventInput];
         if (value !== undefined && value !== null) {
-          formData.append(key, String(value));
+          formData.append(key, value);
         }
       }
-      const { data } = await axios.post("/events", formData, {
-        headers: { "Content-Type": "form-data" },
+
+      const res = await fetch(`${base_url_be}/events`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       });
-      router.push(`/create-event/ticket/${data.eventId}`);
-      toast.success(data.message);
+
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.message || "Failed to create event");
+      }
+      await revalidate("events");
+      toast.success(result.message);
+      router.push(`/create-event/ticket/${result.eventId}`);
     } catch (error) {
       console.error("Error details:", error);
-      toast.error("An error occurred while creating the event.");
     } finally {
       setIsLoading(false);
     }
