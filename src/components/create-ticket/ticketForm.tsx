@@ -9,7 +9,6 @@ import * as Yup from "yup";
 import RichTextEditor from "../create-event/richTextEditor";
 import { useRouter } from "next/navigation";
 import { revalidate } from "@/libs/action";
-import Link from "next/link";
 
 export const ticketSchema = Yup.object({
   category: Yup.string().required("Category is required"),
