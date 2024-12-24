@@ -48,8 +48,8 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
         throw new Error(data.message || "Failed to create ticket");
       }
 
-      toast.success(data.message);
       await revalidate("tickets");
+      toast.success(data.message);
       router.push(`/create-event/ticket/${eventId}`);
     } catch (error) {
       console.error("Error creating ticket:", error);
