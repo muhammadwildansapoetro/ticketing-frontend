@@ -12,6 +12,7 @@ export default async function EventCard({ events }: { events: IEvent[] }) {
             const lowestPrice = Math.min(
               ...event.Ticket.map((ticket) => Number(ticket.price)),
             );
+
             return (
               <div
                 key={index}

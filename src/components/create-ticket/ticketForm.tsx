@@ -38,9 +38,12 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
         method: "POST",
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(ticket),
       });
+
+      console.log(JSON.stringify(ticket));
 
       const data = await res.json();
 
@@ -53,6 +56,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
       router.push(`/create-event/ticket/${eventId}`);
     } catch (error) {
       console.error("Error creating ticket:", error);
+      toast.error("Error creating ticket");
     } finally {
       setIsLoading(false);
     }

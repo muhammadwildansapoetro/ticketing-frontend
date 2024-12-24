@@ -78,6 +78,16 @@ export default function OrderDetail({ order }: { order: IOrder }) {
               ))}
             </tbody>
           </table>
+          <div className="mt-5">
+            <p>
+              Order status:{" "}
+              <span
+                className={`ml-1 rounded-lg font-medium ${order.status === "Unpaid" ? "text-yellow-500" : order.status === "paid" ? "text-accent" : order.status === "Cancel" ? "text-red-500" : ""}`}
+              >
+                {order.status}
+              </span>{" "}
+            </p>
+          </div>
         </div>
       </div>
       <div className="mt-10 basis-2/3 rounded-xl border border-gray-300 p-5 shadow-lg">

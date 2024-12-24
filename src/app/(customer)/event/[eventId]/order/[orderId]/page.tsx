@@ -2,7 +2,7 @@ import OrderDetail from "@/components/order-detail/orderDetail";
 import PaymentDetail from "@/components/order-detail/paymentDetail";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
-import { getOrderDetail } from "@/libs/order";
+import { getOrderDetail, getOrderToken } from "@/libs/order";
 import { IOrder } from "@/types/order";
 
 export default async function OrderDetailPage({
@@ -11,6 +11,12 @@ export default async function OrderDetailPage({
   params: { orderId: number };
 }) {
   const order: IOrder = await getOrderDetail(params.orderId);
+  const orderToken: string = await getOrderToken(
+    order.finalPrice,
+    String(params.orderId),
+  );
+
+  console.log("params orderId:", params.orderId);
 
   return (
     <div>
@@ -22,7 +28,7 @@ export default async function OrderDetailPage({
         <div className="mx-5 flex flex-col gap-10 lg:flex-row">
           <OrderDetail order={order} />
 
-          <PaymentDetail order={order} />
+          <PaymentDetail order={order} orderToken={orderToken} />
         </div>
       </div>
     </div>

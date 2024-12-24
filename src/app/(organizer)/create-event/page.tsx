@@ -45,10 +45,11 @@ export default function CreateMatchPage() {
 
       const res = await fetch(`${base_url_be}/events`, {
         method: "POST",
-        body: formData,
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
+        body: formData,
       });
 
       const result = await res.json();

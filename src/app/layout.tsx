@@ -6,6 +6,7 @@ import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/navBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Script from "next/script";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -15,7 +16,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: { template: "MatchTix | %s", default: "MatchTix: Football Ticketing" },
   description:
-    " MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
+    "MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
   icons: {
     icon: "https://res.cloudinary.com/doiygpguv/image/upload/v1734945038/match-tix/d8nbbqgnrblflcn6ky4w.png",
   },
@@ -28,6 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key={process.env.MIDTRANS_CLIENT_KEY}
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className={roboto.className}>
         <NavBar />
         <ToastContainer

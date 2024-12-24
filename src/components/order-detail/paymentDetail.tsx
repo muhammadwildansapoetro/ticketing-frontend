@@ -2,12 +2,15 @@
 
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 import { IOrder } from "@/types/order";
+import PayButton from "./payButton";
 
-export default function PaymentDetail({ order }: { order: IOrder }) {
-  //   const handlePay = async () => {
-  //     window.snap.pay(orderToken);
-  //   };
-
+export default function PaymentDetail({
+  order,
+  orderToken,
+}: {
+  order: IOrder;
+  orderToken: string;
+}) {
   return (
     <div className="sticky top-10 h-fit basis-1/3 rounded-xl border border-gray-300 p-5 shadow-lg">
       <h1 className="text-xl font-bold text-accent lg:text-2xl">
@@ -31,8 +34,8 @@ export default function PaymentDetail({ order }: { order: IOrder }) {
           <p>Total Payment</p>
           <p className="text-xl">{CurrencyFormatter(order.finalPrice)}</p>
         </div>
-        <div className="mt-10 rounded-lg bg-accent p-2 text-center text-white">
-          <button>Pay Ticket</button>
+        <div className="mt-10">
+          <PayButton orderToken={orderToken} />
         </div>
       </div>
     </div>

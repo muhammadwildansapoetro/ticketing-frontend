@@ -27,8 +27,6 @@ export async function generateMetadata({
 
   return {
     title: event.title,
-    description: event.description,
-    organizer: event.organizer,
     openGraph: { images: [`${event.image}`] },
   };
 }
