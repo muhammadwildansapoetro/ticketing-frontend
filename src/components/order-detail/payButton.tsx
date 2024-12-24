@@ -5,7 +5,7 @@ export default function PayButton({ orderToken }: { orderToken: string }) {
   return (
     <button
       onClick={handleClick}
-      className="rounded-lg bg-accent p-2 text-center text-white"
+      className="w-full rounded-lg bg-accent p-2 text-center text-white"
     >
       Pay Ticket
     </button>

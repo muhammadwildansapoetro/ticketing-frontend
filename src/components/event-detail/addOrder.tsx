@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IOrderDetail } from "./tabsAndOrder";
 import { IoTicket } from "react-icons/io5";
+import axios from "@/helpers/axios";
 
 interface IProps {
   totalPrice: number;
@@ -47,27 +48,14 @@ export default function AddOrder({
         return;
       }
 
-      const res = await fetch(`${base_url_be}/orders`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          totalPrice: totalPrice,
-          finalPrice: totalPrice,
-          orderCart,
-        }),
+      const { data } = await axios.post("/orders", {
+        totalPrice: totalPrice,
+        finalPrice: totalPrice,
+        orderCart,
       });
 
-      const result = await res.json();
-
-      if (!res.ok) {
-        throw new Error(result.message || "Failed to add order");
-      }
-
-      toast.success(result.message);
-      router.push(`/event/${params}/order/${result.orderId}`);
+      router.push(`/event/${params}/order/${data.orderId}`);
+      toast.success(data.message);
     } catch (error) {
       console.error("Error adding order:", error);
     } finally {

@@ -16,6 +16,7 @@ export async function getOrderToken(finalPrice: number, orderId: string) {
       order_id: +orderId,
       gross_amount: +finalPrice,
     });
+    console.log("order token", data.orderToken);
 
     return data.orderToken;
   } catch (error) {
