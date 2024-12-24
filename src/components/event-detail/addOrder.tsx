@@ -37,8 +37,6 @@ export default function AddOrder({
     }
   }, [totalTickets]);
 
-  const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
-
   const handleAddOrder = async () => {
     try {
       setIsLoading(true);
