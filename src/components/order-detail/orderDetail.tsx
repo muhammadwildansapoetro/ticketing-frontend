@@ -82,7 +82,7 @@ export default function OrderDetail({ order }: { order: IOrder }) {
             <p>
               Order status:{" "}
               <span
-                className={`ml-1 rounded-lg font-medium ${order.status === "Unpaid" ? "text-yellow-500" : order.status === "paid" ? "text-accent" : order.status === "Cancel" ? "text-red-500" : ""}`}
+                className={`ml-1 rounded-lg font-medium ${order.status === "Unpaid" ? "text-yellow-500" : order.status === "Paid" ? "text-accent" : order.status === "Cancel" ? "text-red-500" : ""}`}
               >
                 {order.status}
               </span>{" "}

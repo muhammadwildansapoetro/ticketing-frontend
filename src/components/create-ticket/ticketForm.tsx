@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import RichTextEditor from "../create-event/richTextEditor";
 import { useRouter } from "next/navigation";
-import { revalidate } from "@/libs/action";
+import axios from "@/helpers/axios";
 
 export const ticketSchema = Yup.object({
   category: Yup.string().required("Category is required"),
@@ -24,8 +24,6 @@ const initialValues: ITicketInput = {
   description: "",
 };
 
-const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
-
 export default function CreateTicketForm({ eventId }: { eventId: string }) {
   const { isOpen, handleToggle } = useToggle();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,25 +31,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
   const onCreate = async (ticket: ITicketInput) => {
     try {
       setIsLoading(true);
-
-      const res = await fetch(`${base_url_be}/tickets/${eventId}`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(ticket),
-      });
-
-      console.log(JSON.stringify(ticket));
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to create ticket");
-      }
-
-      await revalidate("tickets");
+      const { data } = await axios.post(`/tickets/${eventId}`, ticket);
       toast.success(data.message);
       router.push(`/create-event/ticket/${eventId}`);
     } catch (error) {

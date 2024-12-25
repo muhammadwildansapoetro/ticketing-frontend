@@ -10,7 +10,7 @@ import RichTextEditor from "@/components/create-event/richTextEditor";
 import EventForm from "@/components/create-event/eventForm";
 import { eventSchema } from "@/schemas/eventSchema";
 import Image from "next/image";
-import { revalidate } from "@/libs/action";
+import axios from "@/helpers/axios";
 
 const initialValues: IEventInput = {
   image: null,
@@ -24,8 +24,6 @@ const initialValues: IEventInput = {
   description: "",
 };
 
-const base_url_be = process.env.NEXT_PUBLIC_BASE_URL_BE;
-
 export default function CreateMatchPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -35,33 +33,15 @@ export default function CreateMatchPage() {
       const formData = new FormData();
       for (const key in event) {
         const value = event[key as keyof IEventInput];
-        if (key === "image" && typeof value === "string") {
-          console.error("Image must be a file, not a string!");
-        }
-        if (value !== undefined && value !== null) {
+        if (value) {
           formData.append(key, value);
         }
       }
 
-      const res = await fetch(`${base_url_be}/events`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: formData,
-      });
+      const { data } = await axios.post("/events", formData);
 
-      const result = await res.json();
-
-      if (!res.ok) {
-        console.error("Server error:", result);
-        throw new Error(result.message || "Failed to create event");
-      }
-
-      await revalidate("events");
-      toast.success(result.message);
-      router.push(`/create-event/ticket/${result.eventId}`);
+      router.push(`/create-event/ticket/${data.eventId}`);
+      toast.success(data.message);
     } catch (error) {
       console.error("Error details:", error);
     } finally {
