@@ -4,10 +4,16 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/navBar";
+<<<<<<< HEAD
 import NavBarMobile from "@/components/footer/mobileNavBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SessionProvider } from "@/context/useSession";
+=======
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Script from "next/script";
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -15,11 +21,11 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "MatchTix: Football Ticketing",
+  title: { template: "MatchTix | %s", default: "MatchTix: Football Ticketing" },
   description:
-    "MatchTix is your ultimate solution for football event ticketing. Discover, book, and manage tickets for your favorite matches with ease. Designed for fans and organizers, MatchTix simplifies the process of creating events, promoting games, and securing seats at the stadium. With user-friendly features, secure transactions, and real-time updates, MatchTix ensures you never miss a moment of the action. Experience the passion of football with seamless ticketing at your fingertips. Join MatchTix today and take your game day to the next level!",
+    "MatchTix is the all-in-one solution for football ticketing. Designed for fans and organizers, it makes creating matches and securing seats effortless.",
   icons: {
-    icon: "/football-field-icon.png",
+    icon: "https://res.cloudinary.com/doiygpguv/image/upload/v1734945038/match-tix/d8nbbqgnrblflcn6ky4w.png",
   },
 };
 
@@ -30,9 +36,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key={process.env.MIDTRANS_CLIENT_KEY}
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className={roboto.className}>
       <SessionProvider>
         <NavBar />
+        <ToastContainer
+          draggable
+          closeOnClick
+          autoClose={5000}
+          position="bottom-right"
+        />
         {children}
         <ToastContainer
           draggable

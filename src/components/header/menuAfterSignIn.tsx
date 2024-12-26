@@ -33,12 +33,19 @@ export default function MenuAfterSignIn() {
 
       <div className="flex flex-col gap-5">
         <Link href={"/"} className="hover:text-accent">
+<<<<<<< HEAD
+=======
+          Profile
+        </Link>
+        <Link href={"/"} className="hover:text-accent">
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
           Dashboard
         </Link>
         <Link href={"/"} className="hover:text-accent">
           My Match
         </Link>
         <Link href={"/"} className="hover:text-accent">
+<<<<<<< HEAD
           Profile
         </Link>
         <Link href={"/"} className="hover:text-accent">
@@ -47,6 +54,10 @@ export default function MenuAfterSignIn() {
         <Link href={"/"} className="hover:text-accent">
           Setting
         </Link>
+=======
+          My Ticket
+        </Link>
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
         <div className="my-2 border-t border-accent/30" />
         <div>
           <Link href={"/"} type="button" className="hover:text-red-500">
@@ -56,4 +67,8 @@ export default function MenuAfterSignIn() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b

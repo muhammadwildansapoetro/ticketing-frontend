@@ -1,0 +1,22 @@
+import Link from "next/link";
+
+export default function Profile() {
+  return (
+    <div className="flex items-center justify-center gap-5">
+      <Link
+        href="/"
+        className="rounded-lg border border-white px-3 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-accent"
+      >
+        Register
+      </Link>
+      <Link
+        href="#"
+        className="rounded-lg border border-white bg-white px-3 py-2 text-base font-semibold text-accent transition-all duration-300 ease-in-out hover:bg-white/90 focus:outline-none focus:-outline-offset-4 focus:outline-accent/50"
+      >
+        Sign in <span aria-hidden="true">&rarr;</span>
+      </Link>
+
+      {/* <ProfileMenu /> */}
+    </div>
+  );
+}

@@ -1,11 +1,19 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< HEAD
 import MenuMobile from "./mobileMenu";
 import Logo from "./logo";
 import Search from "./search";
 import { BiSearch } from "react-icons/bi";
 import SignInOrProfile from "./signInOrProfile";
+=======
+import Logo from "./logo";
+import Search from "./search";
+import { BiSearch } from "react-icons/bi";
+import MobileMenu from "./mobileMenu";
+import Profile from "./profile";
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
 
 export default function NavBar() {
   return (
@@ -13,10 +21,18 @@ export default function NavBar() {
       <nav className="flex items-center justify-between px-3 py-1 lg:px-8">
         <div className="flex items-center gap-10">
           <Logo />
+<<<<<<< HEAD
           <div className="hidden items-center lg:flex">
             <input
               placeholder="Search match here"
               className="h-10 w-96 rounded-bl-md rounded-tl-md bg-accent pl-3 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50"
+=======
+
+          <div className="hidden items-center lg:flex">
+            <input
+              placeholder="Search match here"
+              className="h-10 w-52 rounded-bl-md rounded-tl-md bg-accent pl-3 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50 xl:w-96"
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
             />
             <button
               aria-label="search button"
@@ -30,22 +46,39 @@ export default function NavBar() {
         <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
           <Link
             href={"/create-event"}
+<<<<<<< HEAD
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
+=======
+            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
           >
             Create Match
           </Link>
           <Link
             href={"/event"}
+<<<<<<< HEAD
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
           >
             Explore Matches
           </Link>
           <SignInOrProfile />
+=======
+            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+          >
+            Explore Matches
+          </Link>
+
+          <Profile />
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
         </div>
 
         <div className="flex gap-2 lg:hidden">
           <Search />
+<<<<<<< HEAD
           <MenuMobile />
+=======
+          <MobileMenu />
+>>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
         </div>
       </nav>
     </header>
