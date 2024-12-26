@@ -1,117 +1,98 @@
-// "use client";
+"use client";
 
-// import { useSession } from "@/context/useSession";
-// import { ISignIn } from "@/types/blog";
-// import { Field, Form, Formik, FormikProps } from "formik";
-// import { useRouter } from "next/navigation";
-// import { useState } from "react";
-// import { toast } from "react-toastify";
-// import * as Yup from "yup";
+import { Input } from "@/components/form/input";
+import { useSession } from "@/context/useSession";
+import { Form, Formik, FormikProps } from "formik";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
 
-// const RegisterSchema = Yup.object().shape({
-//   data: Yup.string().required("Username or email is required"),
-//   password: Yup.string()
-//     .min(6, "Password must be at least 6 characters")
-//     .required("Password is required"),
-// });
+const LoginSchema = Yup.object().shape({
+  data: Yup.string().required("username or email is required"),
+  password: Yup.string()
+    .min(3, "password must be 3 characters at minimum")
+    .required("password is required"),
+});
 
-// export default function SignIn() {
-//   const [isLoading, setIsLoading] = useState<boolean>(false);
-//   const { setIsAuth, setUser } = useSession();
-//   const router = useRouter();
-//   const initialValue: ISignIn = {
-//     data: "",
-//     password: "",
-//   };
+interface FormValues {
+  data: string;
+  password: string;
+}
 
-//   const handleSignIn = async (user: ISignIn) => {
-//     try {
-//       setIsLoading(true);
-//       const res = await fetch("http://localhost:8000/api/auth/sign-in", {
-//         method: "POST",
-//         body: JSON.stringify(user),
-//         headers: { "content-type": "application/json" },
-//         credentials: "include",
-//       });
+export default function RegisterPage() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { setIsAuth, setCustomer } = useSession();
+  const router = useRouter();
+  const initialValue: FormValues = {
+    data: "",
+    password: "",
+  };
 
-//       const result = await res.json();
-//       if (!res.ok) throw await result;
-//       router.push("/");
-//       setIsAuth(true);
-//       setUser(result.user);
-//       toast.success(result.message);
-//     } catch (error: any) {
-//       console.log(error);
-//       toast.error(error.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
+  const handleLogin = async (customer: FormValues) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_BE!}/auth/customer/sign-in`, {
+        method: "POST",
+        body: JSON.stringify(customer),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      const result = await res.json();
+      if (!res.ok) throw result;
+      localStorage.setItem("token", result.token)
+      setIsAuth(true);
+      setCustomer(result.customer);
+      router.push("/");
+      router.refresh();
+      toast.success(result.message);
+    } catch (err: any) {
+      console.log(err);
+      toast.error(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-//   return (
-//     <div className="flex justify-center">
-//       <div className="mt-10 w-[500px] p-5 lg:rounded-lg lg:border lg:border-slate-300 lg:shadow-lg">
-//         <h1 className="mb-5 text-2xl font-bold">Sign in</h1>
-//         <Formik
-//           initialValues={initialValue}
-//           validationSchema={RegisterSchema}
-//           onSubmit={(values, action) => {
-//             handleSignIn(values);
-//             action.resetForm();
-//           }}
-//         >
-//           {(props: FormikProps<ISignIn>) => {
-//             const { handleChange, values, touched, errors } = props;
-//             return (
-//               <Form className="flex flex-col gap-2">
-//                 <div className="flex flex-col gap-1">
-//                   <label htmlFor="data" className="font-semibold">
-//                     Username or Email
-//                   </label>
-//                   <Field
-//                     type="text"
-//                     name="data"
-//                     onChange={handleChange}
-//                     value={values.data}
-//                     className="rounded-md border border-slate-500 p-[1px] py-2"
-//                     placeholder=" Enter your username or email"
-//                   />
-//                   {touched.data && errors.data ? (
-//                     <div className="text-xs text-red-500">{errors.data}</div>
-//                   ) : null}
-//                 </div>
-
-//                 <div className="flex flex-col gap-1">
-//                   <label htmlFor="password" className="font-semibold">
-//                     Password
-//                   </label>
-//                   <Field
-//                     type="password"
-//                     name="password"
-//                     onChange={handleChange}
-//                     value={values.password}
-//                     className="rounded-md border border-slate-500 p-[1px] py-2"
-//                     placeholder=" Enter your password"
-//                   />
-//                   {touched.password && errors.password ? (
-//                     <div className="text-xs text-red-500">
-//                       {errors.password}
-//                     </div>
-//                   ) : null}
-//                 </div>
-
-//                 <button
-//                   type="submit"
-//                   disabled={isLoading}
-//                   className="mt-3 rounded-md bg-black py-2 font-medium text-white hover:bg-black/70 disabled:cursor-not-allowed disabled:bg-black/70"
-//                 >
-//                   {isLoading ? "Loading..." : "Sign in"}
-//                 </button>
-//               </Form>
-//             );
-//           }}
-//         </Formik>
-//       </div>
-//     </div>
-//   );
-// }
+  return (
+    <div className="flex justify-center p-5 mt-6">
+      <div>
+        <h1 className="text-3xl font-bold my-5">Login Form</h1>
+        <Formik
+          initialValues={initialValue}
+          validationSchema={LoginSchema}
+          onSubmit={(values, action) => {
+            handleLogin(values);
+            action.resetForm();
+          }}
+        >
+          {(props: FormikProps<FormValues>) => {
+            return (
+              <Form className="flex flex-col gap-2 min-w-[400px]">
+                <Input
+                  formik={props}
+                  name="data"
+                  label="Username Or Email :"
+                />
+                <Input
+                  formik={props}
+                  name="password"
+                  label="Password :"
+                  type="password"
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-white disabled:bg-teal-300 disabled:cursor-not-allowed bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                >
+                  {isLoading ? "Loading ..." : "Login"}
+                </button>
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
+    </div>
+  );
+}

@@ -1,20 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { TbSoccerField } from "react-icons/tb";
-import {
-  FaDribbble,
-  FaGithub,
-  FaTwitter,
-  FaDiscord,
-  FaFacebookSquare,
-  FaInstagram,
-  FaInstagramSquare,
-  FaTiktok,
-  FaYoutube,
-  FaFacebook,
-  FaFacebookF,
-} from "react-icons/fa";
-import { FaSquareYoutube, FaX, FaXTwitter } from "react-icons/fa6";
+import SocialMedia from "./socialMedia";
 
 export default function Footer() {
   return (
@@ -57,7 +43,7 @@ export default function Footer() {
 
                 <li>
                   <Link
-                    href="#"
+                    href="/create-event"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
@@ -145,6 +131,9 @@ export default function Footer() {
         <hr className="my-6 border-white sm:mx-auto lg:my-8" />
 
         <div className="sm:flex sm:items-center sm:justify-between">
+          <div className="mb-2">
+            <SocialMedia/>
+          </div>
           <span className="text-sm text-white opacity-70 sm:text-center">
             © 2024{" "}
             <Link href="#" className="hover:underline">
@@ -152,45 +141,6 @@ export default function Footer() {
             </Link>
             . All Rights Reserved.
           </span>
-
-          <div className="mt-4 flex sm:mt-0 sm:justify-center">
-            <Link href="#" className="text-white opacity-70 hover:opacity-100">
-              <FaFacebook size={20} />
-              <span className="sr-only">Facebook</span>
-            </Link>
-
-            <Link
-              href="#"
-              className="ms-5 text-white opacity-70 hover:opacity-100"
-            >
-              <FaXTwitter size={20} />
-              <span className="sr-only">Twitter</span>
-            </Link>
-
-            <Link
-              href="#"
-              className="ms-5 text-white opacity-70 hover:opacity-100"
-            >
-              <FaInstagram size={20} />
-              <span className="sr-only">Instagram</span>
-            </Link>
-
-            <Link
-              href="#"
-              className="ms-5 text-white opacity-70 hover:opacity-100"
-            >
-              <FaYoutube size={20} />
-              <span className="sr-only">Youtube</span>
-            </Link>
-
-            <Link
-              href="#"
-              className="ms-5 text-white opacity-70 hover:opacity-100"
-            >
-              <FaTiktok size={20} />
-              <span className="sr-only">Tiktok</span>
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

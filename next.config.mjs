@@ -8,6 +8,13 @@ const nextConfig = {
       {
         hostname: "images.unsplash.com",
       },
+      {
+        hostname: "res.cloudinary.com",
+      },
+      {
+        hostname: "static.vecteezy.com"
+
+      },
     ],
   },
 };
