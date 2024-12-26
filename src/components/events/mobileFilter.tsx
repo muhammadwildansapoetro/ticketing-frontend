@@ -41,10 +41,10 @@ export default function MobileFilter({
       {/* Category Filter */}
       <div className="m-5">
         <p className="mb-2 text-xl font-bold">Category</p>
-        {matchCategories.map((category) => (
+        {matchCategories.map((category, index) => (
           <div className="my-1 flex flex-col items-start">
             <button
-              key={category}
+              key={index}
               onClick={() => onCategoryChange(category)}
               className={`rounded-lg px-2 py-1 ${
                 selectedCategories.includes(category)
@@ -61,10 +61,10 @@ export default function MobileFilter({
       {/* Location Filter */}
       <div className="m-5">
         <p className="mb-2 text-xl font-bold">Location</p>
-        {matchLocations.map((location) => (
+        {matchLocations.map((location, index) => (
           <div className="my-1 flex flex-col items-start">
             <button
-              key={location}
+              key={index}
               onClick={() => onLocationChange(location)}
               className={`rounded-lg px-2 py-1 ${
                 selectedLocations.includes(location)
