@@ -1,3 +1,5 @@
+"use client";
+
 import axios from "@/helpers/axios";
 import DateFormatter from "@/helpers/dateFormatter";
 import { IEvent } from "@/types/event";
@@ -15,7 +17,8 @@ export default function DesktopSearch() {
   const [value, setValue] = useState<string>(searchParams.get("keyword") || "");
   const [search] = useDebounce(value, 500);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const searchEvents = async () => {
+
+  const searchEvents = useCallback(async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(`/events?search=${search}`);
@@ -25,7 +28,8 @@ export default function DesktopSearch() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [search]);
+
   const queryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -35,10 +39,11 @@ export default function DesktopSearch() {
     },
     [searchParams],
   );
+
   useEffect(() => {
     router.push(pathname + "?" + queryString("keyword", search));
     searchEvents();
-  }, [search]);
+  }, [search, router, pathname, queryString, searchEvents]);
 
   return (
     <div className="hidden items-center lg:flex">

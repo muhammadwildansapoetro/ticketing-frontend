@@ -57,7 +57,7 @@ export default function EventsPage() {
     } else {
       setIsMounted(true);
     }
-  }, [searchParams.toString(), isMounted, fetchEvents]);
+  }, [searchParams, isMounted, fetchEvents]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories([category]);

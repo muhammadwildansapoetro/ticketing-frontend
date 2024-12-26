@@ -1,3 +1,5 @@
+"use client";
+
 import axios from "@/helpers/axios";
 import DateFormatter from "@/helpers/dateFormatter";
 import useToggle from "@/hooks/useToggle";
@@ -18,7 +20,8 @@ export default function MobileSearch() {
   const [value, setValue] = useState<string>(searchParams.get("keyword") || "");
   const [search] = useDebounce(value, 500);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const getEvent = async () => {
+
+  const searchEvent = useCallback(async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(`/events?search=${search}`);
@@ -28,7 +31,8 @@ export default function MobileSearch() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [search]);
+
   const queryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -38,10 +42,11 @@ export default function MobileSearch() {
     },
     [searchParams],
   );
+
   useEffect(() => {
     router.push(pathname + "?" + queryString("keyword", search));
-    getEvent();
-  }, [search]);
+    searchEvent();
+  }, [search, router, pathname, queryString, searchEvent]);
 
   return (
     <div className="flex items-center">

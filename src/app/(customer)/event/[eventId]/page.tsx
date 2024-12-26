@@ -13,9 +13,11 @@ import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 export const generateStaticParams = async () => {
   const events: IEvent[] = await getEvents();
 
-  return events.map((event) => ({
-    eventId: event.id,
-  }));
+  return events
+    .filter((event) => event.id)
+    .map((event) => ({
+      eventId: event.id,
+    }));
 };
 
 export async function generateMetadata({
