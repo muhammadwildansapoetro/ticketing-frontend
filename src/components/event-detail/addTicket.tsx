@@ -8,9 +8,9 @@ import { IOrderCart, OrderContext } from "./tabsAndOrder";
 export default function AddTicket({ ticket }: { ticket: ITicket }) {
   const [quantity, setQuantity] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const context = useContext<IOrderCart | null>(OrderContext);
-  if (!context) throw new Error("No context");
-  const { orderCart, setOrderCart } = context;
+  const orderContext = useContext<IOrderCart | null>(OrderContext);
+  if (!orderContext) throw new Error("No context");
+  const { orderCart, setOrderCart } = orderContext;
 
   const handleAddTicket = () => {
     if (quantity < 5) {

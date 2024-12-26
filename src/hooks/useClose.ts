@@ -1,15 +1,17 @@
+"use client";
+
 import { useEffect, useCallback } from "react";
 
-export default function useClose(isOpen: boolean, handleClose: () => void) {
+export default function useClose(isOpen: boolean, handleToggle: () => void) {
   const clickClose = useCallback(
     (event: MouseEvent) => {
       const target = event.target as HTMLElement;
 
       if (isOpen && target.tagName === "A") {
-        handleClose();
+        handleToggle();
       }
     },
-    [isOpen, handleClose], // Dependencies of clickClose
+    [isOpen, handleToggle],
   );
 
   useEffect(() => {
@@ -17,5 +19,5 @@ export default function useClose(isOpen: boolean, handleClose: () => void) {
     return () => {
       document.removeEventListener("click", clickClose);
     };
-  }, [clickClose]); // Dependency for useEffect
+  }, [clickClose]);
 }

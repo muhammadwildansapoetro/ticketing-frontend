@@ -1,9 +1,22 @@
-"use client";
-
 import { IoIosArrowBack } from "react-icons/io";
 import { IoReload } from "react-icons/io5";
+import { matchCategories, matchLocations } from "./filterList";
 
-export default function MobileFilter({ onClose }: { onClose: () => void }) {
+export default function MobileFilter({
+  onClose,
+  selectedCategories,
+  selectedLocations,
+  onCategoryChange,
+  onLocationChange,
+  onResetFilter,
+}: {
+  onClose: () => void;
+  selectedCategories: string[];
+  selectedLocations: string[];
+  onCategoryChange: (category: string) => void;
+  onLocationChange: (location: string) => void;
+  onResetFilter: () => void;
+}) {
   return (
     <div className="absolute inset-0 z-10 h-screen w-full bg-white lg:hidden">
       <div className="m-5 flex items-center justify-between">
@@ -14,7 +27,10 @@ export default function MobileFilter({ onClose }: { onClose: () => void }) {
           <p className="text-xl font-medium">Filter</p>
         </div>
 
-        <button className="flex gap-1 hover:text-accent">
+        <button
+          onClick={onResetFilter}
+          className="flex gap-1 hover:text-accent"
+        >
           <IoReload size={25} />
           Reset filter
         </button>
@@ -25,25 +41,48 @@ export default function MobileFilter({ onClose }: { onClose: () => void }) {
       {/* Category Filter */}
       <div className="m-5">
         <p className="mb-2 text-xl font-bold">Category</p>
-        <div className="flex flex-col items-start justify-start gap-1">
-          <button className="rounded-lg bg-white px-2 py-1 text-black">
-            Category
-          </button>
-        </div>
+        {matchCategories.map((category) => (
+          <div className="my-1 flex flex-col items-start">
+            <button
+              key={category}
+              onClick={() => onCategoryChange(category)}
+              className={`rounded-lg px-2 py-1 ${
+                selectedCategories.includes(category)
+                  ? "bg-accent text-white"
+                  : "bg-white text-black"
+              }`}
+            >
+              {category}
+            </button>
+          </div>
+        ))}
       </div>
 
       {/* Location Filter */}
       <div className="m-5">
         <p className="mb-2 text-xl font-bold">Location</p>
-        <div className="flex flex-col items-start justify-start gap-1">
-          <button className="rounded-lg bg-white px-2 py-1 text-black">
-            Location
-          </button>
-        </div>
+        {matchLocations.map((location) => (
+          <div className="my-1 flex flex-col items-start">
+            <button
+              key={location}
+              onClick={() => onLocationChange(location)}
+              className={`rounded-lg px-2 py-1 ${
+                selectedLocations.includes(location)
+                  ? "bg-accent text-white"
+                  : "bg-white text-black"
+              }`}
+            >
+              {location}
+            </button>
+          </div>
+        ))}
       </div>
 
       <div className="mt-5 flex items-center justify-center">
-        <button className="mx-5 w-full rounded-lg bg-accent py-2 text-white hover:bg-accent/90">
+        <button
+          onClick={onClose}
+          className="mx-5 w-full rounded-lg bg-accent py-2 text-white hover:bg-accent/90"
+        >
           Apply filter
         </button>
       </div>

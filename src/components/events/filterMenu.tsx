@@ -1,11 +1,20 @@
 "use client";
 
+import useToggle from "@/hooks/useToggle";
 import DesktopFilterBar from "./desktopFilter";
 import MobileFilterMenu from "./mobileFilter";
-import useToggleState from "@/hooks/useToggle";
+import useClose from "@/hooks/useClose";
+import { FilterMenuProps } from "@/types/filter";
 
-export default function FilterMenu() {
-  const { isOpen, handleToggle } = useToggleState();
+export default function FilterMenu({
+  selectedCategories,
+  selectedLocations,
+  onCategoryChange,
+  onLocationChange,
+  onResetFilter,
+}: FilterMenuProps & { onResetFilter: () => void }) {
+  const { isOpen, handleToggle } = useToggle();
+  useClose(isOpen, handleToggle);
 
   return (
     <div>
@@ -20,10 +29,25 @@ export default function FilterMenu() {
       </div>
 
       {/* Desktop Filter Bar */}
-      <DesktopFilterBar />
+      <DesktopFilterBar
+        selectedCategories={selectedCategories}
+        selectedLocations={selectedLocations}
+        onCategoryChange={onCategoryChange}
+        onLocationChange={onLocationChange}
+        onResetFilter={onResetFilter}
+      />
 
       {/* Mobile Filter Menu */}
-      {isOpen && <MobileFilterMenu onClose={handleToggle} />}
+      {isOpen && (
+        <MobileFilterMenu
+          selectedCategories={selectedCategories}
+          selectedLocations={selectedLocations}
+          onCategoryChange={onCategoryChange}
+          onLocationChange={onLocationChange}
+          onClose={handleToggle}
+          onResetFilter={onResetFilter}
+        />
+      )}
     </div>
   );
 }

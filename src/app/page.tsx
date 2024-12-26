@@ -1,15 +1,19 @@
 import MobileNavBar from "@/components/footer/mobileNavBar";
 import Hero from "@/components/landing/hero";
 import UpcomingMatch from "@/components/landing/upcomingMatch";
+import { getEvents } from "@/libs/event";
+import { IEvent } from "@/types/event";
 import Image from "next/image";
 
 export default async function Home() {
+  const events: IEvent[] = await getEvents();
+
   return (
     <div className="container mx-auto flex flex-col items-center justify-center lg:flex-row">
       <div className="mx-5 my-10 flex flex-col items-center justify-center gap-5 lg:mx-10 lg:my-20 lg:flex-row xl:mx-20">
         <div className="container mx-auto flex basis-1/2 flex-col items-start justify-center">
           <Hero />
-          <UpcomingMatch />
+          <UpcomingMatch events={events} />
         </div>
         <div className="basis-1/2">
           <Image

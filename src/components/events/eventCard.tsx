@@ -19,7 +19,7 @@ export default async function EventCard({ events }: { events: IEvent[] }) {
                 className="group relative rounded-xl bg-white shadow-lg"
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-gray-200 group-hover:opacity-75">
-                  <div className="absolute left-0 m-3 rounded-xl bg-white px-2 text-sm text-accent lg:text-xs">
+                  <div className="absolute left-0 m-3 rounded-xl bg-white px-2 text-sm tracking-wide text-accent lg:text-xs">
                     {event.category} Match
                   </div>
                   <Image
@@ -45,7 +45,9 @@ export default async function EventCard({ events }: { events: IEvent[] }) {
                     </p>
 
                     <p className="mb-1 mt-2 font-medium text-gray-800">
-                      Starting from {CurrencyFormatter(lowestPrice)}
+                      {lowestPrice === 0
+                        ? "Free"
+                        : `Starting from ${CurrencyFormatter(lowestPrice)}`}
                     </p>
 
                     <div>

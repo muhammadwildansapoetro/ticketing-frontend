@@ -16,8 +16,6 @@ export default async function OrderDetailPage({
     String(params.orderId),
   );
 
-  console.log("params orderId:", params.orderId);
-
   return (
     <div>
       <div className="sticky inset-x-0 top-0 z-10 w-full bg-yellow-300 p-2 text-center font-medium tracking-wide">

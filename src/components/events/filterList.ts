@@ -1,19 +1,9 @@
-export const categories: string[] = [
+export const matchCategories: string[] = [
   "All category",
   "Training",
-  "Friendly match",
-  "League match",
-  "Championship match",
+  "Friendly",
+  "League",
+  "Championship",
 ];
 
-export const locations: string[] = [
-  "All location",
-  "Bandung",
-  "Bogor",
-  "Bali",
-  "Magelang",
-  "Semarang",
-  "Surakarta",
-  "Surabaya",
-  "Ternate",
-];
+export const matchLocations: string[] = ["All location", "Bandung", "Semarang"];
