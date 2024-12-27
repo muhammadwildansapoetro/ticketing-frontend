@@ -4,16 +4,15 @@ import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";
 import Profile from "./profile";
-import MobileSearch from "./mobileSearch";
-import DesktopSearch from "./desktopSearch";
+import Search from "./search";
 
 export default function NavBar() {
   return (
-    <header className="inset-x-0 top-0 z-50 bg-accent/90 transition duration-500">
+    <header className="inset-x-0 top-0 z-50 bg-accent transition duration-500">
       <nav className="flex items-center justify-between px-3 py-1 lg:px-8">
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-5 lg:gap-10">
           <Logo />
-          <DesktopSearch />
+          <Search />
         </div>
 
         <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
@@ -34,7 +33,6 @@ export default function NavBar() {
         </div>
 
         <div className="flex gap-2 lg:hidden">
-          <MobileSearch />
           <MobileMenu />
         </div>
       </nav>

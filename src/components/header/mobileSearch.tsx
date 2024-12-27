@@ -17,7 +17,7 @@ export default function MobileSearch() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [events, setEvents] = useState<IEvent[]>([]);
-  const [value, setValue] = useState<string>(searchParams.get("keyword") || "");
+  const [value, setValue] = useState<string>(searchParams.get("search") || "");
   const [search] = useDebounce(value, 500);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -44,7 +44,7 @@ export default function MobileSearch() {
   );
 
   useEffect(() => {
-    router.push(pathname + "?" + queryString("keyword", search));
+    router.push(pathname + "?" + queryString("search", search));
     searchEvent();
   }, [search, router, pathname, queryString, searchEvent]);
 
