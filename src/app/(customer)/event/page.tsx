@@ -1,6 +1,7 @@
 "use client";
 
 import EventCard from "@/components/events/eventCard";
+import EventCardSkeleton from "@/components/events/eventCardSkeleton";
 import FilterMenu from "@/components/events/filterMenu";
 import Pagination from "@/components/events/pagination";
 import MobileNavBar from "@/components/footer/mobileNavBar";
@@ -15,6 +16,7 @@ export default function EventsPage() {
   const searchParams = useSearchParams();
 
   const [events, setEvents] = useState<IEvent[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] =
@@ -24,6 +26,7 @@ export default function EventsPage() {
   const [isMounted, setIsMounted] = useState(false);
 
   const fetchEvents = useCallback(async () => {
+    setIsLoading(true);
     try {
       const category = searchParams.get("category") || "All category";
       const location = searchParams.get("location") || "All location";
@@ -39,6 +42,8 @@ export default function EventsPage() {
       setTotalPages(data.totalPages);
     } catch (error) {
       console.log("Failed to fetch events", error);
+    } finally {
+      setIsLoading(false);
     }
   }, [searchParams, currentPage]);
 
@@ -95,7 +100,13 @@ export default function EventsPage() {
         onResetFilter={handleResetFilter}
       />
       <div className="lg:flex lg:flex-col">
-        {events.length === 0 ? (
+        {isLoading ? (
+          <div className="grid w-full grid-cols-1 gap-x-5 gap-y-10 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
+            {Array.from({ length: 12 }).map((_, index) => (
+              <EventCardSkeleton key={index} />
+            ))}
+          </div>
+        ) : events.length === 0 ? (
           <div className="mx-auto my-40 flex items-center justify-center p-10 lg:my-0">
             <p className="text-lg font-medium">
               No match found for the selected filters.

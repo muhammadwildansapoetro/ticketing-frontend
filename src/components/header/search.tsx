@@ -95,6 +95,7 @@ export default function Search() {
                 <div key={index} data-cy="event list" className="flex flex-col">
                   <Link
                     href={`/event/${event.id}`}
+                    onClick={() => setValue("")}
                     className="flex gap-3 py-3 tracking-wide hover:bg-accent/10"
                   >
                     <Image
