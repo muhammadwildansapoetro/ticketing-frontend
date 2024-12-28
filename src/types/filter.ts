@@ -1,6 +1,6 @@
 export interface FilterMenuProps {
-  selectedCategories: string[];
-  selectedLocations: string[];
-  onCategoryChange: (category: string) => void;
+  selectedCategory: string;
+  selectedLocation: string;
+  onCategoryChange: (categoriy: string) => void;
   onLocationChange: (location: string) => void;
 }

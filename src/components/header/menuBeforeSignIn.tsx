@@ -5,17 +5,17 @@ export default function MenuBeforeSignIn() {
     <div className="p-5">
       <div>
         <div className="text-xl font-bold">Sign in to your account</div>
-        <div className="text-lg">to access all features on MatchTix.</div>
+        <div className="">to access all features on MatchTix.</div>
         <div className="mt-3 flex justify-between gap-5">
           <Link
             href={"/"}
-            className="rounded-lg border border-accent px-16 py-2 font-medium text-accent hover:bg-accent hover:text-white"
+            className="basis-1/2 rounded-lg border border-accent py-2 text-center font-medium text-accent hover:bg-accent hover:text-white"
           >
             Register
           </Link>
           <Link
             href={"/"}
-            className="text rounded-lg border border-accent bg-accent px-16 py-2 font-medium text-white hover:bg-accent/90"
+            className="text basis-1/2 rounded-lg border border-accent bg-accent py-2 text-center font-medium text-white hover:bg-accent/90"
           >
             Sign in
           </Link>

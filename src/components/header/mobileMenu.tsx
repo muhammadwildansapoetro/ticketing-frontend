@@ -1,3 +1,5 @@
+"use client";
+
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import UseClose from "@/hooks/useClose";
 import MenuBeforeSignIn from "./menuBeforeSignIn";

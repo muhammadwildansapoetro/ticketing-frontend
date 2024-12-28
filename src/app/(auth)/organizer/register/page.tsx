@@ -1,12 +1,12 @@
 "use client";
 
 import { Input } from "@/components/form/input";
-import { Form, Formik, FormikProps } from "formik";
+import { Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { FormValuesOrganizer } from "@/types/blog";
+import { FormValuesOrganizer } from "@/types/user";
 
 // Validasi Schema
 const RegisterSchemaOrganizer = Yup.object().shape({
@@ -49,9 +49,8 @@ export default function RegisterOrganizerPage() {
       const result = await res.json();
       if (!res.ok) throw result;
       toast.success(result.message || "Registration successful!");
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Something went wrong.");
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -92,7 +91,7 @@ export default function RegisterOrganizerPage() {
             action.resetForm();
           }}
         >
-          {(props: FormikProps<typeof initialValue>) => (
+          {(props) => (
             <Form className="w-full max-w-md space-y-6 rounded-lg border bg-white p-8 shadow-lg">
               <Input formik={props} name="name" label="name" />
               <Input

@@ -126,8 +126,10 @@ export default function AddOrder({
 
       <button
         onClick={handleAddOrder}
-        disabled={isLoading || totalTickets > 5}
-        className={`${(isLoading || totalTickets > 5) && `disabled:cursor-not-allowed disabled:bg-accent/80 disabled:bg-opacity-50`}w-1/2 rounded-lg bg-accent px-6 py-2 text-center tracking-widest text-white hover:bg-accent/90 lg:w-full`}
+        disabled={
+          isLoading || totalTickets > 5 || !orderCart || orderCart.length === 0
+        }
+        className={`${(isLoading || totalTickets > 5 || !orderCart || orderCart.length === 0) && `disabled:cursor-not-allowed disabled:bg-accent/80 disabled:bg-opacity-50`}w-1/2 rounded-lg bg-accent px-6 py-2 text-center tracking-widest text-white hover:bg-accent/90 lg:w-full`}
       >
         {isLoading ? "Ordering ticket..." : "Order ticket"}
       </button>

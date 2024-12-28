@@ -18,16 +18,15 @@ export default function VerifyPage({ params }: { params: { token: string } }) {
       if (!res.ok) throw result;
       toast.success(result.message);
       router.push("/customer/sign-in");
-    } catch (error: any) {
+    } catch (error) {
       console.log(error);
-      toast.error(error.message);
       router.push("/");
     }
   };
 
-//   useEffect(() => {
-//     onVerify();
-//   }, []);
+  useEffect(() => {
+    onVerify();
+  }, []);
 
   return (
     <div className="flex min-h-screen items-center justify-center">

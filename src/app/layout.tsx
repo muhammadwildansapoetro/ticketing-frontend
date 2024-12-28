@@ -7,6 +7,7 @@ import NavBar from "@/components/header/navBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
+import { Suspense } from "react";
 import { SessionProvider } from "@/context/useSession";
 
 const roboto = Roboto({
@@ -39,15 +40,17 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <SessionProvider>
-          <NavBar />
-          <ToastContainer
-            draggable
-            closeOnClick
-            autoClose={5000}
-            position="bottom-right"
-          />
-          {children}
-          <Footer />
+          <Suspense>
+            <NavBar />
+            <ToastContainer
+              draggable
+              closeOnClick
+              autoClose={5000}
+              position="bottom-right"
+            />
+            {children}
+            <Footer />
+          </Suspense>
         </SessionProvider>
       </body>
     </html>

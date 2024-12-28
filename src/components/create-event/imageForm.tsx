@@ -43,11 +43,9 @@ export const ImageForm = <T extends object>({
           onClick={() => imgRef.current?.click()}
           className="flex w-full cursor-pointer flex-col items-center justify-center rounded-md border border-dashed border-gray-500 p-5 text-center lg:h-fit"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black text-5xl">
-            +
-          </div>
-          <h1 className="font-bold lg:text-xl">Upload match image</h1>
-          <p className="px-5 lg:text-lg">
+          <div className="text-4xl lg:text-5xl">+</div>
+          <h1 className="text-sm font-bold lg:text-xl">Upload match image</h1>
+          <p className="px-5 text-sm lg:text-lg">
             File format must be .jpeg / .png / .jpg / .webp and maximum file
             size is 2 mb
           </p>

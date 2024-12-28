@@ -7,7 +7,7 @@ import React, {
   useState,
   ReactNode,
 } from "react";
-import { FormValuesCustomer } from "@/types/blog";
+import { FormValuesCustomer } from "@/types/user";
 
 interface SessionContextProps {
   isAuth: boolean;
@@ -17,7 +17,7 @@ interface SessionContextProps {
 }
 
 const SessionContext = createContext<SessionContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export const SessionProvider: React.FC<{ children: ReactNode }> = ({
@@ -28,17 +28,20 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
 
   const checkSession = async () => {
     try {
-      const token = localStorage.getItem("token")
-      if  (!token){
-        console.log("You must Login Before")
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("You must Login Before");
         return;
       }
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_BE}/api/auth/session`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL_BE}/api/auth/session`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
       const result = await res.json();
       if (!res.ok) throw result;
       setCustomer(result.customer);
@@ -53,7 +56,9 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <SessionContext.Provider value={{ isAuth, customer, setIsAuth, setCustomer }}>
+    <SessionContext.Provider
+      value={{ isAuth, customer, setIsAuth, setCustomer }}
+    >
       {children}
     </SessionContext.Provider>
   );
