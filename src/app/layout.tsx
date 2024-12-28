@@ -4,16 +4,9 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import NavBar from "@/components/header/navBar";
-<<<<<<< HEAD
-import NavBarMobile from "@/components/footer/mobileNavBar";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { SessionProvider } from "@/context/useSession";
-=======
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Script from "next/script";
->>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -44,7 +37,6 @@ export default function RootLayout({
         />
       </head>
       <body className={roboto.className}>
-      <SessionProvider>
         <NavBar />
         <ToastContainer
           draggable
@@ -53,16 +45,7 @@ export default function RootLayout({
           position="bottom-right"
         />
         {children}
-        <ToastContainer
-          draggable
-          closeOnClick
-          autoClose={5000}
-          theme="dark"
-          position="bottom-right"
-        />
         <Footer />
-        <NavBarMobile />
-        </SessionProvider>
       </body>
     </html>
   );

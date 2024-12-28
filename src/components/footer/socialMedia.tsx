@@ -36,8 +36,4 @@ export default function SocialMedia() {
       </Link>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b

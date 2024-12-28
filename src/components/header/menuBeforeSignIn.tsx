@@ -8,16 +8,6 @@ export default function MenuBeforeSignIn() {
         <div className="text-lg">to access all features on MatchTix.</div>
         <div className="mt-3 flex justify-between gap-5">
           <Link
-<<<<<<< HEAD
-            href={"/register"}
-            className="rounded-lg border border-accent px-20 py-2 font-medium text-accent hover:bg-gray-100"
-          >
-            Sign up
-          </Link>
-          <Link
-            href={"/sign-in"}
-            className="text rounded-lg border border-accent bg-accent px-20 py-2 font-medium text-white hover:bg-accent/90"
-=======
             href={"/"}
             className="rounded-lg border border-accent px-16 py-2 font-medium text-accent hover:bg-accent hover:text-white"
           >
@@ -26,7 +16,6 @@ export default function MenuBeforeSignIn() {
           <Link
             href={"/"}
             className="text rounded-lg border border-accent bg-accent px-16 py-2 font-medium text-white hover:bg-accent/90"
->>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
           >
             Sign in
           </Link>
@@ -54,8 +43,4 @@ export default function MenuBeforeSignIn() {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b

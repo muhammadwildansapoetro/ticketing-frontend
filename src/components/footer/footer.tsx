@@ -131,13 +131,6 @@ export default function Footer() {
         <hr className="my-6 border-white sm:mx-auto lg:my-8" />
 
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className="mb-2">
-<<<<<<< HEAD
-            <SocialMedia/>
-=======
-            <SocialMedia />
->>>>>>> 9cbd8aa7dc8dbd4544683cdc4a38015cc98f591b
-          </div>
           <span className="text-sm text-white opacity-70 sm:text-center">
             © 2024{" "}
             <Link href="#" className="hover:underline">
