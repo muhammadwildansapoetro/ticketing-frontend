@@ -46,7 +46,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
     <div className="flex flex-col items-center justify-start">
       <button
         onClick={handleToggle}
-        className="mt-5 rounded-lg border border-accent bg-accent px-3 py-2 text-white hover:bg-accent/90"
+        className="rounded-lg border border-accent bg-accent px-2 py-1 text-sm text-white hover:bg-accent/90 lg:px-3 lg:py-2"
       >
         Add ticket
       </button>

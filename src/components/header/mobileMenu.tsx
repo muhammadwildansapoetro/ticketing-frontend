@@ -1,3 +1,5 @@
+"use client";
+
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import UseClose from "@/hooks/useClose";
 import MenuBeforeSignIn from "./menuBeforeSignIn";
@@ -26,7 +28,7 @@ export default function MobileMenu() {
         } absolute right-0 z-40 mt-2 h-screen w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
       >
         <MenuBeforeSignIn />
-        <MenuAfterSignIn />
+        {/* <MenuAfterSignIn /> */}
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ export default function Search() {
         className="hidden h-10 w-52 rounded-lg border border-white bg-accent px-2 placeholder-white focus:bg-white focus:outline-none focus:-outline-offset-4 focus:outline-accent/50 lg:block xl:w-96"
       />
 
-      <button onClick={handleToggle} className="absolute right-12">
+      <button onClick={handleToggle} className="absolute right-12 lg:hidden">
         <BiSearch className="size-6 text-white" />
       </button>
 

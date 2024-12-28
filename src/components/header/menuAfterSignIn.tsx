@@ -46,7 +46,11 @@ export default function MenuAfterSignIn() {
         </Link>
         <div className="my-2 border-t border-accent/30" />
         <div>
-          <Link href={"/"} type="button" className="hover:text-red-500">
+          <Link
+            href={"/"}
+            type="button"
+            className="font-medium tracking-wide text-red-500"
+          >
             Sign out
           </Link>
         </div>

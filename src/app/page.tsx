@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center lg:flex-row">
-      <div className="mx-5 my-10 flex flex-col items-center justify-center gap-5 lg:mx-10 lg:my-20 lg:flex-row xl:mx-20">
+      <div className="mx-5 my-10 flex flex-col items-center justify-center gap-5 lg:mx-24 lg:my-16 lg:flex-row">
         <div className="container mx-auto flex basis-1/2 flex-col items-start justify-center">
           <Hero />
           <UpcomingMatch events={events} />

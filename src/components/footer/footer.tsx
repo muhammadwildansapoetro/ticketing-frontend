@@ -4,26 +4,26 @@ import SocialMedia from "./socialMedia";
 
 export default function Footer() {
   return (
-    <footer className="bg-accent p-5 py-10">
+    <footer className="mb-10 bg-accent p-5 lg:mb-0">
       <div className="mx-auto w-full max-w-screen-xl">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="#" className="flex items-center gap-1">
-              <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
+              <TbSoccerField className="size-7 text-white" />
+              <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
                 MatchTix
               </span>
-              <TbSoccerField size={30} className="text-white" />
             </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
+              <h2 className="mb-3 text-sm font-semibold uppercase text-white">
                 Menu
               </h2>
 
               <ul className="font-medium text-white">
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="#"
                     className="opacity-70 hover:underline hover:opacity-100"
@@ -32,7 +32,7 @@ export default function Footer() {
                   </Link>
                 </li>
 
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="/event"
                     className="opacity-70 hover:underline hover:opacity-100"
@@ -54,12 +54,12 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
+              <h2 className="mb-3 text-sm font-semibold uppercase text-white">
                 Resources
               </h2>
 
               <ul className="font-medium text-white">
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="https://nextjs.org/"
                     target="_blank"
@@ -69,7 +69,7 @@ export default function Footer() {
                   </Link>
                 </li>
 
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="https://tailwindcss.com/"
                     target="_blank"
@@ -92,12 +92,12 @@ export default function Footer() {
             </div>
 
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
+              <h2 className="mb-3 text-sm font-semibold uppercase text-white">
                 Legal
               </h2>
 
               <ul className="font-medium text-white">
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="#"
                     className="opacity-70 hover:underline hover:opacity-100"
@@ -106,7 +106,7 @@ export default function Footer() {
                   </Link>
                 </li>
 
-                <li className="mb-4">
+                <li className="mb-2">
                   <Link
                     href="#"
                     className="opacity-70 hover:underline hover:opacity-100"
@@ -128,7 +128,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="my-6 border-white sm:mx-auto lg:my-8" />
+        <hr className="my-5 border-white sm:mx-auto" />
 
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="mb-2">

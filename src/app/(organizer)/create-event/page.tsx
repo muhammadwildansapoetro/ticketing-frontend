@@ -51,7 +51,7 @@ export default function CreateMatchPage() {
 
   return (
     <div className="container mx-auto flex items-center justify-center lg:my-10 lg:px-20 xl:px-40">
-      <div className="hidden lg:block lg:basis-1/2">
+      <div className="sticky bottom-0 top-0 hidden lg:block lg:basis-1/2">
         <Image
           src={
             "https://res.cloudinary.com/doiygpguv/image/upload/v1734916284/football-training-facility_qe5lll.png"

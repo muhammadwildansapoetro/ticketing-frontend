@@ -23,7 +23,6 @@ export default function EventsPage() {
     useState<string>("All category");
   const [selectedLocation, setSelectedLocation] =
     useState<string>("All location");
-  const [isMounted, setIsMounted] = useState(false);
 
   const fetchEvents = useCallback(async () => {
     setIsLoading(true);
@@ -61,12 +60,8 @@ export default function EventsPage() {
   );
 
   useEffect(() => {
-    if (isMounted) {
-      fetchEvents();
-    } else {
-      setIsMounted(true);
-    }
-  }, [searchParams, isMounted, fetchEvents]);
+    fetchEvents();
+  }, [searchParams, currentPage, fetchEvents]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
