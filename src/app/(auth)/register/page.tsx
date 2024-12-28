@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -25,12 +24,12 @@ export default function RoleSelectionPage() {
 
         <div className="flex flex-col gap-4">
           <Link href="/customer/register">
-            <button className="w-full rounded-lg bg-teal-600 py-3 text-lg font-medium text-white transition-all hover:bg-teal-700">
+            <button className="w-full rounded-lg border border-accent bg-accent py-3 text-lg font-medium text-white transition-all hover:bg-accent/90">
               Register as Customer
             </button>
           </Link>
           <Link href="/organizer/register">
-            <button className="w-full rounded-lg bg-gray-100 py-3 text-lg font-medium text-gray-800 transition-all hover:bg-gray-200">
+            <button className="w-full rounded-lg border border-accent py-3 text-lg font-medium text-gray-800 transition-all hover:bg-accent hover:text-white">
               Register as Organizer
             </button>
           </Link>

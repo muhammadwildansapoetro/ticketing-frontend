@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
-import { Form, Formik, FormikProps } from "formik";
+import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -40,7 +40,7 @@ export default function LoginPage() {
           headers: {
             "content-type": "application/json",
           },
-        }
+        },
       );
       const result = await res.json();
       if (!res.ok) throw result;
@@ -50,18 +50,19 @@ export default function LoginPage() {
       router.push("/");
       router.refresh();
       toast.success(result.message);
-    } catch (err: any) {
-      console.log(err);
-      toast.error(err.message);
+    } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 sm:p-8">
-        <h1 className="text-2xl font-semibold text-gray-800 text-center mb-6">Sign-In to Your Account</h1>
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-md sm:p-8">
+        <h1 className="mb-6 text-center text-2xl font-semibold text-gray-800">
+          Sign-In to Your Account
+        </h1>
         <Formik
           initialValues={initialValue}
           validationSchema={LoginSchema}
@@ -70,14 +71,10 @@ export default function LoginPage() {
             action.resetForm();
           }}
         >
-          {(props: FormikProps<FormValues>) => {
+          {(props) => {
             return (
               <Form className="space-y-4">
-                <Input
-                  formik={props}
-                  name="data"
-                  label="Username or Email"
-                />
+                <Input formik={props} name="data" label="Username or Email" />
                 <Input
                   formik={props}
                   name="password"
@@ -87,7 +84,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full px-4 py-2 text-white bg-teal-600 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 hover:bg-teal-700 disabled:bg-teal-300 disabled:cursor-not-allowed"
+                  className="w-full rounded-md bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-teal-300"
                 >
                   {isLoading ? "Sign-In in..." : "SIGN IN"}
                 </button>
@@ -103,7 +100,10 @@ export default function LoginPage() {
           }}
         </Formik>
         <div className="mt-4 text-center text-sm text-gray-600">
-          Don’t have an account? <a href="/choice/register" className="text-teal-600 hover:underline">Sign up</a>
+          Don’t have an account?{" "}
+          <a href="/choice/register" className="text-teal-600 hover:underline">
+            Sign up
+          </a>
         </div>
       </div>
     </div>

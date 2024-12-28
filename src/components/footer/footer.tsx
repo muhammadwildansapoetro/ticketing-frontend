@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { TbSoccerField } from "react-icons/tb";
 import SocialMedia from "./socialMedia";
-import SocialMedia from "./socialMedia";
 
 export default function Footer() {
   return (
@@ -36,7 +35,6 @@ export default function Footer() {
                 <li className="mb-2">
                   <Link
                     href="/event"
-                    href="/event"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
                     Explore Matches
@@ -45,7 +43,6 @@ export default function Footer() {
 
                 <li>
                   <Link
-                    href="/create-event"
                     href="/create-event"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
@@ -65,11 +62,10 @@ export default function Footer() {
                 <li className="mb-2">
                   <Link
                     href="https://nextjs.org/"
-                    href="https://nextjs.org/"
                     target="_blank"
                     className="opacity-70 hover:underline hover:opacity-100"
                   >
-                    Next.js Next.js
+                    Next.js
                   </Link>
                 </li>
 

@@ -1,14 +1,13 @@
 "use client";
 
 import { Input } from "@/components/form/input";
-import { Form, Formik, FormikProps } from "formik";
+import { Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { FormValuesCustomer } from "@/types/blog";
+import { FormValuesCustomer } from "@/types/user";
 
-// Validasi Schema
 const RegisterSchemaCustomer = Yup.object().shape({
   fullname: Yup.string().required("Full name is required"),
   username: Yup.string().required("Username is required"),
@@ -53,9 +52,8 @@ export default function RegisterCustomerPage() {
       const result = await res.json();
       if (!res.ok) throw result;
       toast.success(result.message || "Registration successful!");
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Something went wrong.");
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -65,7 +63,7 @@ export default function RegisterCustomerPage() {
     <div className="flex h-full bg-gray-50">
       {/* Left Panel */}
       <div
-        className="hidden w-1/2 items-center justify-center bg-gradient-to-r from-purple-500 to-purple-800 text-white shadow-lg lg:flex"
+        className="hidden w-1/2 items-center justify-center bg-gradient-to-r from-accent to-accent/50 text-white shadow-lg lg:flex"
         style={{ clipPath: "ellipse(120% 100% at 0% 50%)" }}
       >
         <div className="p-8 text-center">
@@ -76,9 +74,9 @@ export default function RegisterCustomerPage() {
           </p>
           <button
             onClick={() => router.push("/customer/sign-in")}
-            className="rounded-lg bg-white px-8 py-2 font-semibold text-purple-700 shadow-lg hover:bg-gray-100"
+            className="rounded-lg bg-white px-8 py-2 font-semibold tracking-wider text-accent shadow-lg hover:bg-gray-100"
           >
-            SIGN IN
+            Sign in
           </button>
         </div>
       </div>
@@ -96,7 +94,7 @@ export default function RegisterCustomerPage() {
             action.resetForm();
           }}
         >
-          {(props: FormikProps<typeof initialValue>) => (
+          {(props) => (
             <Form className="w-full max-w-md space-y-6 rounded-lg border bg-white p-8 shadow-lg">
               <Input formik={props} name="fullname" label="Full Name" />
               <Input formik={props} name="username" label="Username" />
@@ -125,9 +123,9 @@ export default function RegisterCustomerPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-lg bg-purple-700 py-2 font-semibold text-white hover:bg-purple-800 disabled:cursor-not-allowed disabled:bg-gray-400"
+                  className="w-full rounded-lg bg-accent py-2 font-semibold tracking-wider text-white hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-gray-400"
                 >
-                  {isLoading ? "Processing..." : "REGISTER"}
+                  {isLoading ? "Processing..." : "Register"}
                 </button>
                 <button
                   type="button"

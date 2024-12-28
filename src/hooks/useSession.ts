@@ -1,4 +1,4 @@
-import { FormValuesCustomer } from "@/types/blog";
+import { FormValuesCustomer } from "@/types/user";
 import { useEffect, useState } from "react";
 
 const useSession = () => {
@@ -7,10 +7,13 @@ const useSession = () => {
 
   const checkSession = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_BE}/api/auth/session`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL_BE}/api/auth/session`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
       const result = await res.json();
       if (!res.ok) throw result;
       setCustomer(result.customer);
@@ -23,7 +26,7 @@ const useSession = () => {
     checkSession();
   }, []);
 
-  return {customer, isAuth}
+  return { customer, isAuth };
 };
 
 export default useSession;

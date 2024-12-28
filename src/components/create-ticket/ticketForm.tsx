@@ -71,8 +71,6 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
               }}
             >
               {(props) => {
-                console.log(props.values);
-
                 return (
                   <Form className="flex flex-col items-center justify-center gap-3">
                     <h1 className="text-2xl font-bold lg:text-4xl">

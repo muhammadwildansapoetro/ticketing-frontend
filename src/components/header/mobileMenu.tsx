@@ -28,7 +28,7 @@ export default function MobileMenu() {
         } absolute right-0 z-40 mt-2 h-screen w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
       >
         <MenuBeforeSignIn />
-        {/* <MenuAfterSignIn /> */}
+        <MenuAfterSignIn />
       </div>
     </div>
   );

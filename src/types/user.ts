@@ -1,5 +1,3 @@
-import { Document } from "@contentful/rich-text-types";
-
 export interface FormValuesCustomer {
   fullname: string;
   username: string;
@@ -7,8 +5,8 @@ export interface FormValuesCustomer {
   password: string;
   confirmPassword: string;
   referralCode?: string;
-  avatar?: string
-  role?: "customer" | "organizer"
+  avatar?: string;
+  role?: "customer" | "organizer";
 }
 
 export interface FormValuesOrganizer {

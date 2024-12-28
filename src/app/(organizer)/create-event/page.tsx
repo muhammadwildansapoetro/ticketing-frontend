@@ -73,8 +73,6 @@ export default function CreateMatchPage() {
           }}
         >
           {(props) => {
-            console.log(props.values);
-
             return (
               <Form className="flex w-full flex-col gap-3">
                 <div>
