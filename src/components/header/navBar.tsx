@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";
+import Logo from "./logo";
+import MobileMenu from "./mobileMenu";
 import Profile from "./profile";
 import Search from "./search";
 
@@ -14,16 +16,23 @@ export default function NavBar() {
         </div>
 
         <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
+        <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
           <Link
             href={"/create-event"}
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+            href={"/create-event"}
+            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
           >
+            Create Match
             Create Match
           </Link>
           <Link
             href={"/event"}
             className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+            href={"/event"}
+            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
           >
+            Explore Matches
             Explore Matches
           </Link>
 
