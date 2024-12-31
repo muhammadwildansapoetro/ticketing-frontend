@@ -15,7 +15,7 @@ const SignInSchema = Yup.object().shape({
     .required("password is required"),
 });
 
-interface FormValues {
+interface SignInFormValues {
   data: string;
   password: string;
 }
@@ -24,12 +24,12 @@ export default function CustomerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
-  const initialValue: FormValues = {
+  const initialValue: SignInFormValues = {
     data: "",
     password: "",
   };
 
-  const handleLogin = async (customer: FormValues) => {
+  const handleSignIn = async (customer: SignInFormValues) => {
     try {
       setIsLoading(true);
       const res = await fetch(
@@ -58,14 +58,14 @@ export default function CustomerSignInPage() {
   };
 
   return (
-    <div className="mt-6 flex justify-center p-5">
+    <div className="mt-6 flex h-screen justify-center p-5">
       <div>
         <h1 className="my-5 text-3xl font-bold">Sign in Form</h1>
         <Formik
           initialValues={initialValue}
           validationSchema={SignInSchema}
           onSubmit={(values, action) => {
-            handleLogin(values);
+            handleSignIn(values);
             action.resetForm();
           }}
         >
