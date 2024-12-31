@@ -4,28 +4,38 @@ import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 import { ITicket } from "@/types/ticket";
 import { useContext, useState } from "react";
 import { IOrderCart, OrderContext } from "./tabsAndOrder";
+import DateFormatter from "@/helpers/dateFormatter";
 
 export default function AddTicket({ ticket }: { ticket: ITicket }) {
   const [quantity, setQuantity] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const orderContext = useContext<IOrderCart | null>(OrderContext);
   if (!orderContext) throw new Error("No context");
-  const { orderCart, setOrderCart } = orderContext;
+  const { orderCart, setOrderCart, setDiscountInfo } = orderContext;
 
   const handleAddTicket = () => {
     const currentTicketQuantity =
       orderCart?.find((item) => item.ticket.id === ticket.id)?.quantity || 0;
-    const totalQuantity = currentTicketQuantity + quantity + 1;
+    const availableQuantity = ticket.quantity - currentTicketQuantity;
 
-    if (totalQuantity > ticket.quantity) {
-      setErrorMessage(
-        `Only ${ticket.quantity - currentTicketQuantity} tickets available`,
-      );
+    if (availableQuantity <= 0) {
+      setErrorMessage("No tickets available for order");
       return;
     }
+
     if (quantity < 5) {
       setQuantity((prevQuantity) => prevQuantity + 1);
       setErrorMessage(null);
+
+      if (hasDiscount) {
+        setDiscountInfo({
+          discountPercentage: ticket.discountPercentage as number,
+          discountStartDate: ticket.discountStartDate as string,
+          discountEndDate: ticket.discountEndDate as string,
+        });
+      } else {
+        setDiscountInfo(null);
+      }
 
       if (!orderCart) {
         setOrderCart([{ ticket, quantity: 1 }]);
@@ -75,6 +85,21 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
     }
   };
 
+  const hasDiscount =
+    ticket.discountPercentage && ticket.discountPercentage > 0;
+
+  const currentDate = new Date();
+  const discountStartDate = new Date(ticket.discountStartDate as string);
+  const discountEndDate = new Date(ticket.discountEndDate as string);
+
+  const isDiscountActive =
+    currentDate >= discountStartDate && currentDate <= discountEndDate;
+
+  const discountedPrice = hasDiscount
+    ? ticket.price -
+      (ticket.price * (ticket.discountPercentage as number)) / 100
+    : ticket.price;
+
   return (
     <div className="relative flex items-center rounded-lg border border-accent bg-accent/10 p-5">
       <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white"></span>
@@ -83,13 +108,34 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
 
       <div className="mr-36 flex flex-col items-start justify-center">
         <h1 className="text-xl font-bold">{ticket.category} Stand</h1>
-        <div
-          dangerouslySetInnerHTML={{ __html: ticket.description }}
-          className="mt-2"
-        />
-        <p className="mt-2">Available seat: {ticket.quantity}</p>
-        <p className="mt-3 text-lg font-bold">
-          {CurrencyFormatter(Number(ticket.price))}
+        <div dangerouslySetInnerHTML={{ __html: ticket.description }} />
+        <p className="mb-3 mt-2">Available seat: {ticket.quantity}</p>
+        {hasDiscount && (
+          <p className="text-sm font-bold text-green-700 lg:text-base">
+            Discount {ticket.discountPercentage}% from{" "}
+            <span className="">
+              {" "}
+              {DateFormatter(ticket.discountStartDate!)}
+            </span>{" "}
+            until{" "}
+            <span className=""> {DateFormatter(ticket.discountEndDate!)}</span>
+          </p>
+        )}
+        <p className="text-lg">
+          {hasDiscount && isDiscountActive ? (
+            <>
+              <span className="font-bold">
+                {CurrencyFormatter(Number(discountedPrice))}
+              </span>
+              <span className="ml-3 text-gray-500 line-through">
+                {CurrencyFormatter(Number(ticket.price))}
+              </span>
+            </>
+          ) : (
+            <span className="font-bold">
+              {CurrencyFormatter(Number(ticket.price))}
+            </span>
+          )}
         </p>
       </div>
 

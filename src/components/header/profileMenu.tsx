@@ -47,7 +47,7 @@ export default function ProfileMenu({
         onClick={toggleDropdown}
         className="flex cursor-pointer items-center"
       >
-        <div className="relative h-10 w-10">
+        <div className="relative h-10 w-10 rounded-full bg-white">
           {customer && (
             <Image
               className="rounded-full object-cover"

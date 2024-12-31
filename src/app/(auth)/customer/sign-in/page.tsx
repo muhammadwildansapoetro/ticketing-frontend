@@ -8,7 +8,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-const LoginSchema = Yup.object().shape({
+const SignInSchema = Yup.object().shape({
   data: Yup.string().required("username or email is required"),
   password: Yup.string()
     .min(3, "password must be 3 characters at minimum")
@@ -20,7 +20,7 @@ interface FormValues {
   password: string;
 }
 
-export default function RegisterPage() {
+export default function CustomerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
@@ -60,10 +60,10 @@ export default function RegisterPage() {
   return (
     <div className="mt-6 flex justify-center p-5">
       <div>
-        <h1 className="my-5 text-3xl font-bold">Login Form</h1>
+        <h1 className="my-5 text-3xl font-bold">Sign in Form</h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={LoginSchema}
+          validationSchema={SignInSchema}
           onSubmit={(values, action) => {
             handleLogin(values);
             action.resetForm();
@@ -72,7 +72,7 @@ export default function RegisterPage() {
           {(props) => {
             return (
               <Form className="flex min-w-[400px] flex-col gap-2">
-                <Input formik={props} name="data" label="Username Or Email :" />
+                <Input formik={props} name="data" label="Username or Email :" />
                 <Input
                   formik={props}
                   name="password"
@@ -82,9 +82,9 @@ export default function RegisterPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-lg bg-teal-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-300 disabled:cursor-not-allowed disabled:bg-teal-300 sm:w-auto"
+                  className="w-full rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-medium tracking-wide text-white hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent disabled:cursor-not-allowed disabled:bg-accent/90 sm:w-auto"
                 >
-                  {isLoading ? "Loading ..." : "Login"}
+                  {isLoading ? "Loading..." : "Sign in"}
                 </button>
               </Form>
             );

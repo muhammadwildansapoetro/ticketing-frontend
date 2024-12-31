@@ -10,14 +10,18 @@ import axios from "@/helpers/axios";
 
 interface IProps {
   totalPrice: number;
+  finalPrice: number;
   setTotalPrice: (parameter: number) => void;
+  setFinalPrice: (parameter: number) => void;
   orderCart: IOrderDetail[] | null;
   params: string;
 }
 
 export default function AddOrder({
   totalPrice,
+  finalPrice,
   setTotalPrice,
+  setFinalPrice,
   orderCart,
   params,
 }: IProps) {
@@ -46,13 +50,21 @@ export default function AddOrder({
         return;
       }
 
-      const { data } = await axios.post("/orders", {
-        totalPrice: totalPrice,
-        finalPrice: totalPrice,
-        orderCart,
-      });
+      const storedToken = localStorage.getItem("token");
 
-      router.push(`/event/${params}/order/${data.orderId}`);
+      const { data } = await axios.post(
+        "/orders",
+        {
+          totalPrice: totalPrice,
+          finalPrice: finalPrice,
+          orderCart,
+        },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        },
+      );
+
+      router.push(`/order/${params}/${data.orderId}`);
       toast.success(data.message);
     } catch (error) {
       console.error("Error adding order:", error);
@@ -63,11 +75,37 @@ export default function AddOrder({
 
   useEffect(() => {
     if (orderCart) {
-      setTotalPrice(
-        orderCart.reduce((a, b) => a + b.ticket.price * b.quantity, 0),
-      );
+      const currentDate = new Date();
+
+      const calculatedTotalPrice = orderCart.reduce((acc, item) => {
+        return acc + item.ticket.price * item.quantity; // No discount applied here
+      }, 0);
+
+      const calculatedFinalPrice = orderCart.reduce((acc, item) => {
+        const hasDiscount =
+          item.ticket.discountPercentage && item.ticket.discountPercentage > 0;
+        const discountStartDate = new Date(
+          item.ticket.discountStartDate as string,
+        );
+        const discountEndDate = new Date(item.ticket.discountEndDate as string);
+
+        const isDiscountActive =
+          currentDate >= discountStartDate && currentDate <= discountEndDate;
+
+        const pricePerTicket =
+          isDiscountActive && hasDiscount
+            ? item.ticket.price -
+              (item.ticket.price * (item.ticket.discountPercentage as number)) /
+                100
+            : item.ticket.price;
+
+        return acc + pricePerTicket * item.quantity;
+      }, 0);
+
+      setTotalPrice(calculatedTotalPrice);
+      setFinalPrice(calculatedFinalPrice);
     }
-  }, [orderCart, setTotalPrice]);
+  }, [orderCart, setTotalPrice, setFinalPrice]);
 
   return (
     <div className="flex items-center justify-center gap-5 lg:w-full lg:flex-col">
@@ -75,6 +113,28 @@ export default function AddOrder({
         <div className="mb-2 hidden gap-5 lg:flex lg:w-full lg:flex-col lg:pb-3">
           {orderCart && orderCart.length > 0 ? (
             orderCart.map((order, index) => {
+              const currentDate = new Date();
+              const hasDiscount =
+                order.ticket.discountPercentage &&
+                order.ticket.discountPercentage > 0;
+              const discountStartDate = new Date(
+                order.ticket.discountStartDate as string,
+              );
+              const discountEndDate = new Date(
+                order.ticket.discountEndDate as string,
+              );
+              const isDiscountActive =
+                currentDate >= discountStartDate &&
+                currentDate <= discountEndDate;
+
+              const pricePerTicket =
+                isDiscountActive && hasDiscount
+                  ? order.ticket.price -
+                    (order.ticket.price *
+                      (order.ticket.discountPercentage as number)) /
+                      100
+                  : order.ticket.price;
+
               return (
                 <div
                   key={index}
@@ -87,7 +147,7 @@ export default function AddOrder({
                   <div className="flex justify-between gap-20">
                     <div className="ml-10">{order.quantity} ticket</div>
                     <div className="font-bold">
-                      {CurrencyFormatter(order.quantity * order.ticket.price)}
+                      {CurrencyFormatter(order.quantity * pricePerTicket)}
                     </div>
                   </div>
                 </div>
@@ -109,7 +169,7 @@ export default function AddOrder({
                 Total {orderCart.reduce((a, b) => a + b.quantity, 0)} ticket
               </p>
               <p className="text-lg font-bold">
-                {CurrencyFormatter(totalPrice)}
+                {CurrencyFormatter(finalPrice)}
               </p>
             </div>
             {errorMessage && (

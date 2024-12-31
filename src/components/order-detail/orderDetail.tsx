@@ -71,7 +71,7 @@ export default function OrderDetail({ order }: { order: IOrder }) {
                     <p>{item.ticket.category} Stand</p>
                   </td>
                   <td className="text-end">
-                    {CurrencyFormatter(item.ticket.price)}
+                    {CurrencyFormatter(item.subTotalPrice)}
                   </td>
                   <td className="text-center">{item.quantity}</td>
                 </tr>
@@ -82,7 +82,7 @@ export default function OrderDetail({ order }: { order: IOrder }) {
             <p>
               Order status:{" "}
               <span
-                className={`ml-1 rounded-lg font-medium ${order.status === "Unpaid" ? "text-yellow-500" : order.status === "Paid" ? "text-accent" : order.status === "Cancel" ? "text-red-500" : ""}`}
+                className={`ml-1 rounded-lg font-medium ${order.status === "Unpaid" ? "text-yellow-500" : order.status === "Paid" ? "text-accent" : order.status === "Canceled" ? "text-red-500" : ""}`}
               >
                 {order.status}
               </span>{" "}

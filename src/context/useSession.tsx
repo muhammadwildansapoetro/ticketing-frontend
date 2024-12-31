@@ -61,7 +61,7 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
 
       setIsAuth(true);
     } catch (error) {
-      console.log(error);
+      console.log("Session check error:", error);
     }
   };
 

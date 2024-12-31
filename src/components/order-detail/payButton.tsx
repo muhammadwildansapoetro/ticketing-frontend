@@ -1,11 +1,26 @@
 "use client";
 
-export default function PayButton({ orderToken }: { orderToken: string }) {
-  const handleClick = async () => window.snap.pay(orderToken);
+interface PayButtonProps {
+  orderToken: string;
+  disabled?: boolean;
+}
+
+export default function PayButton({
+  orderToken,
+  disabled = false,
+}: PayButtonProps) {
+  const handleClick = async () => {
+    if (!disabled && orderToken) {
+      window.snap.pay(orderToken);
+    } else {
+      console.log("Order token is required");
+    }
+  };
   return (
     <button
       onClick={handleClick}
-      className="w-full rounded-lg bg-accent p-2 text-center text-white"
+      disabled={disabled}
+      className={`w-full rounded-lg p-2 text-center text-white ${disabled ? "cursor-not-allowed bg-accent/80" : "bg-accent"}`}
     >
       Pay Ticket
     </button>

@@ -23,7 +23,7 @@ const RegisterSchemaCustomer = Yup.object().shape({
   referralCode: Yup.string(),
 });
 
-export default function RegisterCustomerPage() {
+export default function CustomerRegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 

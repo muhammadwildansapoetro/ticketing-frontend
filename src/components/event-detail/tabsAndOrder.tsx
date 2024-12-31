@@ -18,9 +18,17 @@ export interface IOrderDetail {
   quantity: number;
 }
 
+export interface IDiscountInfo {
+  discountPercentage: number | null;
+  discountStartDate: string | null;
+  discountEndDate: string | null;
+}
+
 export interface IOrderCart {
   orderCart: IOrderDetail[] | null;
   setOrderCart: (parameter: IOrderDetail[] | null) => void;
+  discountInfo: IDiscountInfo | null;
+  setDiscountInfo: (info: IDiscountInfo | null) => void;
 }
 
 export const OrderContext = createContext<IOrderCart | null>(null);
@@ -31,9 +39,13 @@ export default function TabsAndOrder({ event, ticket, params }: IProps) {
   );
   const [orderCart, setOrderCart] = useState<IOrderDetail[] | null>(null);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [finalPrice, setFinalPrice] = useState<number>(0);
+  const [discountInfo, setDiscountInfo] = useState<IDiscountInfo | null>(null);
 
   return (
-    <OrderContext.Provider value={{ orderCart, setOrderCart }}>
+    <OrderContext.Provider
+      value={{ orderCart, setOrderCart, discountInfo, setDiscountInfo }}
+    >
       <div className="w-full lg:basis-2/3">
         <div className="rounded-lg border border-gray-200 p-5 lg:mx-0 lg:shadow-lg">
           <div className="mb-5 flex justify-between gap-5 border-b-2">
@@ -74,7 +86,9 @@ export default function TabsAndOrder({ event, ticket, params }: IProps) {
         <div className="fixed inset-x-0 bottom-0 z-10 w-full rounded-lg border border-gray-200 bg-white p-5 lg:sticky lg:top-0 lg:z-0 lg:flex lg:items-center lg:shadow-xl">
           <AddOrder
             totalPrice={totalPrice}
+            finalPrice={finalPrice}
             setTotalPrice={setTotalPrice}
+            setFinalPrice={setFinalPrice}
             orderCart={orderCart}
             params={params}
           />

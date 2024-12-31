@@ -18,6 +18,6 @@ export interface ITicketInput {
   quantity: string;
   description: string;
   discountPercentage?: number;
-  discountStartDate?: Date | null;
-  discountEndDate?: Date | null;
+  discountStartDate?: string | null;
+  discountEndDate?: string | null;
 }

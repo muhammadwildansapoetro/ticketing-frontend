@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IEvent } from "@/types/event";
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 
-export default async function EventCard({ events }: { events: IEvent[] }) {
+export default function EventCard({ events }: { events: IEvent[] }) {
   return (
     <div className="">
       <div className="mx-auto px-5 py-10">

@@ -40,8 +40,6 @@ export default function CreateMatchPage() {
 
       const storedToken = localStorage.getItem("token");
 
-      console.log(`Token: ${storedToken}`);
-
       const { data } = await axios.post("/events", formData, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });

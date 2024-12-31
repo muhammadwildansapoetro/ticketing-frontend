@@ -12,14 +12,24 @@ export async function getOrderDetail(orderId: number) {
 
 export async function getOrderToken(finalPrice: number, orderId: string) {
   try {
-    const { data } = await axios.post("/orders/payment", {
-      order_id: +orderId,
-      gross_amount: +finalPrice,
-    });
-    console.log("order token", data.orderToken);
+    if (typeof window === "undefined") {
+      throw new Error("localStorage is not available in this environment.");
+    }
+    const storedToken = localStorage.getItem("token");
+    const { data } = await axios.post(
+      "/orders/payment",
+      {
+        order_id: +orderId,
+        gross_amount: +finalPrice,
+      },
+      {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      },
+    );
+    console.log("Response from server:", data);
 
     return data.orderToken;
   } catch (error) {
-    console.log("Error get order token:", error);
+    console.error("Error getting order token:", error);
   }
 }
