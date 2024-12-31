@@ -2,13 +2,24 @@
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import UseClose from "@/hooks/useClose";
-import MenuBeforeSignIn from "./menuBeforeSignIn";
-import MenuAfterSignIn from "./menuAfterSignIn";
+import MenuBeforeSignIn from "./mobileMenuBefore";
+import MenuAfterSignIn from "./mobileMenuAfter";
 import useToggleState from "@/hooks/useToggle";
+import { useSession } from "@/context/useSession";
+import { deleteToken } from "@/libs/action";
+import { useRouter } from "next/navigation";
 
 export default function MobileMenu() {
+  const { isAuth, customer, organizer, setIsAuth } = useSession();
   const { isOpen, isHidden, handleToggle } = useToggleState();
   UseClose(isOpen, handleToggle);
+  const router = useRouter();
+  const onSignOut = () => {
+    deleteToken("token");
+    setIsAuth(false);
+    router.push("/");
+    router.refresh();
+  };
 
   return (
     <div>
@@ -27,8 +38,15 @@ export default function MobileMenu() {
           isHidden ? "hidden" : ""
         } absolute right-0 z-40 mt-2 h-screen w-full bg-white transition-all duration-300 ease-in-out lg:hidden`}
       >
-        <MenuBeforeSignIn />
-        <MenuAfterSignIn />
+        {isAuth ? (
+          <MenuAfterSignIn
+            customer={customer}
+            organizer={organizer}
+            onSignOut={onSignOut}
+          />
+        ) : (
+          <MenuBeforeSignIn />
+        )}
       </div>
     </div>
   );

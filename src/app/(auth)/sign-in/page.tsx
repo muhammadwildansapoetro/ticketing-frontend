@@ -50,14 +50,14 @@ export default function SignInPage() {
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-accent bg-accent py-3 text-lg font-medium text-white shadow-lg transition-all hover:bg-accent/90"
           >
             <FaUserTie />
-            Sign In as Customer
+            Sign in as Customer
           </button>
           <button
             onClick={() => router.push("/organizer/sign-in")}
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-accent py-3 text-lg font-medium text-accent shadow-lg transition-all hover:bg-accent hover:text-white"
           >
             <VscOrganization />
-            Sign In as Organizer
+            Sign in as Organizer
           </button>
         </div>
       </div>

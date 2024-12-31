@@ -13,6 +13,16 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
   const { orderCart, setOrderCart } = orderContext;
 
   const handleAddTicket = () => {
+    const currentTicketQuantity =
+      orderCart?.find((item) => item.ticket.id === ticket.id)?.quantity || 0;
+    const totalQuantity = currentTicketQuantity + quantity + 1;
+
+    if (totalQuantity > ticket.quantity) {
+      setErrorMessage(
+        `Only ${ticket.quantity - currentTicketQuantity} tickets available`,
+      );
+      return;
+    }
     if (quantity < 5) {
       setQuantity((prevQuantity) => prevQuantity + 1);
       setErrorMessage(null);
@@ -84,20 +94,26 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
       </div>
 
       <div className="absolute right-12 flex flex-col items-center justify-center gap-5">
-        <button
-          onClick={handleAddTicket}
-          className="rounded-xl border-2 border-accent px-3 text-lg font-bold"
-        >
-          +
-        </button>
-        <div>{quantity}</div>
+        {ticket.quantity > 0 ? (
+          <>
+            <button
+              onClick={handleAddTicket}
+              className="rounded-xl border-2 border-accent px-3 text-lg font-bold"
+            >
+              +
+            </button>
+            <div>{quantity}</div>
 
-        <button
-          onClick={handleRemoveTicket}
-          className="rounded-xl border-2 border-accent px-3 text-xl font-bold"
-        >
-          -
-        </button>
+            <button
+              onClick={handleRemoveTicket}
+              className="rounded-xl border-2 border-accent px-3 text-xl font-bold"
+            >
+              -
+            </button>
+          </>
+        ) : (
+          <span className="font-bold text-red-600">Sold Out</span>
+        )}
       </div>
 
       {errorMessage && (

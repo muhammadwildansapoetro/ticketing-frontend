@@ -17,8 +17,8 @@ export default async function CreateTicketPage({
   const event: IEvent = await getEventDetail(params.eventId);
 
   return (
-    <div className="container mx-auto flex items-center justify-center p-5 lg:my-10 lg:px-20 xl:px-40">
-      <div className="lg:basis-1/2">
+    <div className="container mx-auto flex items-center justify-center gap-10 p-5 lg:my-10 lg:px-10 xl:px-20 2xl:px-52">
+      <div className="lg:basis-2/3">
         <div className="relative flex items-center justify-between rounded-lg border border-accent bg-accent/10 p-5">
           <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white lg:right-36"></span>
           <span className="absolute -bottom-[1.5px] right-28 z-10 h-5 w-10 rounded-tl-full rounded-tr-full border-l border-r border-t border-accent border-b-white bg-white lg:right-36"></span>
@@ -61,7 +61,8 @@ export default async function CreateTicketPage({
           )}
         </div>
       </div>
-      <div className="sticky bottom-0 top-0 hidden p-20 lg:block lg:basis-1/2">
+
+      <div className="sticky bottom-0 top-0 hidden lg:block lg:basis-1/3">
         <Image
           src={
             "https://res.cloudinary.com/doiygpguv/image/upload/v1735350403/tickets_darks1.png"

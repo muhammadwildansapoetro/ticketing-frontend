@@ -6,7 +6,6 @@ export interface FormValuesCustomer {
   confirmPassword: string;
   referralCode?: string;
   avatar?: string;
-  role?: "customer" | "organizer";
 }
 
 export interface FormValuesOrganizer {
@@ -14,4 +13,17 @@ export interface FormValuesOrganizer {
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface IOrganizerProfile {
+  name: string;
+  email: string;
+  avatar: string;
+}
+
+export interface ICustomerProfile {
+  fullname: string;
+  username: string;
+  email: string;
+  avatar: string;
 }

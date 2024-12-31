@@ -61,7 +61,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-md sm:p-8">
         <h1 className="mb-6 text-center text-2xl font-semibold text-gray-800">
-          Sign-In to Your Account
+          Sign in to your account
         </h1>
         <Formik
           initialValues={initialValue}
@@ -74,7 +74,7 @@ export default function LoginPage() {
           {(props) => {
             return (
               <Form className="space-y-4">
-                <Input formik={props} name="data" label="Username or Email" />
+                <Input formik={props} name="data" label="Email" />
                 <Input
                   formik={props}
                   name="password"
@@ -84,9 +84,9 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-md bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-teal-300"
+                  className="w-full rounded-md bg-accent px-4 py-2 text-white hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-accent/90"
                 >
-                  {isLoading ? "Sign-In in..." : "SIGN IN"}
+                  {isLoading ? "Loading..." : "Sign in"}
                 </button>
                 <button
                   type="button"
@@ -100,9 +100,9 @@ export default function LoginPage() {
           }}
         </Formik>
         <div className="mt-4 text-center text-sm text-gray-600">
-          Don’t have an account?{" "}
-          <a href="/choice/register" className="text-teal-600 hover:underline">
-            Sign up
+          Don&apos;t have an account?{" "}
+          <a href="/choice/register" className="text-accent hover:underline">
+            Register
           </a>
         </div>
       </div>

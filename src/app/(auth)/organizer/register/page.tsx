@@ -60,18 +60,18 @@ export default function RegisterOrganizerPage() {
     <div className="flex h-full bg-gray-50">
       {/* Left Panel */}
       <div
-        className="hidden w-1/2 items-center justify-center bg-gradient-to-r from-purple-500 to-purple-800 text-white shadow-lg lg:flex"
+        className="hidden w-1/2 items-center justify-center bg-gradient-to-r from-accent to-accent/50 text-white shadow-lg lg:flex"
         style={{ clipPath: "ellipse(120% 100% at 0% 50%)" }}
       >
         <div className="p-8 text-center">
           <h1 className="mb-4 text-5xl font-bold">Welcome!</h1>
           <p className="mb-8 text-lg leading-relaxed">
             Join us to enjoy exclusive features and benefits. <br />
-            Already have an account? Log in now!
+            Already have an account? Sign in now!
           </p>
           <button
             onClick={() => router.push("/organizer/sign-in")}
-            className="rounded-lg bg-white px-8 py-2 font-semibold text-purple-700 shadow-lg hover:bg-gray-100"
+            className="text-accent-700 rounded-lg bg-white px-8 py-2 font-semibold text-accent shadow-lg hover:bg-gray-100"
           >
             Sign In
           </button>
@@ -93,7 +93,7 @@ export default function RegisterOrganizerPage() {
         >
           {(props) => (
             <Form className="w-full max-w-md space-y-6 rounded-lg border bg-white p-8 shadow-lg">
-              <Input formik={props} name="name" label="name" />
+              <Input formik={props} name="name" label="Name" />
               <Input
                 formik={props}
                 name="email"
@@ -118,9 +118,9 @@ export default function RegisterOrganizerPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-lg bg-purple-700 py-2 font-semibold text-white hover:bg-purple-800 disabled:cursor-not-allowed disabled:bg-gray-400"
+                  className="hover:bg-accent-800 w-full rounded-lg bg-accent py-2 font-semibold text-white hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/90"
                 >
-                  {isLoading ? "Processing..." : "REGISTER"}
+                  {isLoading ? "Loading..." : "Register"}
                 </button>
                 <button
                   type="button"

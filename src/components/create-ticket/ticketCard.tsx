@@ -1,7 +1,15 @@
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
+import DateFormatter from "@/helpers/dateFormatter";
 import { ITicket } from "@/types/ticket";
 
 export default function TicketCard({ ticket }: { ticket: ITicket }) {
+  const hasDiscount =
+    ticket.discountPercentage && ticket.discountPercentage > 0;
+  const discountedPrice = hasDiscount
+    ? ticket.price -
+      (ticket.price * (ticket.discountPercentage as number)) / 100
+    : ticket.price;
+
   return (
     <div>
       <div className="relative flex items-center rounded-lg border border-accent bg-accent/10 p-5">
@@ -14,10 +22,37 @@ export default function TicketCard({ ticket }: { ticket: ITicket }) {
           <p className="mt-2">Available seat: {ticket.quantity}</p>
           <div
             dangerouslySetInnerHTML={{ __html: ticket.description }}
-            className="mt-2 text-sm"
+            className="mb-3 mt-2 text-sm"
           />
-          <p className="mt-3 text-lg font-bold">
-            {CurrencyFormatter(Number(ticket.price))}
+          {hasDiscount && (
+            <p className="text-sm font-bold text-green-700 lg:text-base">
+              Discount {ticket.discountPercentage}% from{" "}
+              <span className="">
+                {" "}
+                {DateFormatter(ticket.discountStartDate!)}
+              </span>{" "}
+              until{" "}
+              <span className="">
+                {" "}
+                {DateFormatter(ticket.discountEndDate!)}
+              </span>
+            </p>
+          )}
+          <p className="text-lg">
+            {hasDiscount ? (
+              <>
+                <span className="font-bold">
+                  {CurrencyFormatter(Number(discountedPrice))}
+                </span>
+                <span className="ml-3 text-gray-500 line-through">
+                  {CurrencyFormatter(Number(ticket.price))}
+                </span>
+              </>
+            ) : (
+              <span className="font-bold">
+                {CurrencyFormatter(Number(ticket.price))}
+              </span>
+            )}
           </p>
         </div>
       </div>

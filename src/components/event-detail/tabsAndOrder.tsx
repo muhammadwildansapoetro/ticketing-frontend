@@ -31,7 +31,6 @@ export default function TabsAndOrder({ event, ticket, params }: IProps) {
   );
   const [orderCart, setOrderCart] = useState<IOrderDetail[] | null>(null);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  console.log(orderCart);
 
   return (
     <OrderContext.Provider value={{ orderCart, setOrderCart }}>

@@ -29,7 +29,7 @@ export const Input = <T,>({
           id={name as string} // Cast to string for the id attribute
           name={name}
           type={type}
-          className={`w-full rounded-lg border px-4 py-3 text-sm shadow-sm transition-all duration-300 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 md:text-base ${
+          className={`w-full rounded-lg border border-accent px-4 py-3 text-sm shadow-sm transition-all duration-300 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent md:text-base ${
             formik.touched[name] && formik.errors[name]
               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
               : "border-gray-300"

@@ -38,12 +38,19 @@ export default function CreateMatchPage() {
         }
       }
 
-      const { data } = await axios.post("/events", formData);
+      const storedToken = localStorage.getItem("token");
 
-      router.push(`/create-event/ticket/${data.eventId}`);
+      console.log(`Token: ${storedToken}`);
+
+      const { data } = await axios.post("/events", formData, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+
+      router.push(`/create-ticket/${data.eventId}`);
       toast.success(data.message);
     } catch (error) {
       console.error("Error details:", error);
+      toast.error("Failed to create match");
     } finally {
       setIsLoading(false);
     }

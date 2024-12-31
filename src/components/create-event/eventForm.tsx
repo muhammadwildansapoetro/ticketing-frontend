@@ -14,7 +14,7 @@ export default function EventForm() {
           <Field
             name="title"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage
             name="title"
@@ -33,7 +33,7 @@ export default function EventForm() {
           <Field
             name="category"
             as="select"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-2 focus:border-accent focus:outline-none"
           >
             <option value="">Choose category</option>
             <option value="Training">Training</option>
@@ -60,7 +60,7 @@ export default function EventForm() {
           <Field
             name="date"
             type="date"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage name="date" component="span" className="text-red-500" />
         </div>
@@ -75,7 +75,7 @@ export default function EventForm() {
           <Field
             name="startTime"
             type="time"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage
             name="startTime"
@@ -94,7 +94,7 @@ export default function EventForm() {
           <Field
             name="endTime"
             type="time"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage
             name="endTime"
@@ -115,7 +115,7 @@ export default function EventForm() {
           <Field
             name="location"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage
             name="location"
@@ -134,7 +134,7 @@ export default function EventForm() {
           <Field
             name="venue"
             type="text"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-accent focus:outline-none focus:outline-2 focus:outline-offset-2 focus:outline-accent focus:ring-accent"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
           />
           <ErrorMessage
             name="venue"

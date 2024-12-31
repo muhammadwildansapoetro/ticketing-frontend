@@ -5,23 +5,19 @@ import { ITicketInput } from "@/types/ticket";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import * as Yup from "yup";
 import RichTextEditor from "../create-event/richTextEditor";
 import { useRouter } from "next/navigation";
 import axios from "@/helpers/axios";
-
-export const ticketSchema = Yup.object({
-  category: Yup.string().required("Category is required"),
-  price: Yup.number().required("Location is required"),
-  quantity: Yup.number().required("Venue is required"),
-  description: Yup.string().required("Description is required"),
-});
+import { ticketSchema } from "@/schemas/ticketSchema";
 
 const initialValues: ITicketInput = {
   category: "",
   price: "",
   quantity: "",
   description: "",
+  discountPercentage: undefined,
+  discountStartDate: null,
+  discountEndDate: null,
 };
 
 export default function CreateTicketForm({ eventId }: { eventId: string }) {
@@ -33,17 +29,17 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
       setIsLoading(true);
       const { data } = await axios.post(`/tickets/${eventId}`, ticket);
       toast.success(data.message);
-      router.push(`/create-event/ticket/${eventId}`);
+      router.push(`/create-ticket/${eventId}`);
     } catch (error) {
       console.error("Error creating ticket:", error);
-      toast.error("Error creating ticket");
+      toast.error("Failed to create ticket");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-start">
+    <div className="mt-5 flex flex-col items-center justify-start">
       <button
         onClick={handleToggle}
         className="rounded-lg border border-accent bg-accent px-2 py-1 text-sm text-white hover:bg-accent/90 lg:px-3 lg:py-2"
@@ -59,7 +55,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
             onClick={handleToggle}
           ></div>
 
-          <div className="fixed z-30 mx-auto flex max-w-fit items-center justify-center rounded-lg border border-accent/50 bg-white p-5 shadow-xl lg:my-5">
+          <div className="fixed inset-0 z-30 mx-auto my-10 flex w-fit items-center justify-center rounded-lg bg-white p-5">
             <Formik
               initialValues={initialValues}
               validationSchema={ticketSchema}
@@ -87,7 +83,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                       <Field
                         name="category"
                         as="select"
-                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 outline-none focus:border-accent focus:ring-accent"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-2 focus:border-accent focus:outline-none"
                       >
                         <option value="">Choose category</option>
                         <option value="North">North Stand</option>
@@ -112,7 +108,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                       <Field
                         name="price"
                         type="number"
-                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
                       />
                       <ErrorMessage
                         name="price"
@@ -131,7 +127,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                       <Field
                         name="quantity"
                         type="number"
-                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] outline-none focus:border-accent focus:ring-accent"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
                       />
                       <ErrorMessage
                         name="quantity"
@@ -152,6 +148,63 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         name="description"
                         component="span"
                         className="text-sm text-red-500"
+                      />
+                    </div>
+
+                    <div className="flex w-full flex-col items-start justify-center">
+                      <label
+                        htmlFor="discountPercentage"
+                        className="mb-2 block font-medium text-gray-900 lg:text-lg"
+                      >
+                        Discount Percentage
+                      </label>
+                      <Field
+                        name="discountPercentage"
+                        type="number"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
+                      />
+                      <ErrorMessage
+                        name="discountPercentage"
+                        component="span"
+                        className="text-red-500"
+                      />
+                    </div>
+
+                    <div className="flex w-full flex-col items-start justify-center">
+                      <label
+                        htmlFor="discountStartDate"
+                        className="mb-2 block font-medium text-gray-900 lg:text-lg"
+                      >
+                        Discount Start Date
+                      </label>
+                      <Field
+                        name="discountStartDate"
+                        type="date"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
+                      />
+                      <ErrorMessage
+                        name="discountStartDate"
+                        component="span"
+                        className="text-red-500"
+                      />
+                    </div>
+
+                    <div className="flex w-full flex-col items-start justify-center">
+                      <label
+                        htmlFor="discountEndDate"
+                        className="mb-2 block font-medium text-gray-900 lg:text-lg"
+                      >
+                        Discount End Date
+                      </label>
+                      <Field
+                        name="discountEndDate"
+                        type="date"
+                        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-[gray-900] focus:border-2 focus:border-accent focus:outline-none"
+                      />
+                      <ErrorMessage
+                        name="discountEndDate"
+                        component="span"
+                        className="text-red-500"
                       />
                     </div>
 

@@ -1,24 +1,28 @@
 "use client";
 
 import { useSession } from "@/context/useSession";
-import { deleteCookie } from "@/libs/action";
 import { useRouter } from "next/navigation";
-import AvatarMenu from "./profileMenu";
+import ProfileMenu from "./profileMenu";
+import { deleteToken } from "@/libs/action";
 
 export const Profle = () => {
   const router = useRouter();
-  const { customer, isAuth, setIsAuth } = useSession();
-  const onLogout = () => {
-    deleteCookie("token");
+  const { isAuth, customer, organizer, setIsAuth } = useSession();
+  const onSignOut = () => {
+    deleteToken("token");
     setIsAuth(false);
-    router.push("/choice/sign-in");
+    router.push("/");
     router.refresh();
   };
 
   return (
     <>
       {isAuth ? (
-        <AvatarMenu user={customer} onLogout={onLogout} />
+        <ProfileMenu
+          customer={customer}
+          organizer={organizer}
+          onSignOut={onSignOut}
+        />
       ) : (
         <div className="flex gap-5">
           <button

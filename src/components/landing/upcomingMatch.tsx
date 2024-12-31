@@ -4,14 +4,12 @@ import Link from "next/link";
 import { IEvent } from "@/types/event";
 
 export default function UpcomingMatch({ events }: { events: IEvent[] }) {
-  // Duplicate events for infinite loop
   const slidingEvents = [...events, ...events];
 
   return (
     <div className="mt-10 hidden w-full flex-col lg:flex">
       <div className="text-xl font-bold">Upcoming Match</div>
       <div className="group relative mt-5 overflow-hidden">
-        {/* Flex container with animation */}
         <div
           className="animate-slide flex gap-5 whitespace-nowrap"
           style={{ animation: `slide 20s linear infinite` }}

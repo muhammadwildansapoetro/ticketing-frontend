@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";
 import Search from "./search";
 import { Profle } from "./profile";
+import { useSession } from "@/context/useSession";
 
 export default function NavBar() {
+  const { isAuth, customer, organizer } = useSession();
   return (
     <header className="inset-x-0 top-0 z-50 bg-accent transition duration-500">
       <nav className="flex items-center justify-between px-3 py-1 lg:px-8">
@@ -14,18 +18,43 @@ export default function NavBar() {
         </div>
 
         <div className="hidden gap-5 lg:flex lg:items-center lg:justify-end">
-          <Link
-            href={"/create-event"}
-            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
-          >
-            Create Match
-          </Link>
-          <Link
-            href={"/event"}
-            className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
-          >
-            Explore Matches
-          </Link>
+          {!isAuth ? (
+            <>
+              <Link
+                href={"/create-event"}
+                className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+              >
+                Create Match
+              </Link>
+              <Link
+                href={"/event"}
+                className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+              >
+                Explore Matches
+              </Link>
+            </>
+          ) : (
+            <>
+              {customer && (
+                <Link
+                  href={"/event"}
+                  className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+                >
+                  Explore Matches
+                </Link>
+              )}
+              {organizer && (
+                <>
+                  <Link
+                    href={"/create-event"}
+                    className="p-1.5 font-medium tracking-wide text-white transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8"
+                  >
+                    Create Match
+                  </Link>
+                </>
+              )}
+            </>
+          )}
 
           <Profle />
         </div>

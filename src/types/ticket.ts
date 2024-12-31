@@ -7,6 +7,9 @@ export interface ITicket {
   quantity: number;
   description: string;
   event: IEvent;
+  discountPercentage?: number;
+  discountStartDate?: string;
+  discountEndDate?: string;
 }
 
 export interface ITicketInput {
@@ -14,4 +17,7 @@ export interface ITicketInput {
   price: string;
   quantity: string;
   description: string;
+  discountPercentage?: number;
+  discountStartDate?: Date | null;
+  discountEndDate?: Date | null;
 }
