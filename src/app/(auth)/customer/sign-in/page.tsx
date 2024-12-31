@@ -9,10 +9,10 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 const SignInSchema = Yup.object().shape({
-  data: Yup.string().required("username or email is required"),
+  data: Yup.string().required("Username or Email is required"),
   password: Yup.string()
-    .min(3, "password must be 3 characters at minimum")
-    .required("password is required"),
+    .min(3, "Password must be 3 characters at minimum")
+    .required("Password is required"),
 });
 
 interface SignInFormValues {
@@ -72,11 +72,11 @@ export default function CustomerSignInPage() {
           {(props) => {
             return (
               <Form className="flex min-w-[400px] flex-col gap-2">
-                <Input formik={props} name="data" label="Username or Email :" />
+                <Input formik={props} name="data" label="Username or Email" />
                 <Input
                   formik={props}
                   name="password"
-                  label="Password :"
+                  label="Password"
                   type="password"
                 />
                 <button

@@ -32,6 +32,7 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
   const checkSession = async () => {
     try {
       const token = localStorage.getItem("token");
+
       if (!token) {
         console.log("You must sign in first");
         return;
