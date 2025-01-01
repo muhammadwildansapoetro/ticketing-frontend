@@ -23,6 +23,7 @@ export default function MenuAfterSignIn({
               alt="customer avatar"
               width={50}
               height={50}
+              priority
               className="size-20 rounded-full border border-black"
             />
           )}
@@ -34,6 +35,7 @@ export default function MenuAfterSignIn({
               alt="organizer avatar"
               width={50}
               height={50}
+              priority
               className="size-20 rounded-full border border-black"
             />
           )}
@@ -60,7 +62,7 @@ export default function MenuAfterSignIn({
             <Link href={"/"} className="hover:text-accent">
               Profile
             </Link>
-            <Link href={"/"} className="hover:text-accent">
+            <Link href={"/my-ticket"} className="hover:text-accent">
               My Ticket
             </Link>
           </>

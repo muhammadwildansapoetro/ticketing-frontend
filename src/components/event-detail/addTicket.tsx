@@ -101,10 +101,12 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
     : ticket.price;
 
   return (
-    <div className="relative flex items-center rounded-lg border border-accent bg-accent/10 p-5">
-      <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white"></span>
-      <span className="absolute -bottom-[1.5px] right-28 z-10 h-5 w-10 rounded-tl-full rounded-tr-full border-l border-r border-t border-accent border-b-white bg-white"></span>
-      <span className="absolute right-[131px] h-full border-l-2 border-dotted border-accent"></span>
+    <div
+      className={`relative flex items-center rounded-lg border border-accent p-5 ${ticket.quantity > 0 ? "bg-accent/10" : "bg-gray-100"}`}
+    >
+      <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white lg:right-32"></span>
+      <span className="absolute -bottom-[1.5px] right-28 z-10 h-5 w-10 rounded-tl-full rounded-tr-full border-l border-r border-t border-accent border-b-white bg-white lg:right-32"></span>
+      <span className="absolute right-[131px] h-full border-l-2 border-dotted border-accent lg:right-[146px]"></span>
 
       <div className="mr-36 flex flex-col items-start justify-center">
         <h1 className="text-xl font-bold">{ticket.category} Stand</h1>
@@ -139,28 +141,28 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
         </p>
       </div>
 
-      <div className="absolute right-12 flex flex-col items-center justify-center gap-5">
-        {ticket.quantity > 0 ? (
-          <>
-            <button
-              onClick={handleAddTicket}
-              className="rounded-xl border-2 border-accent px-3 text-lg font-bold"
-            >
-              +
-            </button>
-            <div>{quantity}</div>
+      {ticket.quantity > 0 ? (
+        <div className="absolute right-12 flex flex-col items-center justify-center gap-5">
+          <button
+            onClick={handleAddTicket}
+            className="rounded-xl border-2 border-accent px-3 text-lg font-bold"
+          >
+            +
+          </button>
+          <div>{quantity}</div>
 
-            <button
-              onClick={handleRemoveTicket}
-              className="rounded-xl border-2 border-accent px-3 text-xl font-bold"
-            >
-              -
-            </button>
-          </>
-        ) : (
-          <span className="font-bold text-red-600">Sold Out</span>
-        )}
-      </div>
+          <button
+            onClick={handleRemoveTicket}
+            className="rounded-xl border-2 border-accent px-3 text-xl font-bold"
+          >
+            -
+          </button>
+        </div>
+      ) : (
+        <div className="absolute right-8 flex flex-col items-center justify-center gap-5">
+          <div className="font-bold text-red-600">Sold Out</div>
+        </div>
+      )}
 
       {errorMessage && (
         <p className="absolute bottom-[-20px] left-0 text-sm text-red-600">

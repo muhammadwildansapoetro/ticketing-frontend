@@ -61,8 +61,8 @@ export const ImageForm = <T extends object>({
             width={150}
             height={150}
             layout="responsive"
-            objectFit="cover"
-            className="rounded-lg"
+            priority
+            className="rounded-lg object-cover"
           />
         </div>
       )}

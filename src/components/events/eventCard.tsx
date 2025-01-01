@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IEvent } from "@/types/event";
 import { CurrencyFormatter } from "@/helpers/currencyFormatter";
+import DateFormatter from "@/helpers/dateFormatter";
 
 export default function EventCard({ events }: { events: IEvent[] }) {
   return (
@@ -19,7 +20,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                 className="group relative rounded-xl bg-white shadow-lg"
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-gray-200 group-hover:opacity-75">
-                  <div className="absolute left-0 m-3 rounded-xl bg-white px-2 text-sm tracking-wide text-accent lg:text-xs">
+                  <div className="absolute left-0 top-0 m-1 rounded-xl bg-white px-2 py-0.5 text-sm tracking-wide text-accent lg:text-xs">
                     {event.category} Match
                   </div>
                   <Image
@@ -27,6 +28,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                     alt={event.title}
                     width={1000}
                     height={1000}
+                    priority
                     className="object-cover"
                   />
                 </div>
@@ -40,7 +42,9 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                       </Link>
                     </h3>
 
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="text-gray-700">{DateFormatter(event.date)}</p>
+
+                    <p className="text-sm text-gray-500">
                       {event.venue}, {event.location}
                     </p>
 
@@ -57,6 +61,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                           alt={`${event.organizer.name}`}
                           width={50}
                           height={50}
+                          priority
                           className="h-10 w-10 rounded-full border border-gray-500 object-cover"
                         />
 

@@ -64,6 +64,7 @@ export default function CreateMatchPage() {
           alt="Football training facility"
           width={1000}
           height={1000}
+          priority
           className="object-cover"
         />
       </div>

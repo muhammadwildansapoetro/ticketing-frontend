@@ -14,10 +14,11 @@ export default function SignInPage() {
       <div className="relative flex w-full items-center justify-center bg-gradient-to-br from-green-50 to-green-400 text-white shadow-lg lg:w-1/2">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="/stadium.jpg" // Replace with a football-themed image
+            src="/stadium.jpg"
             alt="Football Stadium"
             layout="fill"
-            objectFit="cover"
+            className="object-cover"
+            priority
           />
         </div>
 

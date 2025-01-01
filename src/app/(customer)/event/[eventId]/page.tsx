@@ -50,6 +50,7 @@ export default async function EventDetailPage({
             alt={event.title}
             width={1000}
             height={1000}
+            priority
             className="w-full object-center lg:rounded-xl lg:shadow-xl"
           />
         </div>
@@ -66,7 +67,7 @@ export default async function EventDetailPage({
               <IoTime className="text-accent" />
               <p>
                 {TimeFormatter(event.startTime)} -{" "}
-                {TimeFormatter(event.endTime)}
+                {TimeFormatter(event.endTime)} WIB
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -82,6 +83,7 @@ export default async function EventDetailPage({
                 alt={`${event.organizer.name}`}
                 width={25}
                 height={25}
+                priority
                 className="h-12 w-12 rounded-full border border-gray-500 object-cover"
               />
               <div>

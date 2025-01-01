@@ -23,6 +23,7 @@ export default async function Home() {
             alt="Football stadium icon"
             width={750}
             height={750}
+            priority
             className="object-cover"
           />
         </div>

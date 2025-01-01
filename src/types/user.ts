@@ -26,4 +26,6 @@ export interface ICustomerProfile {
   username: string;
   email: string;
   avatar: string;
+  isVerified: boolean;
+  referralCode: string;
 }

@@ -156,7 +156,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         htmlFor="discountPercentage"
                         className="mb-2 block font-medium text-gray-900 lg:text-lg"
                       >
-                        Discount Percentage
+                        Discount Percentage (Optional)
                       </label>
                       <Field
                         name="discountPercentage"
@@ -175,7 +175,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         htmlFor="discountStartDate"
                         className="mb-2 block font-medium text-gray-900 lg:text-lg"
                       >
-                        Discount Start Date
+                        Discount Start Date (Optional)
                       </label>
                       <Field
                         name="discountStartDate"
@@ -194,7 +194,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                         htmlFor="discountEndDate"
                         className="mb-2 block font-medium text-gray-900 lg:text-lg"
                       >
-                        Discount End Date
+                        Discount End Date (Optional)
                       </label>
                       <Field
                         name="discountEndDate"

@@ -10,8 +10,8 @@ export default function RoleSelectionPage() {
         src="/backgroundSUp.jpg"
         alt="Background"
         layout="fill"
-        objectFit="cover"
-        className="-z-10"
+        className="-z-10 object-cover"
+        priority
       />
 
       <div className="relative w-full max-w-md rounded-xl bg-white p-8 shadow-lg">

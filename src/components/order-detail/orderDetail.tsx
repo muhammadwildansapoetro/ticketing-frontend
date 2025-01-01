@@ -23,6 +23,7 @@ export default function OrderDetail({ order }: { order: IOrder }) {
               alt={`${order.OrderDetail[0].ticket.event.title}`}
               width={1600}
               height={900}
+              priority
               className="rounded-xl object-cover"
             />
           </div>

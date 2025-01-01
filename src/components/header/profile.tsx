@@ -29,7 +29,7 @@ export const Profle = () => {
             onClick={() => router.push("/register")}
             className="rounded-lg border border-white px-3 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-accent"
           >
-            Register{" "}
+            Register
           </button>
           <button
             onClick={() => router.push("/sign-in")}

@@ -50,8 +50,6 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
 
       if (!res.ok) throw result;
 
-      console.log("user role:", result.user.role);
-
       if (result.user.role === "customer") {
         setCustomer(result.user);
         setOrganizer(null);

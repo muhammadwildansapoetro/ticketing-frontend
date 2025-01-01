@@ -53,7 +53,8 @@ export default function ProfileMenu({
               className="rounded-full object-cover"
               src={customer?.avatar}
               alt={customer?.fullname}
-              fill
+              width={100}
+              height={100}
               priority
             />
           )}
@@ -62,7 +63,8 @@ export default function ProfileMenu({
               className="rounded-full object-cover"
               src={organizer?.avatar}
               alt={organizer?.name}
-              fill
+              width={100}
+              height={100}
               priority
             />
           )}
@@ -92,7 +94,7 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push("/profile")}
+                    onClick={() => router.push(`/profile/${customer.username}`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Profile
@@ -100,7 +102,7 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push("/my-tickets")}
+                    onClick={() => router.push("/my-ticket")}
                     className="text 0 block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     My Tickets

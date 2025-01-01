@@ -103,6 +103,7 @@ export default function Search() {
                       alt={`${event.title}`}
                       width={100}
                       height={100}
+                      priority
                     />
                     <div className="flex flex-col">
                       <p className="text-lg">{event.title}</p>

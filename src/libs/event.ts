@@ -18,6 +18,19 @@ export async function getEventDetail(eventId: string) {
     return data.event;
   } catch (error) {
     console.log("Error get event detail:", error);
-    throw error;
+  }
+}
+
+export async function getCustomerEvents(status: "upcoming" | "attended") {
+  try {
+    const token = localStorage.getItem("token");
+
+    const { data } = await axios.get(`/customers/events?status=${status}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return data.events;
+  } catch (error) {
+    console.log("Error get customer events:", error);
   }
 }
