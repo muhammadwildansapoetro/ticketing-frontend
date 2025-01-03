@@ -50,3 +50,10 @@ body {
 .description h1 {
   @apply mb-2 text-2xl;
 }
+
+@layer base {
+  :root {
+
+    --radius: 0.5rem
+  }
+}

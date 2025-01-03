@@ -74,7 +74,7 @@ export default function LoginPage() {
           {(props) => {
             return (
               <Form className="space-y-4">
-                <Input formik={props} name="data" label="Email" />
+                <Input formik={props} name="data" label="Email or Username" />
                 <Input
                   formik={props}
                   name="password"
@@ -101,7 +101,7 @@ export default function LoginPage() {
         </Formik>
         <div className="mt-4 text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}
-          <a href="/choice/register" className="text-accent hover:underline">
+          <a href="/organizer/register" className="text-accent hover:underline">
             Register
           </a>
         </div>

@@ -67,7 +67,7 @@ export default function MenuAfterSignIn({
         )}
         {organizer && (
           <>
-            <Link href={"/"} className="hover:text-accent">
+            <Link href={"/dashboard"} className="hover:text-accent">
               Dashboard
             </Link>
             <Link href={"/"} className="hover:text-accent">

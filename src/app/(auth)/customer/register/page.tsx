@@ -20,7 +20,13 @@ const RegisterSchemaCustomer = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords do not match!")
     .required("Confirm password is required"),
-  referralCode: Yup.string(),
+  referralCodeBy: Yup.string()
+    .uppercase()
+    .matches(/^[A-Z0-9]+$/, "The Code is must be numeric charater")
+    .min(6, "The Code is must 6 Character")
+    .max(6, "The Code is must 6 Character")
+    .nullable()
+    .default(null),
 });
 
 export default function RegisterCustomerPage() {
@@ -33,7 +39,7 @@ export default function RegisterCustomerPage() {
     email: "",
     password: "",
     confirmPassword: "",
-    referralCode: "",
+    referralCodeBy: "",
   };
 
   const handleAdd = async (customer: FormValuesCustomer) => {
@@ -116,7 +122,11 @@ export default function RegisterCustomerPage() {
                 label="Confirm Password"
                 type="password"
               />
-              <Input formik={props} name="referralCode" label="Referral Code" />
+              <Input
+                formik={props}
+                name="referralCodeBy"
+                label="Referral Code"
+              />
 
               {/* Buttons */}
               <div className="flex flex-col gap-4">
