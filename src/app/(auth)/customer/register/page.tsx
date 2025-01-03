@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesCustomer } from "@/types/user";
+import protectAfterAuth from "@/page-protection/protectAfterAuth";
 
 const RegisterSchemaCustomer = Yup.object().shape({
   fullname: Yup.string().required("Full name is required"),
@@ -23,7 +24,7 @@ const RegisterSchemaCustomer = Yup.object().shape({
   referralCode: Yup.string(),
 });
 
-export default function CustomerRegisterPage() {
+function CustomerRegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -142,3 +143,5 @@ export default function CustomerRegisterPage() {
     </div>
   );
 }
+
+export default protectAfterAuth(CustomerRegisterPage);

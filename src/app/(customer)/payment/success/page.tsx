@@ -1,9 +1,10 @@
 "use client";
 
 import { useSession } from "@/context/useSession";
+import protectCustomerPage from "@/page-protection/protectCustomerPage";
 import Link from "next/link";
 
-export default function PaymentSuccessPage() {
+function PaymentSuccessPage() {
   const { customer } = useSession();
   return (
     <div className="h-screen">
@@ -23,3 +24,5 @@ export default function PaymentSuccessPage() {
     </div>
   );
 }
+
+export default protectCustomerPage(PaymentSuccessPage);

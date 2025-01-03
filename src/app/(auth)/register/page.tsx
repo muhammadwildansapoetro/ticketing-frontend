@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import protectAfterAuth from "@/page-protection/protectAfterAuth";
 
-export default function RoleSelectionPage() {
+function RegisterPage() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-4">
       <Image
@@ -38,3 +39,5 @@ export default function RoleSelectionPage() {
     </div>
   );
 }
+
+export default protectAfterAuth(RegisterPage);

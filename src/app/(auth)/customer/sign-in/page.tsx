@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
+import protectAfterAuth from "@/page-protection/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,7 +21,7 @@ interface SignInFormValues {
   password: string;
 }
 
-export default function CustomerSignInPage() {
+function CustomerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
@@ -94,3 +95,5 @@ export default function CustomerSignInPage() {
     </div>
   );
 }
+
+export default protectAfterAuth(CustomerSignInPage);

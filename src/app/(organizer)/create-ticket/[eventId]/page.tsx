@@ -1,3 +1,5 @@
+"use client";
+
 import { ITicket } from "@/types/ticket";
 import CreateTicketForm from "@/components/create-ticket/ticketForm";
 import { getTickets } from "@/libs/ticket";
@@ -7,14 +9,43 @@ import { getEventDetail } from "@/libs/event";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
-export default async function CreateTicketPage({
+export default function CreateTicketPage({
   params,
 }: {
-  params: { eventId: string };
+  params: {
+    eventId: string;
+  };
 }) {
-  const tickets: ITicket[] = await getTickets(params.eventId);
-  const event: IEvent = await getEventDetail(params.eventId);
+  const [tickets, setTickets] = useState<ITicket[]>([]);
+  const [event, setEvent] = useState<IEvent | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedTickets: ITicket[] = await getTickets(params.eventId);
+        const fetchedEvent: IEvent = await getEventDetail(params.eventId);
+        setTickets(fetchedTickets);
+        setEvent(fetchedEvent);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params.eventId]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (!event) {
+    return <p>Error loading event details.</p>;
+  }
 
   return (
     <div className="container mx-auto flex items-start justify-center gap-10 p-5 lg:my-10 lg:px-10 lg:pb-96 xl:px-20 2xl:px-52">

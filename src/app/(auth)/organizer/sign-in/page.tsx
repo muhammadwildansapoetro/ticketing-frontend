@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
+import protectAfterAuth from "@/page-protection/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -20,7 +21,7 @@ interface FormValues {
   password: string;
 }
 
-export default function LoginPage() {
+function OrganizerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
@@ -109,3 +110,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default protectAfterAuth(OrganizerSignInPage);

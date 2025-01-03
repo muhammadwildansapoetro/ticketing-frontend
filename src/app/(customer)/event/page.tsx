@@ -6,11 +6,12 @@ import FilterMenu from "@/components/events/filterMenu";
 import Pagination from "@/components/events/pagination";
 import MobileNavBar from "@/components/footer/mobileNavBar";
 import axios from "@/helpers/axios";
+import protectCustomerPage from "@/page-protection/protectCustomerPage";
 import { IEvent } from "@/types/event";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
-export default function EventsPage() {
+function EventsPage() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -124,3 +125,5 @@ export default function EventsPage() {
     </div>
   );
 }
+
+export default protectCustomerPage(EventsPage);

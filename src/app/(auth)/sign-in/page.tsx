@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import { FaUserTie } from "react-icons/fa";
 import { VscOrganization } from "react-icons/vsc";
 import Image from "next/image";
+import protectAfterAuth from "@/page-protection/protectAfterAuth";
 
-export default function SignInPage() {
+function SignInPage() {
   const router = useRouter();
 
   return (
@@ -65,3 +66,5 @@ export default function SignInPage() {
     </div>
   );
 }
+
+export default protectAfterAuth(SignInPage);

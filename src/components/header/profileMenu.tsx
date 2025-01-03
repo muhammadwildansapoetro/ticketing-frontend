@@ -116,7 +116,7 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push("/")}
+                    onClick={() => router.push("/dashboard")}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Dashboard

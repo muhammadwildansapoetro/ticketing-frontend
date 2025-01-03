@@ -11,6 +11,7 @@ import EventForm from "@/components/create-event/eventForm";
 import { eventSchema } from "@/schemas/eventSchema";
 import Image from "next/image";
 import axios from "@/helpers/axios";
+import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
 
 const initialValues: IEventInput = {
   image: null,
@@ -24,7 +25,7 @@ const initialValues: IEventInput = {
   description: "",
 };
 
-export default function CreateMatchPage() {
+function CreateMatchPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const onCreate = async (event: IEventInput) => {
@@ -134,3 +135,5 @@ export default function CreateMatchPage() {
     </div>
   );
 }
+
+export default protectOrganizerPage(CreateMatchPage);

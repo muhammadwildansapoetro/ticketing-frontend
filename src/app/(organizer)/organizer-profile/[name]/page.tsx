@@ -3,10 +3,11 @@
 import OrganizerMenuTabs from "@/components/profile/organizerMenuTabs";
 import OrganizerProfile from "@/components/profile/organizerProfile";
 import { getOrganizerEvents } from "@/libs/event";
+import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 
-export default function OrganizerProfilePage() {
+function OrganizerProfilePage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [endedEvents, setEndedEvents] = useState<IEvent[]>([]);
 
@@ -44,3 +45,5 @@ export default function OrganizerProfilePage() {
     </div>
   );
 }
+
+export default protectOrganizerPage(OrganizerProfilePage);
