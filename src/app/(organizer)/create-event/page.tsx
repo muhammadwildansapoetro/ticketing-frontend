@@ -11,7 +11,7 @@ import EventForm from "@/components/create-event/eventForm";
 import { eventSchema } from "@/schemas/eventSchema";
 import Image from "next/image";
 import axios from "@/helpers/axios";
-import organizerGuard from "@/hoc/organizerGuard";
+import organizerGuard from "@/Protection/organizerGuard";
 
 const initialValues: IEventInput = {
   image: null,
@@ -137,4 +137,4 @@ function CreateMatchPage() {
   );
 }
 
-export default organizerGuard(CreateMatchPage)
+export default organizerGuard(CreateMatchPage);

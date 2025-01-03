@@ -1,6 +1,6 @@
 "use client";
 import { DashboarChart } from "@/components/dashboard/grafikevent";
-import organizerGuard from "@/hoc/organizerGuard";
+import organizerGuard from "@/Protection/organizerGuard";
 
 function Dashboard() {
   return (

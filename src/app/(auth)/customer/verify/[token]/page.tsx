@@ -28,14 +28,14 @@ export default function VerifyPage({ params }: { params: { token: string } }) {
     onVerify();
   }, []);
 
-  return (
-    <div className="flex min-h-screen items-center justify-center">
-      <button
-        onClick={onVerify}
-        className="inline-flex items-center rounded-lg bg-orange-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-orange-800"
-      >
-        Verifikasi
-      </button>
-    </div>
-  );
+  // return (
+  //   <div className="flex min-h-screen items-center justify-center">
+  //     <button
+  //       onClick={onVerify}
+  //       className="inline-flex items-center rounded-lg bg-orange-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-orange-800"
+  //     >
+  //       Verifikasi
+  //     </button>
+  //   </div>
+  // );
 }

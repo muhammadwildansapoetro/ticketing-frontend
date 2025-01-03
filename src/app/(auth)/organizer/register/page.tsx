@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesOrganizer } from "@/types/user";
+import afterAuthGuard from "@/Protection/afterAuthGuard";
 
 // Validasi Schema
 const RegisterSchemaOrganizer = Yup.object().shape({
@@ -22,7 +23,7 @@ const RegisterSchemaOrganizer = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-export default function RegisterOrganizerPage() {
+function RegisterOrganizerPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -137,3 +138,4 @@ export default function RegisterOrganizerPage() {
     </div>
   );
 }
+export default afterAuthGuard(RegisterOrganizerPage);
