@@ -26,7 +26,6 @@ export async function getOrderToken(finalPrice: number, orderId: string) {
         headers: { Authorization: `Bearer ${storedToken}` },
       },
     );
-    console.log("Response from server:", data);
 
     return data.orderToken;
   } catch (error) {

@@ -10,7 +10,7 @@ interface MenuTabsProps {
   attendedEvents: IEvent[];
 }
 
-export default function MenuTabs({
+export default function CustomerMenuTabs({
   upcomingEvents,
   attendedEvents,
 }: MenuTabsProps) {
@@ -102,22 +102,22 @@ export default function MenuTabs({
                   <p className="font-bold">Share your experience!</p>
                   <Link
                     href={`/review/${event.id}`}
-                    className="rounded-lg bg-accent px-4 py-2 text-white"
+                    className="rounded-lg bg-accent px-4 py-2 text-white hover:bg-accent/90"
                   >
-                    Review and Rate
+                    Add review
                   </Link>
                 </div>
               </div>
             ))
           ) : (
             <div>
-              You haven&apos;t attended any matches yet. <br />
-              Start{" "}
+              The ticket&apos;s match you purchased has not ended or you have
+              not purchased a match ticket,
               <Link
                 href={"/event"}
                 className="font-medium text-accent hover:underline"
               >
-                exploring matches!
+                start explore matches!
               </Link>
             </div>
           ))}

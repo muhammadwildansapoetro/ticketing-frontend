@@ -19,7 +19,7 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
     const availableQuantity = ticket.quantity - currentTicketQuantity;
 
     if (availableQuantity <= 0) {
-      setErrorMessage("No tickets available for order");
+      setErrorMessage("No available tickets for order quantity");
       return;
     }
 
@@ -41,13 +41,14 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
         setOrderCart([{ ticket, quantity: 1 }]);
         return;
       }
-      const orderCartId = orderCart.findIndex(
+
+      const orderCartIndex = orderCart.findIndex(
         (item) => item.ticket.id === ticket.id,
       );
 
-      if (orderCartId > -1) {
+      if (orderCartIndex > -1) {
         const updatedOrderCart = orderCart.map((item, index) =>
-          index === orderCartId
+          index === orderCartIndex
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
@@ -56,7 +57,7 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
         setOrderCart([...orderCart, { ticket, quantity: 1 }]);
       }
     } else {
-      setErrorMessage("Maximum 5 tickets per customers");
+      setErrorMessage("Maximum 5 tickets per order");
     }
   };
 
@@ -67,19 +68,18 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
 
       if (!orderCart) return;
 
-      const orderCartId = orderCart.findIndex(
+      const orderCartIndex = orderCart.findIndex(
         (item) => item.ticket.id === ticket.id,
       );
 
-      if (orderCartId > -1) {
+      if (orderCartIndex > -1) {
         const updatedOrderCart = orderCart
           .map((item, index) =>
-            index === orderCartId
+            index === orderCartIndex
               ? { ...item, quantity: item.quantity - 1 }
               : item,
           )
           .filter((item) => item.quantity > 0);
-
         setOrderCart(updatedOrderCart);
       }
     }
@@ -124,7 +124,9 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
           </p>
         )}
         <p className="text-lg">
-          {hasDiscount && isDiscountActive ? (
+          {ticket.price === 0 ? (
+            <span className="font-bold text-accent">Free</span>
+          ) : hasDiscount && isDiscountActive ? (
             <>
               <span className="font-bold">
                 {CurrencyFormatter(Number(discountedPrice))}
@@ -150,7 +152,6 @@ export default function AddTicket({ ticket }: { ticket: ITicket }) {
             +
           </button>
           <div>{quantity}</div>
-
           <button
             onClick={handleRemoveTicket}
             className="rounded-xl border-2 border-accent px-3 text-xl font-bold"

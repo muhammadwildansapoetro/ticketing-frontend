@@ -4,6 +4,7 @@ export interface IFormReview {
 }
 
 export interface ICustomer {
+  id: number;
   fullname: string;
 }
 

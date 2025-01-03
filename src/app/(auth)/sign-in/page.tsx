@@ -16,7 +16,7 @@ export default function SignInPage() {
           <Image
             src="/stadium.jpg"
             alt="Football Stadium"
-            layout="fill"
+            fill
             className="object-cover"
             priority
           />

@@ -4,8 +4,8 @@ import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";
 import Search from "./search";
-import { Profle } from "./profile";
 import { useSession } from "@/context/useSession";
+import { Profile } from "./profile";
 
 export default function NavBar() {
   const { isAuth, customer, organizer } = useSession();
@@ -56,7 +56,7 @@ export default function NavBar() {
             </>
           )}
 
-          <Profle />
+          <Profile />
         </div>
 
         <div className="flex gap-2 lg:hidden">

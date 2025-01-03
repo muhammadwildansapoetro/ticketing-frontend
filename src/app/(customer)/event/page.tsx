@@ -104,7 +104,7 @@ export default function EventsPage() {
         ) : events.length === 0 ? (
           <div className="mx-auto my-40 flex items-center justify-center p-10 lg:my-0">
             <p className="text-lg font-medium">
-              No match found for the selected filters.
+              No match found for the selected filters or no upcoming matches.
             </p>
           </div>
         ) : (

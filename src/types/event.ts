@@ -1,4 +1,5 @@
 import { IOrganizer } from "./organizer";
+import { IReview } from "./review";
 import { ITicket } from "./ticket";
 
 export interface IEvent {
@@ -14,6 +15,7 @@ export interface IEvent {
   image: string;
   organizer: IOrganizer;
   Ticket: ITicket[];
+  Review: IReview[];
 }
 
 export interface IEventInput {

@@ -94,7 +94,9 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push(`/profile/${customer.username}`)}
+                    onClick={() =>
+                      router.push(`/customer-profile/${customer.username}`)
+                    }
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Profile
@@ -102,7 +104,7 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push("/my-ticket")}
+                    onClick={() => router.push("/")}
                     className="text 0 block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     My Tickets
@@ -114,7 +116,7 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push("/dashboard")}
+                    onClick={() => router.push("/")}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Dashboard
@@ -122,10 +124,12 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push("/my-event")}
+                    onClick={() =>
+                      router.push(`/organizer-profile/${organizer.name}`)
+                    }
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
-                    My Match
+                    Profile
                   </button>
                 </li>
               </>

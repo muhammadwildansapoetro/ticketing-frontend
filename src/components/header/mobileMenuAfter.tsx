@@ -59,21 +59,27 @@ export default function MenuAfterSignIn({
       <div className="flex flex-col gap-5">
         {customer && (
           <>
-            <Link href={"/"} className="hover:text-accent">
+            <Link
+              href={`/customer-profile/${customer.username}`}
+              className="hover:text-accent"
+            >
               Profile
             </Link>
-            <Link href={"/my-ticket"} className="hover:text-accent">
+            <Link href={"/"} className="hover:text-accent">
               My Ticket
             </Link>
           </>
         )}
         {organizer && (
           <>
-            <Link href={"/"} className="hover:text-accent">
-              Dashboard
+            <Link
+              href={`/organizer-profile/${organizer.name}`}
+              className="hover:text-accent"
+            >
+              Profile
             </Link>
             <Link href={"/"} className="hover:text-accent">
-              My Match
+              Dashboard
             </Link>
           </>
         )}

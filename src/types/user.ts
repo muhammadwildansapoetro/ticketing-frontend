@@ -22,6 +22,7 @@ export interface IOrganizerProfile {
 }
 
 export interface ICustomerProfile {
+  id: number;
   fullname: string;
   username: string;
   email: string;

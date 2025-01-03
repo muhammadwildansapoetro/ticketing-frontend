@@ -7,7 +7,6 @@ export async function getEvents(page: string = "1") {
     return data.events;
   } catch (error) {
     console.log("Error get events:", error);
-    throw error;
   }
 }
 
@@ -32,5 +31,19 @@ export async function getCustomerEvents(status: "upcoming" | "attended") {
     return data.events;
   } catch (error) {
     console.log("Error get customer events:", error);
+  }
+}
+
+export async function getOrganizerEvents(status: "upcoming" | "ended") {
+  try {
+    const token = localStorage.getItem("token");
+
+    const { data } = await axios.get(`/organizers/events?status=${status}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return data.events;
+  } catch (error) {
+    console.log("Error get organizer events:", error);
   }
 }

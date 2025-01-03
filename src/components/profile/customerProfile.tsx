@@ -5,7 +5,7 @@ import { useSession } from "@/context/useSession";
 import Image from "next/image";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 
-export default function Profile() {
+export default function CustomerProfile() {
   const { customer } = useSession();
 
   if (!customer) {
@@ -26,7 +26,7 @@ export default function Profile() {
           />
         </div>
 
-        <div className="text-2xl font-bold">{customer?.fullname}</div>
+        <div className="mt-2 text-2xl font-bold">{customer?.fullname}</div>
         <div className="text-xl text-gray-700">{customer?.username}</div>
       </div>
 

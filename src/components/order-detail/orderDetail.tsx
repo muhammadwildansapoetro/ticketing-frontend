@@ -51,8 +51,6 @@ export default function OrderDetail({ order }: { order: IOrder }) {
               </p>
             </div>
           </div>
-
-          <div></div>
         </div>
 
         <div className="lg:mt-5">

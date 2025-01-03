@@ -1,12 +1,12 @@
 "use client";
 
-import MenuTabs from "@/components/profile/menuTabs";
-import Profile from "@/components/profile/profile";
+import CustomerMenuTabs from "@/components/profile/customerMenuTabs";
+import CustomerProfile from "@/components/profile/customerProfile";
 import { getCustomerEvents } from "@/libs/event";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 
-export default function ProfilePage() {
+export default function CustomerProfilePage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [attendedEvents, setAttendedEvents] = useState<IEvent[]>([]);
 
@@ -31,10 +31,10 @@ export default function ProfilePage() {
       <div className="container mx-auto lg:px-20 xl:px-28">
         <div className="flex flex-col items-center justify-center gap-5 lg:flex-row lg:items-start">
           <div className="w-fit p-5 lg:mt-5 lg:rounded-lg lg:border lg:shadow-lg">
-            <Profile />
+            <CustomerProfile />
           </div>
           <div className="w-full p-5 lg:mt-5 lg:rounded-lg lg:border lg:shadow-lg">
-            <MenuTabs
+            <CustomerMenuTabs
               upcomingEvents={upcomingEvents}
               attendedEvents={attendedEvents}
             />

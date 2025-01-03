@@ -4,13 +4,7 @@ import { CurrencyFormatter } from "@/helpers/currencyFormatter";
 import { IOrder } from "@/types/order";
 import PayButton from "./payButton";
 
-export default function PaymentDetail({
-  order,
-  orderToken,
-}: {
-  order: IOrder;
-  orderToken: string;
-}) {
+export default function PaymentDetail({ order }: { order: IOrder }) {
   const isCanceled = order.status === "Canceled" || order.status === "Paid";
 
   return (
@@ -45,7 +39,10 @@ export default function PaymentDetail({
           <p className="text-xl">{CurrencyFormatter(order.finalPrice)}</p>
         </div>
         <div className="mt-5">
-          <PayButton orderToken={orderToken} disabled={isCanceled} />
+          <PayButton
+            disabled={isCanceled}
+            order={order}
+          />
         </div>
       </div>
     </div>

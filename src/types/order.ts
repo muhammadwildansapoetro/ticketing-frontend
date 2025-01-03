@@ -1,6 +1,7 @@
 import { ITicket } from "./ticket";
 
 export interface IOrder {
+  id: number;
   totalPrice: number;
   finalPrice: number;
   status: string;
