@@ -23,10 +23,7 @@ export default function PayButton({ order, disabled = false }: PayButtonProps) {
     }
 
     try {
-      const orderToken = await getOrderToken(
-        order.finalPrice,
-        String(order.id),
-      );
+      const orderToken = await getOrderToken(order.finalPrice, order.id);
       if (orderToken) {
         window.snap.pay(orderToken);
       } else {

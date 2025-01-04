@@ -47,7 +47,7 @@ export default function ProfileMenu({
         onClick={toggleDropdown}
         className="flex cursor-pointer items-center"
       >
-        <div className="relative h-10 w-10 rounded-full bg-white">
+        <div className="relative h-10 w-10 overflow-hidden rounded-full bg-white">
           {customer && (
             <Image
               className="rounded-full object-cover"
@@ -94,20 +94,10 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push(`/profile/${customer.username}`)}
+                    onClick={() => router.push(`/${customer.username}`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Profile
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() =>
-                      router.push(`/profile/${customer.username}/review`)
-                    }
-                    className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
-                  >
-                    Review Match
                   </button>
                 </li>
               </>
@@ -126,12 +116,10 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() =>
-                      router.push(`/dashboard/${organizer.username}/review`)
-                    }
+                    onClick={() => router.push(`/match/${organizer.username}`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
-                    My Match Review
+                    My Match
                   </button>
                 </li>
               </>

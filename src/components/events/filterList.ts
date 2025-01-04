@@ -6,4 +6,12 @@ export const matchCategories: string[] = [
   "Championship",
 ];
 
-export const matchLocations: string[] = ["All location", "Bandung", "Semarang"];
+export const matchLocations: string[] = [
+  "All location",
+  "Bandung",
+  "Kediri",
+  "Makassar",
+  "Semarang",
+  "Sleman",
+  "Surakarta",
+];

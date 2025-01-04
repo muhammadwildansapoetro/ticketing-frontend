@@ -98,15 +98,18 @@ export default function Search() {
                     onClick={() => setValue("")}
                     className="flex gap-3 py-3 tracking-wide hover:bg-accent/10"
                   >
-                    <Image
-                      src={`${event.image}`}
-                      alt={`${event.title}`}
-                      width={100}
-                      height={100}
-                      priority
-                    />
+                    <div className="flex aspect-video items-center justify-center overflow-hidden">
+                      <Image
+                        src={`${event.image}`}
+                        alt={`${event.title}`}
+                        width={100}
+                        height={100}
+                        priority
+                        className="object-cover"
+                      />
+                    </div>
                     <div className="flex flex-col">
-                      <p className="text-lg">{event.title}</p>
+                      <p>{event.title}</p>
                       <p className="text-gray-500">
                         {DateFormatter(event.date)}
                       </p>

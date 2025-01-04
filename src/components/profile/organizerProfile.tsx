@@ -15,7 +15,7 @@ export default function OrganizerProfile() {
   return (
     <div>
       <div className="flex flex-col items-center lg:items-start">
-        <div className="h-32 w-32 rounded-full border border-black bg-white lg:h-64 lg:w-64">
+        <div className="h-32 w-32 overflow-hidden rounded-full border border-black bg-white lg:h-64 lg:w-64">
           <Image
             src={organizer?.avatar}
             alt={organizer?.fullname}

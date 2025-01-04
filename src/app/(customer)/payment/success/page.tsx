@@ -14,12 +14,7 @@ function PaymentSuccessPage() {
           Thank you for your payment,{" "}
           <span className="font-bold">{customer?.fullname}</span>
         </h1>
-        <Link
-          href={"/"}
-          className="rounded-lg bg-accent px-4 py-2 text-white hover:bg-accent/90"
-        >
-          See My Ticket
-        </Link>
+        <Link href={`/${customer?.username}`}>See my ticket</Link>
       </div>
     </div>
   );

@@ -53,6 +53,7 @@ function CustomerRegisterPage() {
       const result = await res.json();
       if (!res.ok) throw result;
       toast.success(result.message || "Registration successful!");
+      router.push(`/customer/sign-in`);
     } catch (error) {
       console.error(error);
     } finally {

@@ -77,7 +77,8 @@ export default function OrderDetail({ order }: { order: IOrder }) {
               ))}
             </tbody>
           </table>
-          <div className="mt-5">
+          <div className="mt-5 text-lg">
+            <p>Order ID: {order.id}</p>
             <p>
               Order status:{" "}
               <span
@@ -89,9 +90,11 @@ export default function OrderDetail({ order }: { order: IOrder }) {
           </div>
         </div>
       </div>
-      <div className="mt-10 basis-2/3 rounded-xl border border-gray-300 p-5 shadow-lg">
-        <PaymentMethod />
-      </div>
+      {order.status !== "Paid" && (
+        <div className="mt-10 basis-2/3 rounded-xl border border-gray-300 p-5 shadow-lg">
+          <PaymentMethod />
+        </div>
+      )}
     </div>
   );
 }

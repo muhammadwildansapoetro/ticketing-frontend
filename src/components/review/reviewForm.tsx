@@ -26,7 +26,7 @@ export default function ReviewForm({ eventId }: { eventId: string }) {
       });
 
       toast.success(data.message);
-      router.push(`/review/${eventId}`);
+      router.refresh();
     } catch (error) {
       console.log("Error add review", error);
       toast.error("Error add review");

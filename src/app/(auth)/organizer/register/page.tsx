@@ -50,7 +50,8 @@ function RegisterOrganizerPage() {
       );
       const result = await res.json();
       if (!res.ok) throw result;
-      toast.success(result.message || "Registration successful!");
+      toast.success(result.message);
+      router.push(`/organizer/sign-in`);
     } catch (error) {
       console.error(error);
     } finally {

@@ -65,7 +65,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                           className="h-10 w-10 rounded-full border border-gray-500 object-cover"
                         />
 
-                        <p className="w-full text-gray-700">
+                        <p className="w-full text-sm text-gray-700">
                           {event.organizer.fullname}
                         </p>
                       </div>

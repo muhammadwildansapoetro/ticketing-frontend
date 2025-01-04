@@ -53,6 +53,7 @@ function OrganizerSignInPage() {
       toast.success(result.message);
     } catch (error) {
       console.log(error);
+      toast.error("Please verify your account first, check your email.");
     } finally {
       setIsLoading(false);
     }
@@ -62,7 +63,7 @@ function OrganizerSignInPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-md sm:p-8">
         <h1 className="mb-6 text-center text-2xl font-semibold text-gray-800">
-          Sign in to your account
+          Sign in as Organizer
         </h1>
         <Formik
           initialValues={initialValue}

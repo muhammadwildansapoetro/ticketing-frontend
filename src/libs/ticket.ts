@@ -10,3 +10,17 @@ export async function getTickets(eventId: string) {
     throw error;
   }
 }
+
+export async function getCustomerTickets(eventId: string) {
+  try {
+    const token = localStorage.getItem("token");
+
+    const { data } = await axios.get(`/customers/tickets/${eventId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return data.tickets;
+  } catch (error) {
+    console.log("Error get customer tickets:", error);
+  }
+}

@@ -53,6 +53,7 @@ function CustomerSignInPage() {
       toast.success(result.message);
     } catch (error) {
       console.log(error);
+      toast.error("Please verify your account first, check your email.");
     } finally {
       setIsLoading(false);
     }
@@ -61,7 +62,7 @@ function CustomerSignInPage() {
   return (
     <div className="mt-6 flex h-screen justify-center p-5">
       <div>
-        <h1 className="my-5 text-3xl font-bold">Sign in Form</h1>
+        <h1 className="my-5 text-3xl font-bold">Sign in as Customer</h1>
         <Formik
           initialValues={initialValue}
           validationSchema={SignInSchema}

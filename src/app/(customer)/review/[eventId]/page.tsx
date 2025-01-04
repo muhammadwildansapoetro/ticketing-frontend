@@ -82,7 +82,7 @@ export default async function EventReviewPage({
           <div className="mt-5 border border-t-accent/10" />
 
           <div>
-            {reviews.length &&
+            {reviews.length ? (
               reviews.map((review, index) => {
                 return (
                   <div key={index} className="border-b border-gray-300 py-5">
@@ -98,7 +98,10 @@ export default async function EventReviewPage({
                     </div>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <div>No reviews and ratings yet.</div>
+            )}
           </div>
         </div>
 

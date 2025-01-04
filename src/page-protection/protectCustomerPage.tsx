@@ -4,8 +4,16 @@ import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
-const protectCustomerPage = (WrappedComponent: React.ComponentType) => {
-  const CustomerGuard: React.FC = (props) => {
+interface PageProps {
+  params: {
+    eventId: string;
+  };
+}
+
+const protectCustomerPage = <P extends object>(
+  WrappedComponent: React.ComponentType<P & PageProps>,
+) => {
+  const CustomerGuard: React.FC<P> = (props) => {
     const router = useRouter();
     const [token, setToken] = useState<string | null>(null);
 
@@ -36,7 +44,7 @@ const protectCustomerPage = (WrappedComponent: React.ComponentType) => {
       return null;
     }
 
-    return <WrappedComponent {...props} />;
+    return <WrappedComponent {...(props as P & PageProps)} />;
   };
 
   return CustomerGuard;

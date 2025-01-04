@@ -1,3 +1,6 @@
+"use client";
+
+import { useSession } from "@/context/useSession";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { IEvent } from "@/types/event";
@@ -15,6 +18,7 @@ export default function CustomerMenuTabs({
   attendedEvents,
 }: MenuTabsProps) {
   const [activeTab, setActiveTab] = useState("upcoming");
+  const { customer } = useSession();
 
   return (
     <div>
@@ -62,6 +66,12 @@ export default function CustomerMenuTabs({
                   <div className="text-lg">
                     {event.venue}, {event.location}
                   </div>
+                  <Link
+                    href={`/${customer?.username}/ticket/${event.id}`}
+                    className="mt-2 w-fit rounded-lg bg-accent px-2 py-1 text-white"
+                  >
+                    My ticket
+                  </Link>
                 </div>
               </div>
             ))

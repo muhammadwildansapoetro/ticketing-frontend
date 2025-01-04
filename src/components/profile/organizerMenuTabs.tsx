@@ -63,6 +63,12 @@ export default function OrganizerMenuTabs({
                   <div className="text-lg">
                     {event.venue}, {event.location}
                   </div>
+                  <Link
+                    href={`/create-ticket/${event.id}`}
+                    className="w-fit rounded-lg bg-accent px-2 py-1 text-white"
+                  >
+                    Add ticket
+                  </Link>
                 </div>
               </div>
             ))

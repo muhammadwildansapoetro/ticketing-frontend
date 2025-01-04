@@ -19,7 +19,7 @@ export async function getOrderToken(finalPrice: number, orderId: string) {
     const { data } = await axios.post(
       "/orders/payment",
       {
-        order_id: +orderId,
+        order_id: orderId,
         gross_amount: +finalPrice,
       },
       {

@@ -26,7 +26,7 @@ export default async function OrderDetailPage({
         <div className="container mx-auto my-10 lg:px-40">
           <div className="mx-5 flex flex-col gap-10 lg:flex-row">
             <OrderDetail order={order} />
-            <PaymentDetail order={order} />
+            {order.status !== "Paid" && <PaymentDetail order={order} />}
           </div>
         </div>
       </div>
@@ -43,7 +43,6 @@ export default async function OrderDetailPage({
       <div className="container mx-auto my-10 lg:px-40">
         <div className="mx-5 flex flex-col gap-10 lg:flex-row">
           <OrderDetail order={order} />
-
           <PaymentDetail order={order} />
         </div>
       </div>
