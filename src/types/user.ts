@@ -21,6 +21,7 @@ export interface IOrganizerProfile {
   username: string;
   email: string;
   avatar: string;
+  isVerified: boolean;
 }
 
 export interface ICustomerProfile {

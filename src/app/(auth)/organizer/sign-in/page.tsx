@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 const SignInSchema = Yup.object().shape({
-  data: Yup.string().required("Name or email is required"),
+  data: Yup.string().required("Username or email is required"),
   password: Yup.string()
     .min(3, "Password must be 3 characters at minimum")
     .required("Password is required"),
@@ -75,7 +75,7 @@ function OrganizerSignInPage() {
           {(props) => {
             return (
               <Form className="space-y-4">
-                <Input formik={props} name="data" label="Name or Email" />
+                <Input formik={props} name="data" label="Username or Email" />
                 <Input
                   formik={props}
                   name="password"

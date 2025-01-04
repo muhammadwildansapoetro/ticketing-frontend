@@ -46,7 +46,6 @@ export default function CustomerProfile() {
           Referral Code:{" "}
           <span className="font-bold">{customer?.referralCode}</span>
         </div>
-        <div>Coupon discount:</div>
       </div>
     </div>
   );

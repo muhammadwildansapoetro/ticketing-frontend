@@ -7,7 +7,7 @@ import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 
-function OrganizerProfilePage() {
+function OrganizerReviewPage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [endedEvents, setEndedEvents] = useState<IEvent[]>([]);
 
@@ -46,4 +46,4 @@ function OrganizerProfilePage() {
   );
 }
 
-export default protectOrganizerPage(OrganizerProfilePage);
+export default protectOrganizerPage(OrganizerReviewPage);

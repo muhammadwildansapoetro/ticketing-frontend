@@ -88,15 +88,13 @@ export default function ProfileMenu({
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute right-10 z-10 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg">
+        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg">
           <ul className="py-1">
             {customer && (
               <>
                 <li>
                   <button
-                    onClick={() =>
-                      router.push(`/customer-profile/${customer.username}`)
-                    }
+                    onClick={() => router.push(`/profile/${customer.username}`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Profile
@@ -104,10 +102,12 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push("/")}
-                    className="text 0 block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
+                    onClick={() =>
+                      router.push(`/profile/${customer.username}/review`)
+                    }
+                    className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
-                    My Tickets
+                    Review Match
                   </button>
                 </li>
               </>
@@ -116,7 +116,9 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push("/dashboard")}
+                    onClick={() =>
+                      router.push(`/dashboard/${organizer.username}`)
+                    }
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Dashboard
@@ -125,11 +127,11 @@ export default function ProfileMenu({
                 <li>
                   <button
                     onClick={() =>
-                      router.push(`/organizer-profile/${organizer.username}`)
+                      router.push(`/dashboard/${organizer.username}/review`)
                     }
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
-                    Profile
+                    My Match Review
                   </button>
                 </li>
               </>

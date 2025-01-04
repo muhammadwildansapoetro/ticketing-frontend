@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "@/context/useSession";
 import axios from "@/helpers/axios";
 import { getOrderToken } from "@/libs/order";
 import { IOrder } from "@/types/order";
@@ -13,6 +14,7 @@ interface PayButtonProps {
 
 export default function PayButton({ order, disabled = false }: PayButtonProps) {
   const router = useRouter();
+  const { customer } = useSession();
 
   const handlePayTicket = async () => {
     if (disabled) {
@@ -43,7 +45,7 @@ export default function PayButton({ order, disabled = false }: PayButtonProps) {
 
     try {
       const { data } = await axios.post("/orders/midtrans-webhook", resBody);
-      router.push("/");
+      router.push(`/customer-profile/${customer?.username}`);
       toast.success(data.message);
     } catch (error) {
       console.log("Error handling free ticket:", error);

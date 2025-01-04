@@ -7,7 +7,7 @@ import protectCustomerPage from "@/page-protection/protectCustomerPage";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 
-function CustomerProfilePage() {
+function CustomerReviewPage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [attendedEvents, setAttendedEvents] = useState<IEvent[]>([]);
 
@@ -46,4 +46,4 @@ function CustomerProfilePage() {
   );
 }
 
-export default protectCustomerPage(CustomerProfilePage);
+export default protectCustomerPage(CustomerReviewPage);

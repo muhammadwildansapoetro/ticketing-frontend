@@ -112,12 +112,13 @@ export default function CustomerMenuTabs({
           ) : (
             <div>
               The ticket&apos;s match you purchased has not ended or you have
-              not purchased a match ticket,
+              not purchased a match ticket, start explore matches
               <Link
                 href={"/event"}
-                className="font-medium text-accent hover:underline"
+                className="text-lg font-bold text-accent hover:underline"
               >
-                start explore matches!
+                {" "}
+                here.
               </Link>
             </div>
           ))}

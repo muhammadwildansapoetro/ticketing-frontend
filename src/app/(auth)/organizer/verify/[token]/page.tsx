@@ -21,7 +21,6 @@ export default function VerifyPage({ params }: { params: { token: string } }) {
       router.push("/organizer/sign-in");
     } catch (error) {
       console.log(error);
-      router.push("/");
     }
   };
 
