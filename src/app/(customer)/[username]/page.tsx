@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/app/loading";
 import CustomerMenuTabs from "@/components/profile/customerMenuTabs";
 import CustomerProfile from "@/components/profile/customerProfile";
 import { getCustomerEvents } from "@/libs/event";
@@ -10,10 +11,12 @@ import { useEffect, useState } from "react";
 function CustomerProfilePage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [attendedEvents, setAttendedEvents] = useState<IEvent[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchCustomerEvents = async () => {
       try {
+        setIsLoading(true);
         const upcoming = await getCustomerEvents("upcoming");
         const attended = await getCustomerEvents("attended");
 
@@ -21,11 +24,17 @@ function CustomerProfilePage() {
         setAttendedEvents(attended);
       } catch (error) {
         console.log("Error get customer events:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchCustomerEvents();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="pb-96">
@@ -38,6 +47,7 @@ function CustomerProfilePage() {
             <CustomerMenuTabs
               upcomingEvents={upcomingEvents}
               attendedEvents={attendedEvents}
+              isLoading={isLoading}
             />
           </div>
         </div>
