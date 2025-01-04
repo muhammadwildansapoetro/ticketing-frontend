@@ -11,7 +11,7 @@ import EventForm from "@/components/create-event/eventForm";
 import { eventSchema } from "@/schemas/eventSchema";
 import Image from "next/image";
 import axios from "@/helpers/axios";
-import organizerGuard from "@/Protection/organizerGuard";
+import organizerGuard from "@/page-protection/organizerGuard";
 
 const initialValues: IEventInput = {
   image: null,

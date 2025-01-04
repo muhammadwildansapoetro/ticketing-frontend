@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
-import afterAuthGuard from "@/Protection/afterAuthGuard";
+import ProtectafterAuthGuard from "@/page-protection/ProtectafterAuthGuard";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -23,7 +23,7 @@ interface FormValues {
 
 function SignInOrganizerPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { setIsAuth, setCustomer } = useSession();
+  const { setIsAuth, setOrganizer } = useSession();
   const router = useRouter();
   const initialValue: FormValues = {
     data: "",
@@ -47,7 +47,7 @@ function SignInOrganizerPage() {
       if (!res.ok) throw result;
       localStorage.setItem("token", result.token);
       setIsAuth(true);
-      setCustomer(result.customer);
+      setOrganizer(result.Organizer);
       router.push("/");
       router.refresh();
       toast.success(result.message);
@@ -91,7 +91,7 @@ function SignInOrganizerPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => router.back()}
+                  onClick={() => router.push("/sign-in")}
                   className="w-full rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 >
                   Back to Previous Page
@@ -111,4 +111,4 @@ function SignInOrganizerPage() {
   );
 }
 
-export default afterAuthGuard(SignInOrganizerPage);
+export default ProtectafterAuthGuard(SignInOrganizerPage);

@@ -2,7 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
-import afterAuthGuard from "@/Protection/afterAuthGuard";
+import ProtectafterAuthGuard from "@/page-protection/ProtectafterAuthGuard";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -62,7 +62,7 @@ function SignInCustomerPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-md sm:p-8">
         <h1 className="mb-6 text-center text-2xl font-semibold text-gray-800">
-          Sign in to your account
+          Sign in as Customer
         </h1>
         <Formik
           initialValues={initialValue}
@@ -91,7 +91,7 @@ function SignInCustomerPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => router.back()}
+                  onClick={() => router.push("/sign-in")}
                   className="w-full rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 >
                   Back to Previous Page
@@ -111,4 +111,4 @@ function SignInCustomerPage() {
   );
 }
 
-export default afterAuthGuard(SignInCustomerPage);
+export default ProtectafterAuthGuard(SignInCustomerPage);

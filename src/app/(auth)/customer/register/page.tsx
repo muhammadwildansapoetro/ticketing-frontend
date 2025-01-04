@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesCustomer } from "@/types/user";
-import afterAuthGuard from "@/Protection/afterAuthGuard";
+import ProtectafterAuthGuard from "@/page-protection/ProtectafterAuthGuard";
 
 const RegisterSchemaCustomer = Yup.object().shape({
   fullname: Yup.string().required("Full name is required"),
@@ -23,7 +23,7 @@ const RegisterSchemaCustomer = Yup.object().shape({
     .required("Confirm password is required"),
   referralCodeBy: Yup.string()
     .uppercase()
-    .matches(/^[A-Z0-9]+$/, "The Code is must be numeric charater")
+    .matches(/^[A-Z0-9]+$/, "The Code is must be numeric character")
     .min(6, "The Code is must 6 Character")
     .max(6, "The Code is must 6 Character")
     .nullable()
@@ -140,7 +140,7 @@ function RegisterCustomerPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => router.back()}
+                  onClick={() => router.push("/register")}
                   className="w-full rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 >
                   Back to Previous Page
@@ -154,4 +154,4 @@ function RegisterCustomerPage() {
   );
 }
 
-export default afterAuthGuard(RegisterCustomerPage);
+export default ProtectafterAuthGuard(RegisterCustomerPage);

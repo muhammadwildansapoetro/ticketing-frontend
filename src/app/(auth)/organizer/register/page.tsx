@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesOrganizer } from "@/types/user";
-import afterAuthGuard from "@/Protection/afterAuthGuard";
+import ProtectafterAuthGuard from "@/page-protection/ProtectafterAuthGuard";
 
 // Validasi Schema
 const RegisterSchemaOrganizer = Yup.object().shape({
@@ -125,7 +125,7 @@ function RegisterOrganizerPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => router.back()}
+                  onClick={() => router.push('/register')}
                   className="w-full rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 >
                   Back to Previous Page
@@ -138,4 +138,4 @@ function RegisterOrganizerPage() {
     </div>
   );
 }
-export default afterAuthGuard(RegisterOrganizerPage);
+export default ProtectafterAuthGuard(RegisterOrganizerPage);

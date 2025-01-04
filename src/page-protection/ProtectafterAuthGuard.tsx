@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
-const afterAuthGuard = (WrappedComponent: React.ComponentType) => {
+const ProtectafterAuthGuard = (WrappedComponent: React.ComponentType) => {
   const AfterAuthGuard: React.FC = (props) => {
     const router = useRouter();
     const [token, setToken] = useState<string | null>(null);
@@ -27,4 +27,4 @@ const afterAuthGuard = (WrappedComponent: React.ComponentType) => {
 
   return AfterAuthGuard;
 };
-export default afterAuthGuard;
+export default ProtectafterAuthGuard;

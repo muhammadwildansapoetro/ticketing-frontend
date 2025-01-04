@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import ProfileMenu from "./profileMenu";
 import { deleteToken } from "@/libs/action";
 
-export const Profle = () => {
+export const Profile = () => {
   const router = useRouter();
   const { isAuth, customer, organizer, setIsAuth } = useSession();
   const onSignOut = () => {

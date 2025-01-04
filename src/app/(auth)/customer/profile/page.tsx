@@ -1,5 +1,5 @@
 "use client";
-import customerGuard from "@/Protection/customerGuard";
+import customerGuard from "@/page-protection/customerGuard";
 
 function profile() {
   return (
