@@ -9,9 +9,9 @@ import { useRouter } from "next/navigation";
 import { FormValuesOrganizer } from "@/types/user";
 import protectAfterAuth from "@/page-protection/protectAfterAuth";
 
-// Validasi Schema
 const RegisterSchemaOrganizer = Yup.object().shape({
-  name: Yup.string().required("Username is required"),
+  fullname: Yup.string().required("Fullname is required"),
+  username: Yup.string().required("Username is required"),
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
@@ -28,7 +28,8 @@ function RegisterOrganizerPage() {
   const router = useRouter();
 
   const initialValue: FormValuesOrganizer = {
-    name: "",
+    fullname: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -94,7 +95,8 @@ function RegisterOrganizerPage() {
         >
           {(props) => (
             <Form className="w-full max-w-md space-y-6 rounded-lg border bg-white p-8 shadow-lg">
-              <Input formik={props} name="name" label="Name" />
+              <Input formik={props} name="fullname" label="Full Name" />
+              <Input formik={props} name="username" label="Username" />
               <Input
                 formik={props}
                 name="email"

@@ -1,6 +1,6 @@
-import { IOrganizer } from "./organizer";
 import { IReview } from "./review";
 import { ITicket } from "./ticket";
+import { IOrganizerProfile } from "./user";
 
 export interface IEvent {
   id: string;
@@ -13,7 +13,7 @@ export interface IEvent {
   startTime: string;
   endTime: string;
   image: string;
-  organizer: IOrganizer;
+  organizer: IOrganizerProfile;
   Ticket: ITicket[];
   Review: IReview[];
 }

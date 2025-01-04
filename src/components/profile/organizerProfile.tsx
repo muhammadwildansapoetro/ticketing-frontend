@@ -17,14 +17,15 @@ export default function OrganizerProfile() {
         <div className="h-32 w-32 rounded-full border border-black bg-white lg:h-64 lg:w-64">
           <Image
             src={organizer?.avatar}
-            alt={organizer?.name}
+            alt={organizer?.fullname}
             height={500}
             width={500}
             priority
             className="rounded-full object-cover"
           />
         </div>
-        <div className="mt-2 text-2xl font-bold">{organizer?.name}</div>
+        <div className="mt-2 text-2xl font-bold">{organizer?.fullname}</div>
+        <div className="mt-2 text-2xl font-bold">{organizer?.username}</div>
         <div className="text-lg">{organizer?.email}</div>
       </div>
     </div>

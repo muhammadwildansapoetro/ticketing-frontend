@@ -9,28 +9,28 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-const LoginSchema = Yup.object().shape({
+const SignInSchema = Yup.object().shape({
   data: Yup.string().required("Name or email is required"),
   password: Yup.string()
     .min(3, "Password must be 3 characters at minimum")
     .required("Password is required"),
 });
 
-interface FormValues {
+interface SignInFormValues {
   data: string;
   password: string;
 }
 
 function OrganizerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { setIsAuth, setCustomer } = useSession();
+  const { setIsAuth, setOrganizer } = useSession();
   const router = useRouter();
-  const initialValue: FormValues = {
+  const initialValue: SignInFormValues = {
     data: "",
     password: "",
   };
 
-  const handleLogin = async (organizer: FormValues) => {
+  const handleSignIn = async (organizer: SignInFormValues) => {
     try {
       setIsLoading(true);
       const res = await fetch(
@@ -47,7 +47,7 @@ function OrganizerSignInPage() {
       if (!res.ok) throw result;
       localStorage.setItem("token", result.token);
       setIsAuth(true);
-      setCustomer(result.customer);
+      setOrganizer(result.organizer);
       router.push("/");
       router.refresh();
       toast.success(result.message);
@@ -66,9 +66,9 @@ function OrganizerSignInPage() {
         </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={LoginSchema}
+          validationSchema={SignInSchema}
           onSubmit={(values, action) => {
-            handleLogin(values);
+            handleSignIn(values);
             action.resetForm();
           }}
         >

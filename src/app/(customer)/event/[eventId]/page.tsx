@@ -80,7 +80,7 @@ export default async function EventDetailPage({
             <div className="mt-5 flex items-center justify-start gap-2 border-t-2 border-gray-300 pt-5">
               <Image
                 src={`${event.organizer.avatar}`}
-                alt={`${event.organizer.name}`}
+                alt={`${event.organizer.fullname}`}
                 width={25}
                 height={25}
                 priority
@@ -88,7 +88,7 @@ export default async function EventDetailPage({
               />
               <div>
                 <p>Hosted by</p>
-                <p className="text-lg font-bold">{event.organizer.name}</p>
+                <p className="text-lg font-bold">{event.organizer.fullname}</p>
               </div>
             </div>
           </div>

@@ -32,7 +32,6 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
   const checkSession = async () => {
     try {
       const token = localStorage.getItem("token");
-
       if (!token) {
         console.log("You must sign in first");
         return;
@@ -47,20 +46,20 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
         },
       );
       const result = await res.json();
-
       if (!res.ok) throw result;
+
+      console.log(result);
 
       if (result.user.role === "customer") {
         setCustomer(result.user);
-        setOrganizer(null);
-      } else if (result.user.role === "organizer") {
+      } else {
         setOrganizer(result.user);
-        setCustomer(null);
       }
 
       setIsAuth(true);
     } catch (error) {
       console.log("Session check error:", error);
+    } finally {
     }
   };
 

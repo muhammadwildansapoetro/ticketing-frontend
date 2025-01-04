@@ -9,14 +9,16 @@ export interface FormValuesCustomer {
 }
 
 export interface FormValuesOrganizer {
-  name: string;
+  fullname: string;
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export interface IOrganizerProfile {
-  name: string;
+  fullname: string;
+  username: string;
   email: string;
   avatar: string;
 }
@@ -29,4 +31,12 @@ export interface ICustomerProfile {
   avatar: string;
   isVerified: boolean;
   referralCode: string;
+  CustomerCoupon: ICustomerCoupon;
+}
+
+interface ICustomerCoupon {
+  percentage: number;
+  isRedeem: boolean;
+  expiredAt: string;
+  createdAt: string;
 }

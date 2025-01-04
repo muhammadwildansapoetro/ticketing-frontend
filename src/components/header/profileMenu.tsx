@@ -62,7 +62,7 @@ export default function ProfileMenu({
             <Image
               className="rounded-full object-cover"
               src={organizer?.avatar}
-              alt={organizer?.name}
+              alt={organizer?.fullname}
               width={100}
               height={100}
               priority
@@ -80,7 +80,7 @@ export default function ProfileMenu({
         {organizer && (
           <div className="ms-2 min-w-0 flex-1 max-sm:hidden">
             <p className="truncate text-sm font-medium text-white">
-              {organizer?.name}
+              {organizer?.username}
             </p>
             <p className="truncate text-sm text-gray-100">{organizer?.email}</p>
           </div>
@@ -125,7 +125,7 @@ export default function ProfileMenu({
                 <li>
                   <button
                     onClick={() =>
-                      router.push(`/organizer-profile/${organizer.name}`)
+                      router.push(`/organizer-profile/${organizer.username}`)
                     }
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >

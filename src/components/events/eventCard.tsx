@@ -58,7 +58,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                       <div className="mt-3 flex items-center justify-start gap-2 border-t-2 border-gray-300 pt-3">
                         <Image
                           src={`${event.organizer.avatar}`}
-                          alt={`${event.organizer.name}`}
+                          alt={`${event.organizer.fullname}`}
                           width={50}
                           height={50}
                           priority
@@ -66,7 +66,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                         />
 
                         <p className="w-full text-gray-700">
-                          {event.organizer.name}
+                          {event.organizer.fullname}
                         </p>
                       </div>
                     </div>

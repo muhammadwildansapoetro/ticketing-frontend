@@ -12,6 +12,8 @@ export default function CustomerProfile() {
     return <Loading />;
   }
 
+  console.log("customer coupon", customer.CustomerCoupon);
+
   return (
     <div>
       <div className="flex flex-col items-center lg:items-start">
@@ -44,6 +46,7 @@ export default function CustomerProfile() {
           Referral Code:{" "}
           <span className="font-bold">{customer?.referralCode}</span>
         </div>
+        <div>Coupon discount:</div>
       </div>
     </div>
   );

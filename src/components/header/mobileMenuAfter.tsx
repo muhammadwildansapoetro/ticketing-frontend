@@ -48,7 +48,7 @@ export default function MenuAfterSignIn({
         )}
         {organizer && (
           <>
-            <div className="mt-2 text-xl">{organizer.name}</div>
+            <div className="mt-2 text-xl">{organizer.username}</div>
             <div className="mt-1">{organizer.email}</div>
           </>
         )}
@@ -76,7 +76,7 @@ export default function MenuAfterSignIn({
               Dashboard
             </Link>
             <Link
-              href={`/organizer-profile/${organizer.name}`}
+              href={`/organizer-profile/${organizer.username}`}
               className="hover:text-accent"
             >
               Profile
