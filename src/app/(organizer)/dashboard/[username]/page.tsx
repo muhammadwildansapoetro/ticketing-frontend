@@ -1,67 +1,96 @@
 "use client";
 
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
-// import MyTicket from "@/app/(customer)/profile/[username]/my-ticket/page";
 import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
+import { useRouter } from "next/navigation";
+import OrganizerMenuTabs from "@/components/profile/organizerMenuTabs";
+import { IEvent } from "@/types/event";
+import { getOrganizerEvents } from "@/libs/event";
 import Chartdata from "./chart/page";
-import OrganizerReviewPage from "./review/page";
-
-// import MyTicket from "./my-ticket";
-// import MyProfile from "./MyProfile";
-// import ReferralCode from "./ReferralCode";
-// import Payment from "./Payment";
 
 function Dashboard() {
-  const [currentPage, setCurrentPage] = useState("MyTicket");
+  const [currentPage, setCurrentPage] = useState("MyEvent");
+  const router = useRouter();
+  const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
+  const [endedEvents, setEndedEvents] = useState<IEvent[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchOrganizerEvents = async () => {
+      try {
+        setIsLoading(true);
+        const upcomingEvents = await getOrganizerEvents("upcoming");
+        const endedEvents = await getOrganizerEvents("ended");
+
+        setUpcomingEvents(upcomingEvents);
+        setEndedEvents(endedEvents);
+      } catch (error) {
+        console.log("Error get customer events:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchOrganizerEvents();
+  }, []);
 
   const renderContent = () => {
     switch (currentPage) {
       case "MyEvent":
-        return <OrganizerReviewPage />;
-      case "Chart Data":
+        return (
+          <OrganizerMenuTabs
+            upcomingEvents={upcomingEvents}
+            endedEvents={endedEvents}
+            isLoading={isLoading}
+          />
+        );
+      case "ChartData":
         return <Chartdata />;
       default:
-        return <Chartdata />;
+        return <div className="text-center text-gray-500">Page Not Found</div>;
     }
   };
 
   return (
     <div className="flex min-h-screen bg-gray-100">
       <Head>
-        <title>Responsive Sidebar</title>
+        <title>Organizer Dashboard</title>
       </Head>
 
       {/* Sidebar */}
-      <div className="w-64 bg-gradient-to-br from-accent to-green-200 p-6 text-white">
-        <h1 className="mb-6 text-2xl font-bold"></h1>
+      <aside className="w-64 bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg md:w-80">
+        <h1 className="mb-6 text-center text-2xl font-bold">
+          Organizer Dashboard
+        </h1>
         <nav>
           <ul className="space-y-4">
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
                   currentPage === "MyEvent"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
                 onClick={() => setCurrentPage("MyEvent")}
+                aria-current={currentPage === "MyEvent" ? "page" : undefined}
               >
-                <IoTicketOutline className="mr-2 text-lg" />
+                <IoTicketOutline className="mr-3 text-xl" />
                 My Event
               </button>
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
-                  currentPage === "Chart Data"
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
+                  currentPage === "ChartData"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("Chart Data")}
+                onClick={() => setCurrentPage("ChartData")}
               >
-                <MdOutlinePayments className="mr-2 text-lg" />
+                <MdOutlinePayments className="mr-3 text-xl" />
                 Chart Data
               </button>
             </li>
@@ -69,18 +98,18 @@ function Dashboard() {
         </nav>
         <div className="mt-6">
           <button
-            className="flex w-full items-center rounded p-2 text-left hover:bg-red-500"
+            className="flex w-full items-center justify-center rounded-lg bg-red-600 px-4 py-3 text-left text-white transition-all duration-300 hover:bg-red-500"
             type="button"
-            onClick={() => setCurrentPage("MyEvent")}
+            onClick={() => router.push("/")}
           >
-            <IoArrowBackCircleOutline className="mr-2 text-lg" />
+            <IoArrowBackCircleOutline className="mr-3 text-xl" />
             Back to Previous Page
           </button>
         </div>
-      </div>
+      </aside>
 
       {/* Main Content */}
-      <div className="flex-1 bg-white p-8">{renderContent()}</div>
+      <main className="flex-1 bg-white p-6 md:p-12">{renderContent()}</main>
     </div>
   );
 }

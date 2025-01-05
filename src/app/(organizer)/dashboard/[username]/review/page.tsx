@@ -9,10 +9,12 @@ import { useEffect, useState } from "react";
 function OrganizerReviewPage() {
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [endedEvents, setEndedEvents] = useState<IEvent[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchOrganizerEvents = async () => {
       try {
+        setIsLoading(true);
         const upcomingEvents = await getOrganizerEvents("upcoming");
         const endedEvents = await getOrganizerEvents("ended");
 
@@ -20,6 +22,8 @@ function OrganizerReviewPage() {
         setEndedEvents(endedEvents);
       } catch (error) {
         console.log("Error get customer events:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -37,7 +41,7 @@ function OrganizerReviewPage() {
             <OrganizerMenuTabs
               upcomingEvents={upcomingEvents}
               endedEvents={endedEvents}
-              isLoading
+              isLoading={isLoading}
             />
           </div>
         </div>

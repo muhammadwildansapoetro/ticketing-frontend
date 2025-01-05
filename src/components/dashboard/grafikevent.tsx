@@ -9,7 +9,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   ChartConfig,
@@ -61,9 +60,8 @@ export function EventChart() {
   return (
     <Card className="mx-auto w-full max-w-4xl rounded-lg bg-white p-4 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg font-bold">Grafik Total Event</CardTitle>
         <CardDescription className="text-sm text-gray-500">
-          January - April 2024
+          Per Month
         </CardDescription>
       </CardHeader>
       <CardContent className="relative">

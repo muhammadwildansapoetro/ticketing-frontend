@@ -21,7 +21,13 @@ const RegisterSchemaCustomer = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords do not match!")
     .required("Confirm password is required"),
-  referralCode: Yup.string(),
+  referralCodeBy: Yup.string()
+    .uppercase()
+    .matches(/^[A-Z0-9]+$/, "The Code is must be numeric character")
+    .min(6, "The Code is must 6 Character")
+    .max(6, "The Code is must 6 Character")
+    .nullable()
+    .default(null),
 });
 
 function CustomerRegisterPage() {
