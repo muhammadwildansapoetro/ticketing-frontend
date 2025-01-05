@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { IOrderDetail } from "./tabsAndOrder";
 import { IoTicket } from "react-icons/io5";
 import axios from "@/helpers/axios";
+import { useSession } from "@/context/useSession";
 
 interface IProps {
   totalPrice: number;
@@ -26,8 +27,10 @@ export default function AddOrder({
   params,
 }: IProps) {
   const router = useRouter();
+  const { isAuth } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [signInMessage, setSignInMessage] = useState<string | null>(null); // State for sign-in message
 
   const totalTickets = orderCart
     ? orderCart.reduce((acc, item) => acc + item.quantity, 0)
@@ -107,6 +110,14 @@ export default function AddOrder({
     }
   };
 
+  useEffect(() => {
+    if (!isAuth) {
+      setSignInMessage("You must sign in first to make an order.");
+    } else {
+      setSignInMessage(null);
+    }
+  }, [isAuth]);
+
   return (
     <div className="flex items-center justify-center gap-5 lg:w-full lg:flex-col">
       <div className="w-1/2 lg:w-full">
@@ -185,12 +196,18 @@ export default function AddOrder({
         )}
       </div>
 
+      {signInMessage && <p className="text-red-500">{signInMessage}</p>}
+
       <button
         onClick={handleAddOrder}
         disabled={
-          isLoading || totalTickets > 5 || !orderCart || orderCart.length === 0
+          isLoading ||
+          totalTickets > 5 ||
+          !orderCart ||
+          orderCart.length === 0 ||
+          !isAuth
         }
-        className={`${(isLoading || totalTickets > 5 || !orderCart || orderCart.length === 0) && `disabled:cursor-not-allowed disabled:bg-accent/80 disabled:bg-opacity-50`}w-1/2 rounded-lg bg-accent px-6 py-2 text-center tracking-widest text-white hover:bg-accent/90 lg:w-full`}
+        className={`${(isLoading || totalTickets > 5 || !orderCart || orderCart.length === 0 || !isAuth) && `disabled:cursor-not-allowed disabled:bg-accent/80 disabled:bg-opacity-50`}w-1/2 rounded-lg bg-accent px-6 py-2 text-center tracking-widest text-white hover:bg-accent/90 lg:w-full`}
       >
         {isLoading ? "Ordering ticket..." : "Order ticket"}
       </button>

@@ -4,7 +4,7 @@ import SocialMedia from "./socialMedia";
 
 export default function Footer() {
   return (
-    <footer className="mt-20 bg-accent p-5 pb-16 lg:mb-0">
+    <footer className="bg-accent p-5 pb-16 lg:mb-0">
       <div className="mx-auto w-full max-w-screen-xl">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">

@@ -29,6 +29,7 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
       setIsLoading(true);
       const { data } = await axios.post(`/tickets/${eventId}`, ticket);
       toast.success(data.message);
+      router.push(`/create-ticket/${eventId}`);
       router.refresh();
     } catch (error) {
       console.error("Error creating ticket:", error);

@@ -38,7 +38,7 @@ export default function FilterMenu({
       </div>
 
       {/* Desktop Filter Bar */}
-      <div className="hidden h-full w-72 border border-accent/20 lg:block">
+      <div className="hidden h-full w-72 border border-accent/20 pb-24 lg:block">
         <div className="mx-5 flex items-center justify-between border-b border-accent/20 py-5">
           <p className="text-xl font-medium">Filters</p>
           <button

@@ -6,12 +6,11 @@ import FilterMenu from "@/components/events/filterMenu";
 import Pagination from "@/components/events/pagination";
 import MobileNavBar from "@/components/footer/mobileNavBar";
 import axios from "@/helpers/axios";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
 import { IEvent } from "@/types/event";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
-function EventsPage() {
+export default function EventsPage() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -87,7 +86,7 @@ function EventsPage() {
   };
 
   return (
-    <div className="flex flex-col pb-24 lg:flex-row lg:pb-0">
+    <div className="flex flex-col pb-24 lg:flex-row">
       <FilterMenu
         selectedCategory={selectedCategory}
         selectedLocation={selectedLocation}
@@ -125,5 +124,3 @@ function EventsPage() {
     </div>
   );
 }
-
-export default protectCustomerPage(EventsPage);
