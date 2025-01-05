@@ -1,35 +1,63 @@
 "use client";
 
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
-import MyTicket from "./my-ticket/page";
 import ReferralCode from "./referralcode/page";
-import CustomerReviewPage from "./review/page";
-
-// import MyTicket from "./my-ticket";
-// import MyProfile from "./MyProfile";
-// import ReferralCode from "./ReferralCode";
-// import Payment from "./Payment";
+import { useRouter } from "next/navigation";
+import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import CustomerMenuTabs from "@/components/profile/customerMenuTabs";
+import { IEvent } from "@/types/event";
+import { getCustomerEvents } from "@/libs/event";
+import CustomerProfile from "@/components/profile/customerProfile";
 
 function SideBar() {
   const [currentPage, setCurrentPage] = useState("MyTicket");
+  const router = useRouter();
+  const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
+  const [attendedEvents, setAttendedEvents] = useState<IEvent[]>([]);
+
+  useEffect(() => {
+    const fetchCustomerEvents = async () => {
+      try {
+        const upcoming = await getCustomerEvents("upcoming");
+        const attended = await getCustomerEvents("attended");
+
+        setUpcomingEvents(upcoming);
+        setAttendedEvents(attended);
+      } catch (error) {
+        console.log("Error get customer events:", error);
+      }
+    };
+
+    fetchCustomerEvents();
+  }, []);
 
   const renderContent = () => {
     switch (currentPage) {
       case "MyTicket":
-        return <CustomerReviewPage />;
+        return (
+          <CustomerMenuTabs
+            upcomingEvents={upcomingEvents}
+            attendedEvents={attendedEvents}
+          />
+        );
       case "MyProfile":
-      // return <MyProfile />;
+        return <CustomerProfile/>;
       case "ReferralCode":
         return <ReferralCode />;
       case "Payment":
-      // return <Payment />;
+        return <div className="text-center text-gray-500">Payment Page</div>;
       default:
-        return <CustomerReviewPage />;
+        return (
+          <CustomerMenuTabs
+            upcomingEvents={upcomingEvents}
+            attendedEvents={attendedEvents}
+          />
+        );
     }
   };
 
@@ -40,59 +68,60 @@ function SideBar() {
       </Head>
 
       {/* Sidebar */}
-      <div className="w-64 bg-gradient-to-br from-accent to-green-200 p-6 text-white">
-        <h1 className="mb-6 text-2xl font-bold"></h1>
+      <aside className="w-64 bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg md:w-80">
+        <h1 className="mb-6 text-center text-2xl font-bold">Dashboard</h1>
         <nav>
           <ul className="space-y-4">
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
                   currentPage === "MyProfile"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
                 onClick={() => setCurrentPage("MyProfile")}
+                aria-current={currentPage === "MyProfile" ? "page" : undefined}
               >
-                <CgProfile className="mr-2 text-lg" />
+                <CgProfile className="mr-3 text-xl" />
                 My Profile
               </button>
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
                   currentPage === "ReferralCode"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
                 onClick={() => setCurrentPage("ReferralCode")}
               >
-                <RiCoupon4Line className="mr-2 text-lg" />
-                Referral Code
+                <RiCoupon4Line className="mr-3 text-xl" />
+                My Coupon
               </button>
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
                   currentPage === "MyTicket"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
                 onClick={() => setCurrentPage("MyTicket")}
               >
-                <IoTicketOutline className="mr-2 text-lg" />
+                <IoTicketOutline className="mr-3 text-xl" />
                 My Ticket
               </button>
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded p-2 text-left ${
+                className={`flex w-full items-center rounded-lg px-4 py-3 text-left transition-all duration-300 ${
                   currentPage === "Payment"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
                 onClick={() => setCurrentPage("Payment")}
               >
-                <MdOutlinePayments className="mr-2 text-lg" />
+                <MdOutlinePayments className="mr-3 text-xl" />
                 Payment
               </button>
             </li>
@@ -100,20 +129,20 @@ function SideBar() {
         </nav>
         <div className="mt-6">
           <button
-            className="flex w-full items-center rounded p-2 text-left hover:bg-red-500"
+            className="flex w-full items-center justify-center rounded-lg bg-red-600 px-4 py-3 text-left text-white transition-all duration-300 hover:bg-red-500"
             type="button"
-            onClick={() => setCurrentPage("MyTicket")}
+            onClick={() => router.push("/")}
           >
-            <IoArrowBackCircleOutline className="mr-2 text-lg" />
+            <IoArrowBackCircleOutline className="mr-3 text-xl" />
             Back to Previous Page
           </button>
         </div>
-      </div>
+      </aside>
 
       {/* Main Content */}
-      <div className="flex-1 bg-white p-8">{renderContent()}</div>
+      <main className="flex-1 bg-white p-6 md:p-12">{renderContent()}</main>
     </div>
   );
 }
 
-export default SideBar;
+export default protectCustomerPage(SideBar);

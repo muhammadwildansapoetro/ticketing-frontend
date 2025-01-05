@@ -1,3 +1,4 @@
+"use client"
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { IEvent } from "@/types/event";

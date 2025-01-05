@@ -38,7 +38,7 @@ function ReferralCode() {
   return (
     <div className="flex-1 bg-white p-8">
       <header className="mb-8 flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Referral Code</h2>
+        <h2 className="text-xl font-semibold">My Coupon</h2>
       </header>
       <div className="rounded-lg bg-gray-100 p-8 text-center">
         {customer?.isVerified ? (

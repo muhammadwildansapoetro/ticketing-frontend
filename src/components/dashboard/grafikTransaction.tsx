@@ -62,9 +62,8 @@ export function TransactionChart() {
   return (
     <Card className="mx-auto w-full max-w-4xl rounded-lg bg-white p-4 shadow-md">
       <CardHeader>
-        <CardTitle className="text-lg font-bold">Transaction Chart</CardTitle>
         <CardDescription className="text-sm text-gray-500">
-          Showing total transactions for the last 6 months
+          Per Day
         </CardDescription>
       </CardHeader>
       <CardContent className="relative">
@@ -119,11 +118,7 @@ export function TransactionChart() {
         )}
       </CardContent>
       <CardFooter className="mt-4 flex items-center justify-between text-sm">
-        <div className="text-gray-600">Showing data for the last 6 months</div>
-        <div className="flex items-center gap-2 font-medium text-green-600">
-          <TrendingUp className="h-4 w-4" />
-          Trending up by 5.2% this month
-        </div>
+        <div className="text-gray-600">Showing data for the day</div>
       </CardFooter>
     </Card>
   );

@@ -3,7 +3,6 @@
 import OrganizerMenuTabs from "@/components/profile/organizerMenuTabs";
 import OrganizerProfile from "@/components/profile/organizerProfile";
 import { getOrganizerEvents } from "@/libs/event";
-import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 

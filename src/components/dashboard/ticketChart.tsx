@@ -19,31 +19,28 @@ import {
 } from "@/components/ui/chart"
 import { useEffect, useState } from "react"
 // const chartData = [
-//   { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-//   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-//   { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-//   { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-//   { browser: "other", visitors: 90, fill: "var(--color-other)" },
+//   { month: "January", desktop: 186 },
+//   { month: "February", desktop: 305 },
+//   { month: "March", desktop: 237 },
+//   { month: "April", desktop: 73 },
+//   { month: "May", desktop: 209 },
+//   { month: "June", desktop: 214 },
 // ]
 
 const chartConfig = {
   totalTicket: {
     label: "Total Ticket",
-    color: "hsl(var(--chart-1))"
-  },
-  totalTicket2: {
-    label: "Chrome",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
 interface IYear {
-    year: string
-    totalTicket: number
+  year: string
+  totalTicket: number
 }
 
 export function TicketChart() {
-    const [chartData, setChartData] = useState<IYear[] | null>(null);
+  const [chartData, setChartData] = useState<IYear[] | null>(null);
   // console.log(chartData);
 
   const getChartData = async () => {
@@ -57,7 +54,7 @@ export function TicketChart() {
       },
     );
     const result = await res.json();
-    // console.log(result);
+    console.log(result);
     setChartData(result.result);
   };
 
@@ -67,8 +64,7 @@ export function TicketChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Ticket Chart</CardTitle>
-        <CardDescription>January - June</CardDescription>
+        <CardDescription>Per Years</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -77,34 +73,29 @@ export function TicketChart() {
             data={chartData!}
             layout="vertical"
             margin={{
-              left: 0,
+              left: -20,
             }}
           >
+            <XAxis type="number" dataKey="totalTicket" hide />
             <YAxis
               dataKey="year"
               type="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) =>
-                chartConfig[value as keyof typeof chartConfig]?.label
-              }
+              // tickFormatter={(value) => value.slice(0, 3)}
             />
-            <XAxis dataKey="totalTicket" type="number" hide />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent/>}
             />
-            <Bar dataKey="totalTicket" layout="vertical" radius={5} />
+            <Bar dataKey="totalTicket" fill="var(--color-totalTicket)" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Showing total visitors for the last year
         </div>
       </CardFooter>
     </Card>
