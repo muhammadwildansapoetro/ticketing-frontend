@@ -46,4 +46,4 @@ function OrganizerReviewPage() {
   );
 }
 
-export default protectOrganizerPage(OrganizerReviewPage);
+export default OrganizerReviewPage;

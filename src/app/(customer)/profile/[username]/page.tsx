@@ -8,6 +8,7 @@ import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
 import MyTicket from "./my-ticket/page";
 import ReferralCode from "./referralcode/page";
+import CustomerReviewPage from "./review/page";
 
 // import MyTicket from "./my-ticket";
 // import MyProfile from "./MyProfile";
@@ -20,7 +21,7 @@ function SideBar() {
   const renderContent = () => {
     switch (currentPage) {
       case "MyTicket":
-        return <MyTicket />;
+        return <CustomerReviewPage />;
       case "MyProfile":
       // return <MyProfile />;
       case "ReferralCode":
@@ -28,7 +29,7 @@ function SideBar() {
       case "Payment":
       // return <Payment />;
       default:
-        return <MyTicket />;
+        return <CustomerReviewPage />;
     }
   };
 

@@ -63,7 +63,7 @@ export function EventChart() {
       <CardHeader>
         <CardTitle className="text-lg font-bold">Grafik Total Event</CardTitle>
         <CardDescription className="text-sm text-gray-500">
-          January - April 2024
+          January - April
         </CardDescription>
       </CardHeader>
       <CardContent className="relative">

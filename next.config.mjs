@@ -11,7 +11,12 @@ const nextConfig = {
       {
         hostname: "res.cloudinary.com",
       },
-      { hostname: "w7.pngwing.com" },
+      { hostname: "w7.pngwing.com" 
+        
+      },
+      { hostname: "upload.wikimedia.org" 
+
+      },
     ],
   },
 };

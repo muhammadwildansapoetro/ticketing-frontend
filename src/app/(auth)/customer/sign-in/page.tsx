@@ -2,35 +2,35 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
-import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import ProtectafterAuthGuard from "@/page-protection/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-const SignInSchema = Yup.object().shape({
-  data: Yup.string().required("Username or Email is required"),
+const LoginSchema = Yup.object().shape({
+  data: Yup.string().required("username or email is required"),
   password: Yup.string()
-    .min(3, "Password must be 3 characters at minimum")
-    .required("Password is required"),
+    .min(3, "password must be 3 characters at minimum")
+    .required("password is required"),
 });
 
-interface SignInFormValues {
+interface FormValues {
   data: string;
   password: string;
 }
 
-function CustomerSignInPage() {
+function SignInCustomerPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
-  const initialValue: SignInFormValues = {
+  const initialValue: FormValues = {
     data: "",
     password: "",
   };
 
-  const handleSignIn = async (customer: SignInFormValues) => {
+  const handleLogin = async (customer: FormValues) => {
     try {
       setIsLoading(true);
       const res = await fetch(
@@ -59,21 +59,23 @@ function CustomerSignInPage() {
   };
 
   return (
-    <div className="mt-6 flex h-screen justify-center p-5">
-      <div>
-        <h1 className="my-5 text-3xl font-bold">Sign in Form</h1>
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-md sm:p-8">
+        <h1 className="mb-6 text-center text-2xl font-semibold text-gray-800">
+          Sign in as Customer
+        </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={SignInSchema}
+          validationSchema={LoginSchema}
           onSubmit={(values, action) => {
-            handleSignIn(values);
+            handleLogin(values);
             action.resetForm();
           }}
         >
           {(props) => {
             return (
-              <Form className="flex min-w-[400px] flex-col gap-2">
-                <Input formik={props} name="data" label="Username or Email" />
+              <Form className="space-y-4">
+                <Input formik={props} name="data" label="Email or Username" />
                 <Input
                   formik={props}
                   name="password"
@@ -83,17 +85,30 @@ function CustomerSignInPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-medium tracking-wide text-white hover:bg-accent focus:outline-none focus:ring-4 focus:ring-accent disabled:cursor-not-allowed disabled:bg-accent/90 sm:w-auto"
+                  className="w-full rounded-md bg-accent px-4 py-2 text-white hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-accent/90"
                 >
                   {isLoading ? "Loading..." : "Sign in"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => router.push("/sign-in")}
+                  className="w-full rounded-lg border border-gray-300 py-2 font-semibold text-gray-700 hover:bg-gray-100"
+                >
+                  Back to Previous Page
                 </button>
               </Form>
             );
           }}
         </Formik>
+        <div className="mt-4 text-center text-sm text-gray-600">
+          Don&apos;t have an account?{" "}
+          <a href="/customer/register" className="text-accent hover:underline">
+            Register
+          </a>
+        </div>
       </div>
     </div>
   );
 }
 
-export default protectAfterAuth(CustomerSignInPage);
+export default ProtectafterAuthGuard(SignInCustomerPage);

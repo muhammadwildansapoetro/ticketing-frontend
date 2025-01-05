@@ -46,4 +46,4 @@ function CustomerReviewPage() {
   );
 }
 
-export default protectCustomerPage(CustomerReviewPage);
+export default CustomerReviewPage;
