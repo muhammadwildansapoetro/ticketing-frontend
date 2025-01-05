@@ -6,13 +6,13 @@ import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
-import ReferralCode from "./referralcode/page";
 import { useRouter } from "next/navigation";
 import protectCustomerPage from "@/page-protection/protectCustomerPage";
 import CustomerMenuTabs from "@/components/profile/customerMenuTabs";
 import { IEvent } from "@/types/event";
 import { getCustomerEvents } from "@/libs/event";
 import CustomerProfile from "@/components/profile/customerProfile";
+import CustomerDetails from "./referralcode/page";
 
 function SideBar() {
   const [currentPage, setCurrentPage] = useState("MyTicket");
@@ -48,7 +48,7 @@ function SideBar() {
       case "MyProfile":
         return <CustomerProfile/>;
       case "ReferralCode":
-        return <ReferralCode />;
+        return <CustomerDetails/>;
       case "Payment":
         return <div className="text-center text-gray-500">Payment Page</div>;
       default:
