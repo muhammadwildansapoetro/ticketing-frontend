@@ -4,7 +4,7 @@ export interface FormValuesCustomer {
   email: string;
   password: string;
   confirmPassword: string;
-  referralCode?: string;
+  referralCodeBy?: string | null;
   avatar?: string;
 }
 

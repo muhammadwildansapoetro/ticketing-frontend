@@ -3,28 +3,27 @@
 import Head from "next/head";
 import { useState } from "react";
 import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
-// import MyTicket from "@/app/(customer)/profile/[username]/my-ticket/page";
-import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
-import Chartdata from "./chart/page";
-import OrganizerReviewPage from "./review/page";
+import CustomerReviewPage from "./review/page";
+import ReferralCode from "./referralcode/page";
 
-// import MyTicket from "./my-ticket";
-// import MyProfile from "./MyProfile";
-// import ReferralCode from "./ReferralCode";
-// import Payment from "./Payment";
-
-function Dashboard() {
+function SideBar() {
   const [currentPage, setCurrentPage] = useState("MyTicket");
 
   const renderContent = () => {
     switch (currentPage) {
-      case "MyEvent":
-        return <OrganizerReviewPage />;
-      case "Chart Data":
-        return <Chartdata />;
+      case "MyTicket":
+        return <CustomerReviewPage />;
+      case "MyProfile":
+      // return <MyProfile />;
+      case "ReferralCode":
+        return <ReferralCode />;
+      case "Payment":
+      // return <Payment />;
       default:
-        return <Chartdata />;
+        return <CustomerReviewPage />;
     }
   };
 
@@ -42,27 +41,53 @@ function Dashboard() {
             <li>
               <button
                 className={`flex w-full items-center rounded p-2 text-left ${
-                  currentPage === "MyEvent"
+                  currentPage === "MyProfile"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("MyEvent")}
+                onClick={() => setCurrentPage("MyProfile")}
               >
-                <IoTicketOutline className="mr-2 text-lg" />
-                My Event
+                <CgProfile className="mr-2 text-lg" />
+                My Profile
               </button>
             </li>
             <li>
               <button
                 className={`flex w-full items-center rounded p-2 text-left ${
-                  currentPage === "Chart Data"
+                  currentPage === "ReferralCode"
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("Chart Data")}
+                onClick={() => setCurrentPage("ReferralCode")}
+              >
+                <RiCoupon4Line className="mr-2 text-lg" />
+                Referral Code
+              </button>
+            </li>
+            <li>
+              <button
+                className={`flex w-full items-center rounded p-2 text-left ${
+                  currentPage === "MyTicket"
+                    ? "bg-accent/100"
+                    : "hover:bg-accent/50"
+                }`}
+                onClick={() => setCurrentPage("MyTicket")}
+              >
+                <IoTicketOutline className="mr-2 text-lg" />
+                My Ticket
+              </button>
+            </li>
+            <li>
+              <button
+                className={`flex w-full items-center rounded p-2 text-left ${
+                  currentPage === "Payment"
+                    ? "bg-accent/100"
+                    : "hover:bg-accent/50"
+                }`}
+                onClick={() => setCurrentPage("Payment")}
               >
                 <MdOutlinePayments className="mr-2 text-lg" />
-                Chart Data
+                Payment
               </button>
             </li>
           </ul>
@@ -71,7 +96,7 @@ function Dashboard() {
           <button
             className="flex w-full items-center rounded p-2 text-left hover:bg-red-500"
             type="button"
-            onClick={() => setCurrentPage("MyEvent")}
+            onClick={() => setCurrentPage("MyTicket")}
           >
             <IoArrowBackCircleOutline className="mr-2 text-lg" />
             Back to Previous Page
@@ -85,4 +110,4 @@ function Dashboard() {
   );
 }
 
-export default protectOrganizerPage(Dashboard);
+export default SideBar;

@@ -34,7 +34,7 @@ function CustomerRegisterPage() {
     email: "",
     password: "",
     confirmPassword: "",
-    referralCode: "",
+    referralCodeBy: "",
   };
 
   const handleAdd = async (customer: FormValuesCustomer) => {
@@ -118,7 +118,11 @@ function CustomerRegisterPage() {
                 label="Confirm Password"
                 type="password"
               />
-              <Input formik={props} name="referralCode" label="Referral Code" />
+              <Input
+                formik={props}
+                name="referralCodeBy"
+                label="Referral Code"
+              />
 
               {/* Buttons */}
               <div className="flex flex-col gap-4">

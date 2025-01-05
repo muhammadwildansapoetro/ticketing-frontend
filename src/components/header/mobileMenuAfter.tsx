@@ -59,8 +59,14 @@ export default function MenuAfterSignIn({
       <div className="flex flex-col gap-5">
         {customer && (
           <>
-            <Link href={`/${customer.username}`} className="hover:text-accent">
+            <Link
+              href={`/profile/${customer.username}`}
+              className="hover:text-accent"
+            >
               Profile
+            </Link>
+            <Link href={`/${customer.username}`} className="hover:text-accent">
+              My Ticket
             </Link>
           </>
         )}
@@ -73,10 +79,10 @@ export default function MenuAfterSignIn({
               Dashboard
             </Link>
             <Link
-              href={`/organizer-profule/${organizer.username}`}
+              href={`//${organizer.username}/match`}
               className="hover:text-accent"
             >
-              Profile
+              My Match
             </Link>
           </>
         )}
@@ -85,7 +91,7 @@ export default function MenuAfterSignIn({
           <button
             onClick={onSignOut}
             type="button"
-            className="w-full font-bold tracking-wide text-red-500"
+            className="font-bold tracking-wide text-red-500"
           >
             Sign out
           </button>

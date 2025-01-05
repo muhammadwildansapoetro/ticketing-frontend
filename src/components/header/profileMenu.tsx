@@ -94,10 +94,18 @@ export default function ProfileMenu({
               <>
                 <li>
                   <button
-                    onClick={() => router.push(`/${customer.username}`)}
+                    onClick={() => router.push(`/profile/${customer.username}`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     Profile
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => router.push(`/${customer.username}`)}
+                    className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
+                  >
+                    My Ticket
                   </button>
                 </li>
               </>
@@ -116,7 +124,7 @@ export default function ProfileMenu({
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push(`/match/${organizer.username}`)}
+                    onClick={() => router.push(`/${organizer.username}/match`)}
                     className="text block w-full px-4 py-2 text-sm hover:bg-accent hover:text-white"
                   >
                     My Match
