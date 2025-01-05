@@ -32,7 +32,7 @@ export interface ICustomerProfile {
   avatar: string;
   isVerified: boolean;
   referralCode: string;
-  CustomerCoupon: ICustomerCoupon;
+  CustomerCoupon: ICustomerCoupon[];
 }
 
 interface ICustomerCoupon {

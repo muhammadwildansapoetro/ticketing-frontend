@@ -2,14 +2,14 @@
 
 import { IEvent } from "@/types/event";
 import { ITicket } from "@/types/ticket";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import AddTicket from "./addTicket";
 import AddOrder from "./addOrder";
 import ShareButton from "./shareButton";
+import { getTickets } from "@/libs/ticket";
 
 interface IProps {
   event: IEvent;
-  ticket: ITicket[];
   params: string;
 }
 
@@ -33,7 +33,7 @@ export interface IOrderCart {
 
 export const OrderContext = createContext<IOrderCart | null>(null);
 
-export default function TabsAndOrder({ event, ticket, params }: IProps) {
+export default function TabsAndOrder({ event, params }: IProps) {
   const [activeTab, setActiveTab] = useState<"description" | "ticket">(
     "description",
   );
@@ -41,6 +41,18 @@ export default function TabsAndOrder({ event, ticket, params }: IProps) {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [finalPrice, setFinalPrice] = useState<number>(0);
   const [discountInfo, setDiscountInfo] = useState<IDiscountInfo | null>(null);
+  const [tickets, setTickets] = useState<ITicket[]>([]);
+
+  const fetchTickets = async () => {
+    const updatedTickets = await getTickets(params);
+    setTickets(updatedTickets);
+  };
+
+  useEffect(() => {
+    if (activeTab === "ticket") {
+      fetchTickets();
+    }
+  }, [activeTab, params]);
 
   return (
     <OrderContext.Provider
@@ -73,7 +85,7 @@ export default function TabsAndOrder({ event, ticket, params }: IProps) {
 
             {activeTab === "ticket" && (
               <div className="flex w-full flex-col gap-5">
-                {ticket.map((ticket, index) => (
+                {tickets.map((ticket, index) => (
                   <AddTicket ticket={ticket} key={index} />
                 ))}
               </div>

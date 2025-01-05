@@ -48,7 +48,7 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
       const result = await res.json();
       if (!res.ok) throw result;
 
-      console.log(result);
+      console.log("user session:", result);
 
       if (result.user.role === "customer") {
         setCustomer(result.user);

@@ -6,7 +6,6 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import RichTextEditor from "../create-event/richTextEditor";
-import { useRouter } from "next/navigation";
 import axios from "@/helpers/axios";
 import { ticketSchema } from "@/schemas/ticketSchema";
 
@@ -20,17 +19,21 @@ const initialValues: ITicketInput = {
   discountEndDate: null,
 };
 
-export default function CreateTicketForm({ eventId }: { eventId: string }) {
+export default function CreateTicketForm({
+  eventId,
+  onTicketCreated,
+}: {
+  eventId: string;
+  onTicketCreated: () => void;
+}) {
   const { isOpen, handleToggle } = useToggle();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const router = useRouter();
   const onCreate = async (ticket: ITicketInput) => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(`/tickets/${eventId}`, ticket);
       toast.success(data.message);
-      router.push(`/create-ticket/${eventId}`);
-      router.refresh();
+      onTicketCreated();
     } catch (error) {
       console.error("Error creating ticket:", error);
       toast.error("Failed to create ticket");
@@ -48,7 +51,6 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
         Add ticket
       </button>
 
-      {/* Create ticket form */}
       {isOpen && (
         <>
           <div
@@ -64,7 +66,6 @@ export default function CreateTicketForm({ eventId }: { eventId: string }) {
                 onCreate(values);
                 actions.resetForm();
                 handleToggle();
-                router.refresh();
               }}
             >
               {(props) => {

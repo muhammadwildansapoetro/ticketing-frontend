@@ -6,8 +6,6 @@ import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import { ITicket } from "@/types/ticket";
-import { getTickets } from "@/libs/ticket";
 import TabsAndOrder from "@/components/event-detail/tabsAndOrder";
 
 export const generateStaticParams = async () => {
@@ -39,7 +37,6 @@ export default async function EventDetailPage({
   params: { eventId: string };
 }) {
   const event: IEvent = await getEventDetail(params.eventId);
-  const tickets: ITicket[] = await getTickets(params.eventId);
 
   return (
     <div className="flex flex-col lg:mx-20 lg:my-10 xl:mx-56">
@@ -96,7 +93,7 @@ export default async function EventDetailPage({
       </div>
 
       <div className="mt-5 flex flex-col items-start justify-start gap-5 lg:flex-row">
-        <TabsAndOrder event={event} ticket={tickets} params={params.eventId} />
+        <TabsAndOrder event={event} params={params.eventId} />
       </div>
     </div>
   );

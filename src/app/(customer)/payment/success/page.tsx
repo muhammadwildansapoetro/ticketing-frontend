@@ -16,7 +16,7 @@ function PaymentSuccessPage() {
         </h1>
         <Link
           href={`/${customer?.username}`}
-          className="rounded-lg bg-accent px-4 py-2"
+          className="rounded-lg bg-accent px-4 py-2 text-white"
         >
           See my ticket
         </Link>

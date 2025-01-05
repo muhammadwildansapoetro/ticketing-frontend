@@ -9,11 +9,26 @@ import calculateReviews from "../review/calculateReview";
 interface OrganizerMenuTabsProps {
   upcomingEvents: IEvent[];
   endedEvents: IEvent[];
+  isLoading: boolean; // Add loading prop
 }
+
+const Skeleton = () => (
+  <div className="mb-5 flex animate-pulse flex-col gap-5 rounded-lg lg:flex-row">
+    <div className="aspect-video h-full w-full basis-1/3 overflow-hidden rounded-lg bg-gray-300"></div>
+    <div className="flex basis-2/3 flex-col gap-1">
+      <div className="h-6 w-3/4 rounded bg-gray-300"></div>
+      <div className="h-4 w-1/2 rounded bg-gray-300"></div>
+      <div className="h-4 w-1/3 rounded bg-gray-300"></div>
+      <div className="h-4 w-1/2 rounded bg-gray-300"></div>
+      <div className="h-8 w-1/4 rounded bg-accent"></div>
+    </div>
+  </div>
+);
 
 export default function OrganizerMenuTabs({
   upcomingEvents,
   endedEvents,
+  isLoading, // Use loading prop
 }: OrganizerMenuTabsProps) {
   const [activeTab, setActiveTab] = useState("upcoming");
 
@@ -37,7 +52,11 @@ export default function OrganizerMenuTabs({
 
       <div className="border-t border-accent/50 pt-5">
         {activeTab === "upcoming" &&
-          (upcomingEvents.length > 0 ? (
+          (isLoading ? (
+            Array.from({ length: 3 }).map((_, index) => (
+              <Skeleton key={index} />
+            )) // Show skeletons while loading
+          ) : upcomingEvents.length > 0 ? (
             upcomingEvents.map((event, index) => (
               <div
                 key={index}
@@ -77,7 +96,11 @@ export default function OrganizerMenuTabs({
           ))}
 
         {activeTab === "ended" &&
-          (endedEvents.length > 0 ? (
+          (isLoading ? (
+            Array.from({ length: 3 }).map((_, index) => (
+              <Skeleton key={index} />
+            )) // Show skeletons while loading
+          ) : endedEvents.length > 0 ? (
             endedEvents.map((event, index) => {
               const { averageRating, totalReviews } = calculateReviews(
                 event.Review,

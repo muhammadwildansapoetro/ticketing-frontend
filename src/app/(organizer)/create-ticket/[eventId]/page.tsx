@@ -23,12 +23,20 @@ export default function CreateTicketPage({
   const [event, setEvent] = useState<IEvent | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchTickets = async () => {
+    try {
+      const fetchedTickets: ITicket[] = await getTickets(params.eventId);
+      setTickets(fetchedTickets);
+    } catch (error) {
+      console.error("Error fetching tickets:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedTickets: ITicket[] = await getTickets(params.eventId);
+        await fetchTickets();
         const fetchedEvent: IEvent = await getEventDetail(params.eventId);
-        setTickets(fetchedTickets);
         setEvent(fetchedEvent);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -40,6 +48,10 @@ export default function CreateTicketPage({
     fetchData();
   }, [params.eventId]);
 
+  const handleTicketCreated = () => {
+    fetchTickets();
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -48,7 +60,7 @@ export default function CreateTicketPage({
   }
 
   return (
-    <div className="container mx-auto flex h-screen items-start justify-center gap-10 p-5 lg:my-10 lg:px-10 xl:px-20 2xl:px-52">
+    <div className="container mx-auto flex h-full items-start justify-center gap-10 p-5 lg:my-10 lg:px-10 xl:px-20 2xl:px-52">
       <div className="lg:basis-2/3">
         <div className="relative flex items-center justify-between rounded-lg border border-accent bg-accent/10 p-5">
           <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white lg:right-36"></span>
@@ -71,7 +83,10 @@ export default function CreateTicketPage({
             </p>
           </div>
 
-          <CreateTicketForm eventId={params.eventId} />
+          <CreateTicketForm
+            eventId={params.eventId}
+            onTicketCreated={handleTicketCreated}
+          />
         </div>
 
         <div className="my-5 border-t border-accent" />

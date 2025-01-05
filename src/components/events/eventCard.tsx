@@ -48,7 +48,9 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                       {event.venue}, {event.location}
                     </p>
 
-                    <p className="mb-1 mt-2 font-medium text-gray-800">
+                    <p
+                      className={`mb-1 mt-2 font-medium ${lowestPrice === 0 ? "text-xl text-accent" : "text-gray-800"}`}
+                    >
                       {lowestPrice === 0
                         ? "Free"
                         : `Starting from ${CurrencyFormatter(lowestPrice)}`}
