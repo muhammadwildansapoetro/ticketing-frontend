@@ -8,8 +8,9 @@ import { IOrderDetail } from "./tabsAndOrder";
 import { IoTicket } from "react-icons/io5";
 import axios from "@/helpers/axios";
 import { useSession } from "@/context/useSession";
+import { getCustomerCoupon, getCustomerPoints } from "@/libs/order";
 
-interface IProps {
+interface IAddOrderProps {
   totalPrice: number;
   finalPrice: number;
   setTotalPrice: (parameter: number) => void;
@@ -25,16 +26,38 @@ export default function AddOrder({
   setFinalPrice,
   orderCart,
   params,
-}: IProps) {
+}: IAddOrderProps) {
   const router = useRouter();
   const { isAuth } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [signInMessage, setSignInMessage] = useState<string | null>(null); // State for sign-in message
+  const [signInMessage, setSignInMessage] = useState<string | null>(null);
+  const [customerCoupon, setCustomerCoupon] = useState<number>(0);
+  const [customerPoints, setCustomerPoints] = useState<number>(0);
+  const [isCouponRedeemed, setIsCouponRedeemed] = useState<boolean>(false);
+  const [isPointsUsed, setIsPointsUsed] = useState<boolean>(false);
 
   const totalTickets = orderCart
     ? orderCart.reduce((acc, item) => acc + item.quantity, 0)
     : 0;
+
+  useEffect(() => {
+    if (!isAuth) {
+      setSignInMessage("You must sign in first to make an order.");
+    } else {
+      setSignInMessage(null);
+    }
+  }, [isAuth]);
+
+  useEffect(() => {
+    const getCouponPoints = async () => {
+      const coupon = await getCustomerCoupon();
+      const points = await getCustomerPoints();
+      setCustomerCoupon(coupon);
+      setCustomerPoints(points);
+    };
+    getCouponPoints();
+  }, []);
 
   useEffect(() => {
     if (totalTickets > 5) {
@@ -76,9 +99,39 @@ export default function AddOrder({
       }, 0);
 
       setTotalPrice(totalPrice);
-      setFinalPrice(finalPrice);
+
+      let adjustedFinalPrice = finalPrice;
+
+      if (isPointsUsed) {
+        adjustedFinalPrice -= customerPoints;
+      }
+
+      if (isCouponRedeemed) {
+        adjustedFinalPrice -= adjustedFinalPrice * (customerCoupon / 100);
+      }
+
+      setFinalPrice(Math.max(adjustedFinalPrice, 0));
     }
-  }, [orderCart, setTotalPrice, setFinalPrice]);
+  }, [
+    orderCart,
+    setTotalPrice,
+    setFinalPrice,
+    isPointsUsed,
+    isCouponRedeemed,
+    customerPoints,
+  ]);
+
+  const handleRedeemCoupon = () => {
+    setIsCouponRedeemed(true);
+  };
+
+  const handleUsePoints = () => {
+    setIsPointsUsed(true);
+  };
+
+  console.log("Total Price:", totalPrice);
+  console.log("Final Price:", finalPrice);
+  console.log("Order Cart:", orderCart);
 
   const handleAddOrder = async () => {
     try {
@@ -95,6 +148,8 @@ export default function AddOrder({
           totalPrice: totalPrice,
           finalPrice: finalPrice,
           orderCart,
+          customerCoupon: isCouponRedeemed,
+          customerPoints: isPointsUsed,
         },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
@@ -110,13 +165,11 @@ export default function AddOrder({
     }
   };
 
-  useEffect(() => {
-    if (!isAuth) {
-      setSignInMessage("You must sign in first to make an order.");
-    } else {
-      setSignInMessage(null);
-    }
-  }, [isAuth]);
+  console.log(
+    "isCouponRedeemed, customerCoupon",
+    isCouponRedeemed,
+    customerCoupon,
+  );
 
   return (
     <div className="flex items-center justify-center gap-5 lg:w-full lg:flex-col">
@@ -175,15 +228,56 @@ export default function AddOrder({
 
         {orderCart && orderCart?.length > 0 ? (
           <>
-            <div className="items-center justify-between lg:flex lg:pt-2">
-              <p>
-                Total {orderCart.reduce((acc, item) => acc + item.quantity, 0)}{" "}
+            {customerCoupon || customerPoints || totalPrice > 10000 ? (
+              <div className="mb-3 flex justify-between">
+                <button
+                  onClick={handleUsePoints}
+                  disabled={isPointsUsed || customerPoints <= 0}
+                  className={`rounded-lg bg-accent px-2 py-1 text-white disabled:cursor-not-allowed disabled:opacity-50 lg:px-4 lg:py-2`}
+                >
+                  Use Points
+                </button>
+                <button
+                  onClick={handleRedeemCoupon}
+                  disabled={customerCoupon === 0 || isCouponRedeemed}
+                  className={`rounded-lg bg-accent px-2 py-1 text-white disabled:cursor-not-allowed disabled:opacity-50 lg:px-4 lg:py-2`}
+                >
+                  Redeem Coupon
+                </button>
+              </div>
+            ) : null}
+
+            {isPointsUsed && (
+              <div className="flex justify-between text-sm font-medium text-accent lg:text-base">
+                <p>Points:</p>
+                <p>- {CurrencyFormatter(customerPoints)}</p>
+              </div>
+            )}
+
+            {isCouponRedeemed && (
+              <div className="flex justify-between text-sm font-medium text-accent lg:text-base">
+                <p>Coupon discount {customerCoupon}%</p>
+                <p>
+                  -{" "}
+                  {isPointsUsed
+                    ? CurrencyFormatter(
+                        (totalPrice - customerPoints) * (customerCoupon / 100),
+                      )
+                    : CurrencyFormatter(totalPrice * (customerCoupon / 100))}
+                </p>
+              </div>
+            )}
+
+            <div className="mt-3 flex items-center justify-between">
+              <p className="text-base font-bold lg:text-lg">
+                Total: {orderCart.reduce((acc, item) => acc + item.quantity, 0)}{" "}
                 ticket
               </p>
-              <p className="text-lg font-bold">
+              <p className="text-base font-bold lg:text-lg">
                 {CurrencyFormatter(finalPrice)}
               </p>
             </div>
+
             {errorMessage && (
               <p className="text-sm text-red-600">{errorMessage}</p>
             )}

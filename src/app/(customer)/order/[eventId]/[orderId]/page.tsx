@@ -52,12 +52,14 @@ function OrderDetailPage({ params }: { params: { orderId: number } }) {
     : `Please make payment before ${DateFormatter(order.expiredAt)} - ${TimeFormatter(order.expiredAt)} WIB`;
 
   return (
-    <div>
-      <div
-        className={`sticky inset-x-0 top-0 z-10 w-full p-2 text-center font-medium tracking-wide ${order.status === "Canceled" ? "bg-red-500 text-white" : "bg-yellow-300 text-black"}`}
-      >
-        {message}
-      </div>
+    <div className="pb-40">
+      {order.status !== "Paid" && (
+        <div
+          className={`sticky inset-x-0 top-0 z-10 w-full p-2 text-center font-medium tracking-wide ${order.status === "Canceled" ? "bg-red-500 text-white" : "bg-yellow-300 text-black"}`}
+        >
+          {message}
+        </div>
+      )}
       <div className="container mx-auto my-10 lg:px-40">
         <div className="mx-5 flex flex-col gap-10 lg:flex-row">
           <OrderDetail order={order} />

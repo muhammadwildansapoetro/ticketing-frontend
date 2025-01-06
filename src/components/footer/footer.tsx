@@ -139,7 +139,9 @@ export default function Footer() {
             <Link href="#" className="hover:underline">
               MatchTix™
             </Link>
-            . All Rights Reserved.
+            . All Rights Reserved. Developed by{" "}
+            <span className="font-bold">muhammadwildansapoetro</span> and{" "}
+            <span className="font-bold">mirzaaliyusuf</span>
           </span>
         </div>
       </div>

@@ -6,6 +6,8 @@ export interface IOrder {
   finalPrice: number;
   status: string;
   expiredAt: string;
+  customerPoints: number;
+  customerCoupon: boolean;
   OrderDetail: IOrderDetail[];
 }
 

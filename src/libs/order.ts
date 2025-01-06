@@ -32,3 +32,29 @@ export async function getOrderToken(finalPrice: number, orderId: string) {
     console.error("Error getting order token:", error);
   }
 }
+
+export async function getCustomerCoupon() {
+  try {
+    const storedToken = localStorage.getItem("token");
+    const { data } = await axios.get("/customers/coupon", {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    });
+
+    return data.coupon;
+  } catch (error) {
+    console.log("Error get customer coupon:", error);
+  }
+}
+
+export async function getCustomerPoints() {
+  try {
+    const storedToken = localStorage.getItem("token");
+    const { data } = await axios.get("/customers/points", {
+      headers: { Authorization: `Bearer ${storedToken}` },
+    });
+
+    return data.totalPoints || 0;
+  } catch (error) {
+    console.log("Error get customer points:", error);
+  }
+}

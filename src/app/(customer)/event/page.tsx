@@ -96,7 +96,7 @@ export default function EventsPage() {
       />
       <div className="lg:flex lg:flex-col">
         {isLoading ? (
-          <div className="grid w-full grid-cols-1 gap-x-5 gap-y-10 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
+          <div className="grid w-full grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
             {Array.from({ length: 12 }).map((_, index) => (
               <EventCardSkeleton key={index} />
             ))}

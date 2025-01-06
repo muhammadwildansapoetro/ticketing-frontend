@@ -7,6 +7,11 @@ import PayButton from "./payButton";
 export default function PaymentDetail({ order }: { order: IOrder }) {
   const isCanceled = order.status === "Canceled" || order.status === "Paid";
 
+  const pointsUsed = order.customerPoints ? order.customerPoints : 0;
+  const couponDiscount = order.customerCoupon ? order.totalPrice / 10 : 0; // Assuming 10% discount
+  const totalDiscount =
+    order.finalPrice - order.totalPrice + pointsUsed + couponDiscount;
+
   return (
     <div className="sticky top-10 h-fit basis-1/3 rounded-xl border border-gray-300 p-5 shadow-lg">
       <h1 className="text-xl font-bold text-accent lg:text-2xl">
@@ -18,17 +23,9 @@ export default function PaymentDetail({ order }: { order: IOrder }) {
           <p>Total Price</p>
           <p>{CurrencyFormatter(order.totalPrice)}</p>
         </div>
-        <div className="flex justify-between">
-          <p> Additional Fees</p>
-          <p>IDR 0</p>
-        </div>
-        <div className="flex justify-between">
-          <p>Platform Fees</p>
-          <p>IDR 0</p>
-        </div>
         <div className="flex justify-between font-bold text-accent">
-          <p>Discount</p>
-          <p>{CurrencyFormatter(order.finalPrice - order.totalPrice)}</p>
+          <p>Total Discount</p>
+          <p>{CurrencyFormatter(totalDiscount)}</p>
         </div>
         <div className="flex justify-between font-bold">
           <p>Final Price</p>
@@ -39,10 +36,7 @@ export default function PaymentDetail({ order }: { order: IOrder }) {
           <p className="text-xl">{CurrencyFormatter(order.finalPrice)}</p>
         </div>
         <div className="mt-5">
-          <PayButton
-            disabled={isCanceled}
-            order={order}
-          />
+          <PayButton disabled={isCanceled} order={order} />
         </div>
       </div>
     </div>

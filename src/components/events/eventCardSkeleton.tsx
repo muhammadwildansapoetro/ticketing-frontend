@@ -1,6 +1,6 @@
 export default function EventCardSkeleton() {
   return (
-    <div className="group relative w-full animate-pulse rounded-xl bg-white shadow-lg sm:w-72 lg:w-72 xl:w-80">
+    <div className="group relative w-full animate-pulse rounded-xl bg-white p-5 shadow-lg sm:w-36 lg:w-48 xl:w-80">
       <div className="relative aspect-video w-full overflow-hidden rounded-t-xl bg-gray-200">
         {/* Placeholder for image */}
         <div className="h-full w-full bg-gray-300"></div>
