@@ -42,7 +42,7 @@ function SignInPage() {
       <div className="flex w-full flex-col items-center justify-center bg-white px-8 py-12 lg:w-1/2 lg:px-24">
         <h2 className="mb-6 text-3xl font-bold text-gray-800">Sign In</h2>
         <p className="mb-8 text-center text-gray-600">
-          Please select your role and log in to continue.
+          Please select your role and sign in to continue.
         </p>
 
         {/* Buttons */}

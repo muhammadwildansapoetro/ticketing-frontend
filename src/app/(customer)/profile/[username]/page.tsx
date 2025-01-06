@@ -2,7 +2,12 @@
 
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
+import {
+  IoTicketOutline,
+  IoArrowBackCircleOutline,
+  IoMenu,
+  IoClose,
+} from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
@@ -16,6 +21,7 @@ import CustomerDetails from "./referralcode/page";
 
 function SideBar() {
   const [currentPage, setCurrentPage] = useState("MyTicket");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [attendedEvents, setAttendedEvents] = useState<IEvent[]>([]);
@@ -46,9 +52,9 @@ function SideBar() {
           />
         );
       case "MyProfile":
-        return <CustomerProfile/>;
+        return <CustomerProfile />;
       case "ReferralCode":
-        return <CustomerDetails/>;
+        return <CustomerDetails />;
       case "Payment":
         return <div className="text-center text-gray-500">Payment Page</div>;
       default:
@@ -68,7 +74,11 @@ function SideBar() {
       </Head>
 
       {/* Sidebar */}
-      <aside className="w-64 bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg md:w-80">
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 transform bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg transition-transform duration-300 md:relative md:translate-x-0 md:w-64 lg:w-80 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:flex md:flex-col`}
+      >
         <h1 className="mb-6 text-center text-2xl font-bold">Dashboard</h1>
         <nav>
           <ul className="space-y-4">
@@ -79,8 +89,10 @@ function SideBar() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("MyProfile")}
-                aria-current={currentPage === "MyProfile" ? "page" : undefined}
+                onClick={() => {
+                  setCurrentPage("MyProfile");
+                  setIsSidebarOpen(false);
+                }}
               >
                 <CgProfile className="mr-3 text-xl" />
                 My Profile
@@ -93,7 +105,10 @@ function SideBar() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("ReferralCode")}
+                onClick={() => {
+                  setCurrentPage("ReferralCode");
+                  setIsSidebarOpen(false);
+                }}
               >
                 <RiCoupon4Line className="mr-3 text-xl" />
                 My Coupon
@@ -106,7 +121,10 @@ function SideBar() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("MyTicket")}
+                onClick={() => {
+                  setCurrentPage("MyTicket");
+                  setIsSidebarOpen(false);
+                }}
               >
                 <IoTicketOutline className="mr-3 text-xl" />
                 My Ticket
@@ -119,7 +137,10 @@ function SideBar() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("Payment")}
+                onClick={() => {
+                  setCurrentPage("Payment");
+                  setIsSidebarOpen(false);
+                }}
               >
                 <MdOutlinePayments className="mr-3 text-xl" />
                 Payment
@@ -141,6 +162,14 @@ function SideBar() {
 
       {/* Main Content */}
       <main className="flex-1 bg-white p-6 md:p-12">{renderContent()}</main>
+
+      {/* Sidebar Toggle for Mobile */}
+      <button
+        className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full  bg-green-600 hover:bg-accent/85 text-white shadow-lg md:hidden"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? <IoClose className="text-2xl" /> : <IoMenu className="text-2xl" />}
+      </button>
     </div>
   );
 }

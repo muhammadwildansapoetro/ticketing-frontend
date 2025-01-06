@@ -2,7 +2,12 @@
 
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { IoTicketOutline, IoArrowBackCircleOutline } from "react-icons/io5";
+import {
+  IoTicketOutline,
+  IoArrowBackCircleOutline,
+  IoMenu,
+  IoClose,
+} from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
 import Chartdata from "./Chart/page";
 import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
@@ -14,6 +19,7 @@ import { getOrganizerEvents } from "@/libs/event";
 
 function Dashboard() {
   const [currentPage, setCurrentPage] = useState("MyEvent");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
   const [upcomingEvents, setUpcomingEvents] = useState<IEvent[]>([]);
   const [endedEvents, setEndedEvents] = useState<IEvent[]>([]);
@@ -57,7 +63,11 @@ function Dashboard() {
       </Head>
 
       {/* Sidebar */}
-      <aside className="w-64 bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg md:w-80">
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 transform bg-gradient-to-br from-accent to-green-400 p-6 text-white shadow-lg transition-transform duration-300 md:relative md:translate-x-0 md:w-64 lg:w-80 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:flex md:flex-col`}
+      >
         <h1 className="mb-6 text-center text-2xl font-bold">
           Organizer Dashboard
         </h1>
@@ -70,7 +80,10 @@ function Dashboard() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("MyEvent")}
+                onClick={() => {
+                  setCurrentPage("MyEvent");
+                  setIsSidebarOpen(false);
+                }}
                 aria-current={currentPage === "MyEvent" ? "page" : undefined}
               >
                 <IoTicketOutline className="mr-3 text-xl" />
@@ -84,7 +97,10 @@ function Dashboard() {
                     ? "bg-accent/100"
                     : "hover:bg-accent/50"
                 }`}
-                onClick={() => setCurrentPage("ChartData")}
+                onClick={() => {
+                  setCurrentPage("ChartData");
+                  setIsSidebarOpen(false);
+                }}
               >
                 <MdOutlinePayments className="mr-3 text-xl" />
                 Chart Data
@@ -106,6 +122,14 @@ function Dashboard() {
 
       {/* Main Content */}
       <main className="flex-1 bg-white p-6 md:p-12">{renderContent()}</main>
+
+      {/* Sidebar Toggle for Mobile */}
+      <button
+        className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg md:hidden"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? <IoClose className="text-2xl" /> : <IoMenu className="text-2xl" />}
+      </button>
     </div>
   );
 }

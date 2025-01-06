@@ -60,12 +60,12 @@ export default function MenuAfterSignIn({
         {customer && (
           <>
             <Link
-              href={`/customer-profile/${customer.username}`}
+              href={`/profile/${customer.username}`}
               className="hover:text-accent"
             >
               Profile
             </Link>
-            <Link href={"/"} className="hover:text-accent">
+            <Link href={"/profile/review"} className="hover:text-accent">
               My Ticket
             </Link>
           </>
@@ -76,7 +76,7 @@ export default function MenuAfterSignIn({
               Dashboard
             </Link>
             <Link
-              href={`/organizer-profile/${organizer.username}`}
+              href={`/dashboard/review/${organizer.username}`}
               className="hover:text-accent"
             >
               Profile
