@@ -48,7 +48,7 @@ function SideBar() {
           <CustomerMenuTabs
             upcomingEvents={upcomingEvents}
             attendedEvents={attendedEvents}
-            isLoading
+            isLoading={isLoading}
           />
         );
       case "MyProfile":
