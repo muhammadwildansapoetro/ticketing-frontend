@@ -79,7 +79,7 @@ export default function MenuAfterSignIn({
               Dashboard
             </Link>
             <Link
-              href={`//${organizer.username}/match`}
+              href={`/${organizer.username}/match`}
               className="hover:text-accent"
             >
               My Match
