@@ -75,17 +75,20 @@ export default async function EventDetailPage({
             </div>
 
             <div className="mt-5 flex items-center justify-start gap-2 border-t-2 border-gray-300 pt-5">
-              <Image
-                src={`${event.organizer.avatar}`}
-                alt={`${event.organizer.fullname}`}
-                width={25}
-                height={25}
-                priority
-                className="h-12 w-12 rounded-full border border-gray-500 object-cover"
-              />
+              <div className="h-12 w-12 overflow-hidden rounded-full border border-gray-500">
+                <Image
+                  src={`${event.organizer.avatar}`}
+                  alt={`${event.organizer.fullname}`}
+                  width={50}
+                  height={50}
+                  priority
+                  className="object-cover"
+                />
+              </div>
+
               <div>
                 <p>Hosted by</p>
-                <p className="text-lg font-bold">{event.organizer.fullname}</p>
+                <p className="font-bold">{event.organizer.fullname}</p>
               </div>
             </div>
           </div>

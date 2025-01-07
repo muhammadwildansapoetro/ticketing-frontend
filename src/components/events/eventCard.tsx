@@ -58,14 +58,16 @@ export default function EventCard({ events }: { events: IEvent[] }) {
 
                     <div>
                       <div className="mt-3 flex items-center justify-start gap-2 border-t-2 border-gray-300 pt-3">
-                        <Image
-                          src={`${event.organizer.avatar}`}
-                          alt={`${event.organizer.fullname}`}
-                          width={50}
-                          height={50}
-                          priority
-                          className="h-10 w-10 rounded-full border border-gray-500 object-cover"
-                        />
+                        <div className="h-10 w-12 overflow-hidden rounded-full border border-gray-500">
+                          <Image
+                            src={`${event.organizer.avatar}`}
+                            alt={`${event.organizer.fullname}`}
+                            width={50}
+                            height={50}
+                            priority
+                            className="object-cover"
+                          />
+                        </div>
 
                         <p className="w-full text-sm text-gray-700">
                           {event.organizer.fullname}
