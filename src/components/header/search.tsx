@@ -46,8 +46,10 @@ export default function Search() {
   );
 
   useEffect(() => {
-    router.push(pathname + "?" + queryString("search", search));
-    searchEvents();
+    if (search) {
+      router.push(pathname + "?" + queryString("search", search));
+      searchEvents();
+    }
   }, [search, pathname, queryString, router, searchEvents]);
 
   return (
