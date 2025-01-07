@@ -8,6 +8,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { FaStar } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { toastError } from "@/helpers/toastError";
 
 export default function ReviewForm({ eventId }: { eventId: string }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,8 +29,7 @@ export default function ReviewForm({ eventId }: { eventId: string }) {
       toast.success(data.message);
       router.refresh();
     } catch (error) {
-      console.log("Error add review", error);
-      toast.error("Error add review");
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

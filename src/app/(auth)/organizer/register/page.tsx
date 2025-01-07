@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesOrganizer } from "@/types/user";
 import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import { toastError } from "@/helpers/toastError";
 
 const RegisterSchemaOrganizer = Yup.object().shape({
   fullname: Yup.string().required("Fullname is required"),
@@ -53,7 +54,7 @@ function RegisterOrganizerPage() {
       toast.success(result.message);
       router.push(`/organizer/sign-in`);
     } catch (error) {
-      console.error(error);
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

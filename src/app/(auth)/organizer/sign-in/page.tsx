@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
+import { toastError } from "@/helpers/toastError";
 import protectAfterAuth from "@/page-protection/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
@@ -52,8 +53,7 @@ function OrganizerSignInPage() {
       router.refresh();
       toast.success(result.message);
     } catch (error) {
-      console.log(error);
-      toast.error("Please verify your account first, check your email.");
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

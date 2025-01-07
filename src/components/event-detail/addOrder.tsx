@@ -9,6 +9,7 @@ import { IoTicket } from "react-icons/io5";
 import axios from "@/helpers/axios";
 import { useSession } from "@/context/useSession";
 import { getCustomerCoupon, getCustomerPoints } from "@/libs/order";
+import { toastError } from "@/helpers/toastError";
 
 interface IAddOrderProps {
   totalPrice: number;
@@ -159,7 +160,7 @@ export default function AddOrder({
       router.push(`/order/${params}/${data.orderId}`);
       toast.success(data.message);
     } catch (error) {
-      console.error("Error adding order:", error);
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

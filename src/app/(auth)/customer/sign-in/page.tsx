@@ -2,6 +2,7 @@
 
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
+import { toastError } from "@/helpers/toastError";
 import ProtectafterAuthGuard from "@/page-protection/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
@@ -52,7 +53,7 @@ function SignInCustomerPage() {
       router.refresh();
       toast.success(result.message);
     } catch (error) {
-      console.log(error);
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesCustomer } from "@/types/user";
 import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import { toastError } from "@/helpers/toastError";
 
 const RegisterSchemaCustomer = Yup.object().shape({
   fullname: Yup.string().required("Full name is required"),
@@ -61,7 +62,7 @@ function CustomerRegisterPage() {
       toast.success(result.message || "Registration successful!");
       router.push(`/customer/sign-in`);
     } catch (error) {
-      console.error(error);
+      toastError(error);
     } finally {
       setIsLoading(false);
     }

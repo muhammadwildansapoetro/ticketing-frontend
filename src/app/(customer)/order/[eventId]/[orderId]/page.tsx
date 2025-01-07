@@ -9,11 +9,11 @@ import { getOrderDetail } from "@/libs/order";
 import { IOrder } from "@/types/order";
 import Loading from "@/app/loading";
 import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import { toastError } from "@/helpers/toastError";
 
 function OrderDetailPage({ params }: { params: { orderId: number } }) {
   const [order, setOrder] = useState<IOrder | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchOrderDetail = async () => {
@@ -21,8 +21,7 @@ function OrderDetailPage({ params }: { params: { orderId: number } }) {
         const orderDetail = await getOrderDetail(params.orderId);
         setOrder(orderDetail);
       } catch (error) {
-        console.log(error);
-        setError("Failed to fetch order details.");
+        toastError(error);
       } finally {
         setLoading(false);
       }
@@ -33,10 +32,6 @@ function OrderDetailPage({ params }: { params: { orderId: number } }) {
 
   if (loading) {
     return <Loading />;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
   }
 
   if (!order) {
