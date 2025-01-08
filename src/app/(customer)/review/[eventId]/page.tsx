@@ -103,7 +103,7 @@ export default async function EventReviewPage({
                 );
               })
             ) : (
-              <div className="mx-5">No reviews and ratings yet.</div>
+              <div className="mx-5">No reviews and ratings yet</div>
             )}
           </div>
         </div>
