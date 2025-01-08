@@ -43,7 +43,7 @@ export default async function EventReviewPage({
                 alt={event.title}
                 height={1000}
                 width={1000}
-                className="lg:rounded-xl"
+                className="h-auto w-full lg:rounded-xl"
               />
             </div>
 
