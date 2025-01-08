@@ -37,7 +37,7 @@ export default async function EventReviewPage({
       <div className="flex flex-col gap-5 lg:mt-5 lg:flex-row">
         <div className="flex basis-2/3 flex-col justify-center rounded-lg lg:border lg:border-gray-100 lg:p-5 lg:shadow-lg">
           <div className="flex flex-col justify-center gap-5 lg:flex-row">
-            <div className="w-[500px] overflow-hidden">
+            <div className="w-full basis-3/5 overflow-hidden">
               <Image
                 src={event.image}
                 alt={event.title}
@@ -47,7 +47,7 @@ export default async function EventReviewPage({
               />
             </div>
 
-            <div className="flex flex-col px-5 lg:px-0">
+            <div className="flex basis-2/5 flex-col px-5 lg:px-0">
               <div className="mt-3 text-2xl font-bold">{event.title}</div>
 
               <div className="mt-2 flex items-center gap-2">
@@ -85,7 +85,10 @@ export default async function EventReviewPage({
             {reviews.length ? (
               reviews.map((review, index) => {
                 return (
-                  <div key={index} className="border-b border-gray-300 py-5">
+                  <div
+                    key={index}
+                    className="mx-5 border-b border-gray-300 py-5"
+                  >
                     <div className="mb-2 font-bold">
                       {review.customer.fullname}{" "}
                       <span className="ml-2 text-xs text-gray-500">
@@ -100,7 +103,7 @@ export default async function EventReviewPage({
                 );
               })
             ) : (
-              <div>No reviews and ratings yet.</div>
+              <div className="mx-5">No reviews and ratings yet.</div>
             )}
           </div>
         </div>

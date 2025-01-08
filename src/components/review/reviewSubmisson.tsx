@@ -22,14 +22,14 @@ export default function ReviewSubmission({
     <div className="basis-1/3">
       {customer ? (
         hasSubmittedReview ? (
-          <div className="text-lg font-medium text-accent">
+          <div className="mx-5 text-lg font-medium text-accent">
             You have already submitted a review for this event.
           </div>
         ) : (
           <ReviewForm eventId={eventId} />
         )
       ) : (
-        <div className="text-lg font-medium">
+        <div className="mx-5 text-lg font-medium">
           Only customers can submit reviews.
         </div>
       )}

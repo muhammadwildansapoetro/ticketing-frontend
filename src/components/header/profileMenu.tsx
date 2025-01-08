@@ -88,7 +88,7 @@ export default function ProfileMenu({
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg">
+        <div className="absolute right-0 z-20 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg">
           <ul className="py-1">
             {customer && (
               <>
