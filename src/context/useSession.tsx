@@ -45,6 +45,7 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
           },
         },
       );
+
       const result = await res.json();
       if (!res.ok) throw result;
 

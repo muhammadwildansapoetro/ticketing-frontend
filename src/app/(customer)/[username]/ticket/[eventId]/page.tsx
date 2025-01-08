@@ -40,8 +40,6 @@ function MyTicketPage({
     return <Loading />;
   }
 
-  console.log("tickets:", tickets);
-
   return (
     <div className="container mx-auto flex h-screen flex-col items-center justify-start gap-5 px-5 py-10 sm:px-10 md:px-20 lg:px-40 xl:px-80 2xl:px-96">
       {tickets.map((ticket, index) => {

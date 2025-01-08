@@ -130,10 +130,6 @@ export default function AddOrder({
     setIsPointsUsed(true);
   };
 
-  console.log("Total Price:", totalPrice);
-  console.log("Final Price:", finalPrice);
-  console.log("Order Cart:", orderCart);
-
   const handleAddOrder = async () => {
     try {
       setIsLoading(true);
@@ -165,12 +161,6 @@ export default function AddOrder({
       setIsLoading(false);
     }
   };
-
-  console.log(
-    "isCouponRedeemed, customerCoupon",
-    isCouponRedeemed,
-    customerCoupon,
-  );
 
   return (
     <div className="flex items-center justify-center gap-5 lg:w-full lg:flex-col">

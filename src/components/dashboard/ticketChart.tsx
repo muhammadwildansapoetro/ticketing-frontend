@@ -31,7 +31,6 @@ interface IYear {
 
 export function TicketChart() {
   const [chartData, setChartData] = useState<IYear[] | null>(null);
-  // console.log(chartData);
 
   const getChartData = async () => {
     const res = await fetch(
@@ -44,7 +43,6 @@ export function TicketChart() {
       },
     );
     const result = await res.json();
-    console.log(result);
     setChartData(result.result);
   };
 
