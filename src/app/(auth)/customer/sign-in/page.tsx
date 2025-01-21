@@ -3,14 +3,14 @@
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
 import { toastError } from "@/helpers/toastError";
-import ProtectafterAuthGuard from "@/page-protection/protectAfterAuth";
+import ProtectafterAuthGuard from "@/HOC/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-const LoginSchema = Yup.object().shape({
+const CustomerSignInSchema = Yup.object().shape({
   data: Yup.string().required("username or email is required"),
   password: Yup.string()
     .min(3, "password must be 3 characters at minimum")
@@ -22,7 +22,7 @@ interface FormValues {
   password: string;
 }
 
-function SignInCustomerPage() {
+function CustomerSignInPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setIsAuth, setCustomer } = useSession();
   const router = useRouter();
@@ -67,7 +67,7 @@ function SignInCustomerPage() {
         </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={LoginSchema}
+          validationSchema={CustomerSignInSchema}
           onSubmit={(values, action) => {
             handleLogin(values);
             action.resetForm();
@@ -112,4 +112,4 @@ function SignInCustomerPage() {
   );
 }
 
-export default ProtectafterAuthGuard(SignInCustomerPage);
+export default ProtectafterAuthGuard(CustomerSignInPage);

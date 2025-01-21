@@ -36,6 +36,21 @@ export const SessionProvider: React.FC<{ children: ReactNode }> = ({
         console.log("You must sign in first");
         return;
       }
+
+      const { exp } = JSON.parse(atob(token.split(".")[1]));
+      const now = Math.floor(Date.now() / 1000);
+      console.log("exp:", exp);
+      console.log("now:", now);
+
+      if (now > exp) {
+        console.log("Token is expired");
+        localStorage.removeItem("token");
+        setIsAuth(false);
+        setCustomer(null);
+        setOrganizer(null);
+        return;
+      }
+
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL_BE}/auth/session`,
         {

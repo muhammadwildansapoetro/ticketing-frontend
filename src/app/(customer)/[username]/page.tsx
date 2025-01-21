@@ -4,7 +4,7 @@ import Loading from "@/app/loading";
 import CustomerMenuTabs from "@/components/profile/customerMenuTabs";
 import CustomerProfile from "@/components/profile/customerProfile";
 import { getCustomerEvents } from "@/libs/event";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import protectCustomerPage from "@/HOC/protectCustomerPage";
 import { IEvent } from "@/types/event";
 import { useEffect, useState } from "react";
 

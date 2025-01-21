@@ -12,7 +12,7 @@ import { CgProfile } from "react-icons/cg";
 import { RiCoupon4Line } from "react-icons/ri";
 import { MdOutlinePayments } from "react-icons/md";
 import { useRouter } from "next/navigation";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import protectCustomerPage from "@/HOC/protectCustomerPage";
 import { IEvent } from "@/types/event";
 import { getCustomerEvents } from "@/libs/event";
 import CustomerProfile from "@/components/profile/customerProfile";

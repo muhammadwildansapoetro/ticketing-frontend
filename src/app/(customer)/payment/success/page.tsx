@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "@/context/useSession";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import protectCustomerPage from "@/HOC/protectCustomerPage";
 import Link from "next/link";
 
 function PaymentSuccessPage() {

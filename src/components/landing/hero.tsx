@@ -2,15 +2,15 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div>
+    <div className="p-5 lg:p-0">
       <div>
-        <h1 className="text-xl font-bold tracking-tight text-gray-900 lg:text-5xl">
+        <h1 className="text-2xl font-bold tracking-tight text-gray-900 lg:text-4xl">
           The Home of Football Ticketing
         </h1>
-        <p className="mt-2 font-medium tracking-tight text-gray-700 lg:text-3xl lg:tracking-wide">
+        <p className="mt-2 font-medium tracking-tight text-gray-700 lg:text-2xl lg:tracking-wide">
           Experience the passion, create the moments.
         </p>
-        <p className="mt-2 text-sm tracking-wide text-gray-500 lg:text-xl">
+        <p className="mt-4 text-sm tracking-wide text-gray-500 lg:text-xl">
           MatchTix is the all-in-one solution for football ticketing. Designed
           for fans and organizers, it makes creating matches and securing seats
           effortless.

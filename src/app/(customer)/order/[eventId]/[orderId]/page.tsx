@@ -8,7 +8,7 @@ import TimeFormatter from "@/helpers/timeFormatter";
 import { getOrderDetail } from "@/libs/order";
 import { IOrder } from "@/types/order";
 import Loading from "@/app/loading";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import protectCustomerPage from "@/HOC/protectCustomerPage";
 import { toastError } from "@/helpers/toastError";
 
 function OrderDetailPage({ params }: { params: { orderId: number } }) {

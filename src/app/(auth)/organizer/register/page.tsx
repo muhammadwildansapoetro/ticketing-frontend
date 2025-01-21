@@ -7,10 +7,10 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesOrganizer } from "@/types/user";
-import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import protectAfterAuth from "@/HOC/protectAfterAuth";
 import { toastError } from "@/helpers/toastError";
 
-const RegisterSchemaOrganizer = Yup.object().shape({
+const organizerSchema = Yup.object().shape({
   fullname: Yup.string().required("Fullname is required"),
   username: Yup.string().required("Username is required"),
   email: Yup.string()
@@ -24,7 +24,7 @@ const RegisterSchemaOrganizer = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-function RegisterOrganizerPage() {
+function OrganizerRegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -89,7 +89,7 @@ function RegisterOrganizerPage() {
         </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={RegisterSchemaOrganizer}
+          validationSchema={organizerSchema}
           onSubmit={(values, action) => {
             handleAdd(values);
             action.resetForm();
@@ -143,4 +143,4 @@ function RegisterOrganizerPage() {
   );
 }
 
-export default protectAfterAuth(RegisterOrganizerPage);
+export default protectAfterAuth(OrganizerRegisterPage);

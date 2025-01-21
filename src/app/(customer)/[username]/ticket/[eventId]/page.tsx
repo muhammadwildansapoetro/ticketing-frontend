@@ -5,7 +5,7 @@ import { useSession } from "@/context/useSession";
 import DateFormatter from "@/helpers/dateFormatter";
 import TimeFormatter from "@/helpers/timeFormatter";
 import { getCustomerTickets } from "@/libs/ticket";
-import protectCustomerPage from "@/page-protection/protectCustomerPage";
+import protectCustomerPage from "@/HOC/protectCustomerPage";
 import { ITicket } from "@/types/ticket";
 import { useEffect, useState } from "react";
 import { FaBarcode } from "react-icons/fa";
@@ -68,7 +68,7 @@ function MyTicketPage({
                   {TimeFormatter(ticket.event.startTime)} WIB
                 </p>
                 <p className="mt-1 text-sm font-medium lg:text-base">
-                  Ticket ID: {ticket.id} - {customer?.fullname}
+                  Ticket ID: {ticket.id}-{customer?.referralCode}
                 </p>
               </div>
 

@@ -7,26 +7,37 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { FormValuesCustomer } from "@/types/user";
-import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import protectAfterAuth from "@/HOC/protectAfterAuth";
 import { toastError } from "@/helpers/toastError";
 
-const RegisterSchemaCustomer = Yup.object().shape({
-  fullname: Yup.string().required("Full name is required"),
-  username: Yup.string().required("Username is required"),
+const customerSchema = Yup.object().shape({
+  fullname: Yup.string().required("Please enter your full name"),
+  username: Yup.string().required("Please provide a username"),
   email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
+    .email("Please enter a valid email address")
+    .required("Email address is required"),
   password: Yup.string()
-    .min(6, "Password must be 6 characters at minimum")
+    .min(8, "Password must be at least 8 characters long")
+    .matches(
+      /(?=.*[A-Z])/,
+      "Password must include at least one uppercase letter",
+    )
+    .matches(
+      /(?=.*[!@#$%^&*])/,
+      "Password must include at least one special character (e.g., !, @, #, $, %, ^, &, *)",
+    )
     .required("Password is required"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords do not match!")
-    .required("Confirm password is required"),
+    .oneOf([Yup.ref("password")], "Passwords do not match, please try again")
+    .required("Please confirm your password"),
   referralCodeBy: Yup.string()
     .uppercase()
-    .matches(/^[A-Z0-9]+$/, "The Code is must be numeric character")
-    .min(6, "The Code is must 6 Character")
-    .max(6, "The Code is must 6 Character")
+    .matches(
+      /^[A-Z0-9]+$/,
+      "Referral code must contain only uppercase letters and numbers",
+    )
+    .min(6, "The referral code must be exactly 6 characters long")
+    .max(6, "The referral code must be exactly 6 haracters long")
     .nullable()
     .default(null),
 });
@@ -44,7 +55,7 @@ function CustomerRegisterPage() {
     referralCodeBy: "",
   };
 
-  const handleAdd = async (customer: FormValuesCustomer) => {
+  const handleRegister = async (customer: FormValuesCustomer) => {
     try {
       setIsLoading(true);
       const res = await fetch(
@@ -70,7 +81,6 @@ function CustomerRegisterPage() {
 
   return (
     <div className="flex h-full bg-gray-50">
-      {/* Left Panel */}
       <div
         className="hidden w-1/2 items-center justify-center bg-gradient-to-r from-accent to-accent/50 text-white shadow-lg lg:flex"
         style={{ clipPath: "ellipse(120% 100% at 0% 50%)" }}
@@ -90,16 +100,15 @@ function CustomerRegisterPage() {
         </div>
       </div>
 
-      {/* Right Panel */}
       <div className="flex w-full flex-col items-center justify-center px-6 py-10 lg:w-1/2 lg:px-16">
         <h1 className="mb-6 text-4xl font-bold text-gray-800">
           Register as Customer
         </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={RegisterSchemaCustomer}
+          validationSchema={customerSchema}
           onSubmit={(values, action) => {
-            handleAdd(values);
+            handleRegister(values);
             action.resetForm();
           }}
         >
@@ -131,14 +140,13 @@ function CustomerRegisterPage() {
                 label="Referral Code"
               />
 
-              {/* Buttons */}
               <div className="flex flex-col gap-4">
                 <button
                   type="submit"
                   disabled={isLoading}
                   className="w-full rounded-lg bg-accent py-2 font-semibold tracking-wider text-white hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-gray-400"
                 >
-                  {isLoading ? "Processing..." : "Register"}
+                  {isLoading ? "Loading..." : "Register"}
                 </button>
                 <button
                   type="button"

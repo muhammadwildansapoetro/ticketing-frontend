@@ -9,7 +9,7 @@ import {
   IoClose,
 } from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
-import protectOrganizerPage from "@/page-protection/protectOrganizerPage";
+import protectOrganizerPage from "@/HOC/protectOrganizerPage";
 import { useRouter } from "next/navigation";
 import OrganizerMenuTabs from "@/components/profile/organizerMenuTabs";
 import { IEvent } from "@/types/event";

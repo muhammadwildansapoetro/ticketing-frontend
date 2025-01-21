@@ -3,14 +3,14 @@
 import { Input } from "@/components/form/input";
 import { useSession } from "@/context/useSession";
 import { toastError } from "@/helpers/toastError";
-import protectAfterAuth from "@/page-protection/protectAfterAuth";
+import protectAfterAuth from "@/HOC/protectAfterAuth";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
-const SignInSchema = Yup.object().shape({
+const OrganizerSignInSchema = Yup.object().shape({
   data: Yup.string().required("Username or email is required"),
   password: Yup.string()
     .min(3, "Password must be 3 characters at minimum")
@@ -67,7 +67,7 @@ function OrganizerSignInPage() {
         </h1>
         <Formik
           initialValues={initialValue}
-          validationSchema={SignInSchema}
+          validationSchema={OrganizerSignInSchema}
           onSubmit={(values, action) => {
             handleSignIn(values);
             action.resetForm();

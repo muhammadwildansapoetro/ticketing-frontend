@@ -1,7 +1,6 @@
 "use client";
 
 import axios from "@/helpers/axios";
-import { reviewSchema } from "@/schemas/reviewSchema";
 import { IFormReview } from "@/types/review";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
@@ -9,6 +8,14 @@ import { toast } from "react-toastify";
 import { FaStar } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { toastError } from "@/helpers/toastError";
+import * as Yup from "yup";
+
+export const reviewSchema = Yup.object({
+  rating: Yup.number()
+    .oneOf([1, 2, 3, 4, 5], "Rating must be between 1 and 5")
+    .required("Rating is required"),
+  review: Yup.string().required("Review is required"),
+});
 
 export default function ReviewForm({ eventId }: { eventId: string }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);

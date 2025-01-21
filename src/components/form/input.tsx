@@ -1,15 +1,13 @@
 import React from "react";
 import { Field, ErrorMessage, FormikProps } from "formik";
 
-// Define a generic type for the form values
 interface InputProps<T> {
   formik: FormikProps<T>;
-  name: keyof T; // Ensure name is a key of the form values
+  name: keyof T;
   label: string;
   type?: string;
 }
 
-// Use the generic type in the component
 export const Input = <T,>({
   formik,
   name,
@@ -19,14 +17,14 @@ export const Input = <T,>({
   return (
     <div className="flex w-full max-w-md flex-col gap-2 md:gap-3">
       <label
-        htmlFor={name as string} // Cast to string for the htmlFor attribute
+        htmlFor={name as string}
         className="text-base font-semibold text-gray-800 md:text-lg"
       >
         {label}
       </label>
       <div className="relative">
         <Field
-          id={name as string} // Cast to string for the id attribute
+          id={name as string}
           name={name}
           type={type}
           className={`w-full rounded-lg border border-accent px-4 py-3 text-sm shadow-sm transition-all duration-300 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent md:text-base ${
