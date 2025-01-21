@@ -7,6 +7,7 @@ import LeagueMatchSwiper from "@/components/landing/leagueMatchSwiper";
 import FriendlyMatchSwiper from "@/components/landing/friendlyMatchSwiper";
 import MobileNavBar from "@/components/footer/mobileNavBar";
 import TrainingMatchSwiper from "@/components/landing/trainingMatchSwiper";
+import PromotionBanner from "@/components/landing/promotionBanner";
 
 interface IEvent {
   id: string;
@@ -23,6 +24,8 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto flex flex-col items-center justify-start pb-36">
+      <PromotionBanner />
+
       <section className="flex flex-col items-center justify-start lg:max-h-[500px] lg:flex-row lg:gap-5">
         <div className="flex max-w-[600px] flex-col">
           <Hero />

@@ -60,7 +60,7 @@ export default function CreateTicketPage({
   }
 
   return (
-    <div className="container mx-auto flex h-full items-start justify-center gap-10 p-5 lg:my-10 lg:px-10 xl:px-20 2xl:px-52">
+    <main className="container mx-auto flex h-full min-h-screen items-start justify-center gap-10 p-5 lg:my-10 lg:px-10 xl:px-20 2xl:px-52">
       <div className="lg:basis-2/3">
         <div className="relative flex items-center justify-between rounded-lg border border-accent bg-accent/10 p-5">
           <span className="absolute -top-[1.5px] right-28 z-10 h-5 w-10 rounded-bl-full rounded-br-full border-b border-l border-r border-accent border-t-white bg-white lg:right-36"></span>
@@ -120,6 +120,6 @@ export default function CreateTicketPage({
           className="object-cover"
         />
       </div>
-    </div>
+    </main>
   );
 }

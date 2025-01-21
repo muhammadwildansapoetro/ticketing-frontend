@@ -4,11 +4,11 @@ export default function Hero() {
   return (
     <div className="p-5 lg:p-0">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 lg:text-4xl">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 lg:text-4xl">
           The Home of Football Ticketing
         </h1>
         <p className="mt-2 font-medium tracking-tight text-gray-700 lg:text-2xl lg:tracking-wide">
-          Experience the passion, create the moments.
+          Create the moments. Experience the passion.
         </p>
         <p className="mt-4 text-sm tracking-wide text-gray-500 lg:text-xl">
           MatchTix is the all-in-one solution for football ticketing. Designed

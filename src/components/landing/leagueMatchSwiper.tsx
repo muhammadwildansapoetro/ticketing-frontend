@@ -3,6 +3,7 @@
 import DateFormatter from "@/helpers/dateFormatter";
 import Image from "next/image";
 import Link from "next/link";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface IEvent {
   id: string;
@@ -15,31 +16,42 @@ interface IEvent {
 }
 
 export default function LeagueMatchSwiper({ events }: { events: IEvent[] }) {
-  const friendlyMatch = Array.isArray(events)
+  const leagueMatches = Array.isArray(events)
     ? events.filter((event) => event.category === "League")
     : [];
 
+  const leagueMatch = leagueMatches.slice(0, 11);
+
   return (
-    <div className="hidden max-w-[1120px] flex-col lg:flex">
-      {friendlyMatch.length > 0 && (
+    <div className="flex w-screen flex-col lg:max-w-[1120px]">
+      {leagueMatch.length > 0 && (
         <>
-          <div className="text-xl font-bold">League Match</div>
-          <div className="relative mt-2 overflow-x-auto pb-5">
+          <div className="flex justify-between">
+            <h1 className="pl-5 text-xl font-bold lg:pl-0">League Match</h1>
+            <Link
+              href={"/event"}
+              className="flex items-center justify-center text-accent hover:underline hover:underline-offset-2"
+            >
+              <p className="font-medium">See all matches</p>
+              <MdKeyboardArrowRight className="size-[25px]" />
+            </Link>
+          </div>
+          <div className="relative mt-2 overflow-x-auto pb-5 pl-5 lg:pl-0">
             <div className="flex gap-5">
-              {friendlyMatch.map((event, index) => (
+              {leagueMatch.map((event, index) => (
                 <div
                   key={index}
-                  className="group shrink-0 rounded-xl shadow-lg"
+                  className="group h-56 w-[250px] shrink-0 rounded-lg shadow-lg"
                 >
                   <Link href={`/event/${event.id}`}>
                     <div className="aspect-video overflow-hidden rounded-tl-lg rounded-tr-lg">
                       <Image
                         src={`${event.image}`}
                         alt={`${event.title}`}
-                        width={200}
-                        height={200}
+                        width={1000}
+                        height={1000}
                         priority
-                        className="h-36 w-auto object-cover object-center group-hover:scale-105"
+                        className="h-full w-full object-cover group-hover:scale-105"
                       />
                     </div>
                     <div className="overflow-hidden p-2">

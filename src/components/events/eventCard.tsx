@@ -49,7 +49,7 @@ export default function EventCard({ events }: { events: IEvent[] }) {
                     </p>
 
                     <p
-                      className={`mb-1 mt-2 font-medium ${lowestPrice === 0 ? "text-xl text-accent" : "text-gray-800"}`}
+                      className={`mb-1 mt-2 font-medium ${lowestPrice === 0 ? "tracking-wide text-accent" : "text-gray-800"}`}
                     >
                       {lowestPrice === 0
                         ? "Free"
