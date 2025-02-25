@@ -138,7 +138,10 @@ export default function AddOrder({
         return;
       }
 
-      const storedToken = localStorage.getItem("token");
+      let storedToken: string | null = null;
+      if (typeof window !== "undefined") {
+        storedToken = localStorage.getItem("token");
+      }
       const { data } = await axios.post(
         "/orders",
         {
